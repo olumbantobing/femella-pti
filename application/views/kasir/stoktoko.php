@@ -49,48 +49,28 @@
 
         <!-- tabel -->
         <table>
-          <tr>
-            <th width="70px">ID</th>
-            <th width="250px">Nama Barang</th>
-            <th width="150px">Stok di Toko</th>
-            <th width="200px">Harga</th>
-          </tr>
-          <tr>
-            <td>001</td>
-            <td style="text-align: left">Keripik Pisang Original</td>
-            <td>250</td>
-            <td>Rp.20.000</td>
-          </tr>
-          <tr>
-            <td>002</td>
-            <td style="text-align: left">Keripik Pisang Balado</td>
-            <td>250</td>
-            <td>Rp.20.000</td>
-          </tr>
-          <tr>
-            <td>003</td>
-            <td style="text-align: left">Keripik Pisang Cokelat</td>
-            <td>250</td>
-            <td>Rp.20.000</td>
-          </tr>
-          <tr>
-            <td>001</td>
-            <td style="text-align: left">Keripik Pisang Keju</td>
-            <td>250</td>
-            <td>Rp.20.000</td>
-          </tr>
-          <tr>
-            <td>001</td>
-            <td style="text-align: left">Keripik Pisang Susu</td>
-            <td>250</td>
-            <td>Rp.20.000</td>
-          </tr>
-          <tr>
-            <td>001</td>
-            <td style="text-align: left">Keripik Pisang Asin</td>
-            <td>250</td>
-            <td>Rp.20.000</td>
-          </tr>
+          <thead>
+            <tr>
+              <th width="70px">ID</th>
+              <th width="250px">Nama Barang</th>
+              <th width="150px">Stok di Toko</th>
+              <th width="200px">Harga</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <?php if (is_array($list_data)) { ?>
+                <?php foreach ($list_data as $dd) : ?>
+                  <td><?= $dd->id ?></td>
+                  <td><?= $dd->nama_barang ?></td>
+                  <td><?= $dd->stok_toko ?></td>
+                  <td><?= $dd->harga ?></td>
+            </tr>
+          <?php endforeach; ?>
+        <?php } else { ?>
+          <td colspan="7" align="center"><strong>Data Kosong</strong></td>
+        <?php } ?>
+          </tbody>
         </table>
       </div>
       <!-- tabel -->
@@ -308,7 +288,7 @@
     height: 3%;
     background: #f0f0f0;
     position: absolute;
-    bottom: 0;
+    bottom: 90;
     width: 100%;
   }
 </style>

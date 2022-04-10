@@ -7,6 +7,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://kit.fontawesome.com/25495e258e.js" crossorigin="anonymous"></script>
   <title>INVENTARIS | BARANG TERJUAL</title>
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+    $(function() {
+      $("#date").datepicker({
+        dateFormat: "yy-mm-dd"
+      });
+    });
+  </script>
 </head>
 
 <body>
@@ -69,7 +81,7 @@
                   <td><?= $dd->nama_barang ?></td>
                   <td><?= $dd->tanggal ?></td>
                   <td><?= $dd->terjual ?></td>
-                  <td><?= $dd->sisa ?></td>
+                  <td><?= $dd->stok_toko ?></td>
             </tr>
             <?php $no++; ?>
           <?php endforeach; ?>
@@ -77,54 +89,6 @@
           <td colspan="7" align="center"><strong>Data Kosong</strong></td>
         <?php } ?>
           </tbody>
-          <!-- <tr>
-            <td>1</td>
-            <td>001</td>
-            <td style="text-align: left">Keripik Pisang Original</td>
-            <td>12/02/2022</td>
-            <td>50</td>
-            <td>176</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>002</td>
-            <td style="text-align: left">Keripik Pisang Balado</td>
-            <td>12/02/2022</td>
-            <td>67</td>
-            <td>110</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>003</td>
-            <td style="text-align: left">Keripik Pisang Cokelat</td>
-            <td>12/02/2022</td>
-            <td>95</td>
-            <td>143</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>004</td>
-            <td style="text-align: left">Keripik Pisang Keju</td>
-            <td>12/02/2022</td>
-            <td>56</td>
-            <td>134</td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>005</td>
-            <td style="text-align: left">Keripik Pisang Susu</td>
-            <td>12/02/2022</td>
-            <td>43</td>
-            <td>167</td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td>006</td>
-            <td style="text-align: left">Keripik Pisang Asin</td>
-            <td>12/02/2022</td>
-            <td>76</td>
-            <td>124</td>
-          </tr> -->
         </table>
       </div>
       <!-- tabel -->
@@ -133,16 +97,27 @@
       <div class="form-input">
         <div class="box">
           <h4 style="background-color: #008fdf87">
-            Tambah Barang Keluar
+            Tambah Barang Terjual
             <i class="fa-solid fa-plus"></i>
           </h4>
-          <form action="">
+          <form action="<?= base_url('kasir/tambah_barangterjual') ?>" role="form" method="post">
+            <label> Kode Keluar</label><br />
+            <input type="text" name="kodeterjual" id="kodeterjual" value="AT-<?= date("yM"); ?><?= random_string('numeric', 3); ?>" readonly /><br />
             <label> ID Barang</label><br />
-            <input type="text" /><br />
+            <select class="form-control" name="id" id="id">
+              <?php
+              $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
+              $res = mysqli_query($conn, "SELECT id, CONCAT(id, ' ', nama_barang) AS pilihan FROM stok_gudang WHERE stok_toko > 0");
+              while ($rows = mysqli_fetch_array($res)) {
+              ?>
+                <option value="<?php echo $rows['id']; ?>"><?php echo $rows['pilihan']; ?></option>
+              <?php } ?>
+            </select>
+            <!-- <input type="text" /><br /> -->
             <label>Tanggal</label><br />
-            <input type="text" /><br />
+            <input type="text" name="tanggal" id="date" placeholder="Pilih tanggal" /><br />
             <label>Terjual</label><br />
-            <input type="text" /><br />
+            <input type="text" name="terjual" id="terjual" placeholder="Masukkan jumlah terjual" /><br />
             <button style="background-color: #008fdf87">Tambah</button>
           </form>
         </div>
@@ -151,11 +126,20 @@
             Ubah Data Barang
             <i class="fa-solid fa-minus"></i>
           </h4>
-          <form action="">
-            <label>Nomor Barang</label><br />
-            <input type="text" /><br />
-            <label>Stok</label><br />
-            <input type="text" /><br />
+          <form action="<?= base_url('kasir/ubah_barangterjual') ?>" role="form" method="post">
+            <label>Kode Terjual</label><br />
+            <select class="form-control" name="kodeterjual" id="kodeterjual">
+              <?php
+              $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
+              $res = mysqli_query($conn, "SELECT kodeterjual FROM terjual");
+              while ($rows = mysqli_fetch_array($res)) {
+              ?>
+                <option value="<?php echo $rows['kodeterjual']; ?>"><?php echo $rows['kodeterjual']; ?></option>
+              <?php } ?>
+            </select>
+            <!-- <input type="text" /><br /> -->
+            <label>Terjual</label><br />
+            <input type="text" name="terjual" id="terjual" placeholder="Masukkan jumlah terjual" /><br />
             <button style="background-color: #fad541fc">Ubah</button>
           </form>
         </div>
@@ -164,9 +148,18 @@
             Hapus Data Barang
             <i class="fa-solid fa-minus"></i>
           </h4>
-          <form action="">
-            <label>ID Barang</label><br />
-            <input type="text" /><br />
+          <form action="<?= base_url('kasir/hapus_barangterjual') ?>" role="form" method="post">
+            <label>Kode Keluar</label><br />
+            <select class="form-control" name="kodeterjual" id="kodeterjual">
+              <?php
+              $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
+              $res = mysqli_query($conn, "SELECT kodeterjual FROM terjual");
+              while ($rows = mysqli_fetch_array($res)) {
+              ?>
+                <option value="<?php echo $rows['kodeterjual']; ?>"><?php echo $rows['kodeterjual']; ?></option>
+              <?php } ?>
+            </select>
+            <!-- <input type="text" /><br /> -->
             <button style="background-color: #fe4a4af0">Hapus</button>
           </form>
         </div>
@@ -372,6 +365,13 @@
 
   .form-input .box form button:hover {
     background-color: rgb(224, 216, 206);
+  }
+
+  .form-control {
+    height: 23px;
+    width: 100%;
+    font-size: 12pt;
+    margin-bottom: 10px;
   }
 
   table {

@@ -98,7 +98,7 @@ class Admin extends CI_Controller
     public function barangterjual()
     {
         $data = array(
-            'list_data' => $this->M_admin->select('terjual')
+            'list_data' => $this->M_admin->tabelterjual()
         );
         $this->load->view('admin/barangterjual', $data);
     }
@@ -125,8 +125,6 @@ class Admin extends CI_Controller
             $tanggal = $this->input->post('tanggal', TRUE);
             $keterangan      = $this->input->post('keterangan', TRUE);
 
-            // $where = array('id' => $id);
-            // $field = array('stok' => $jumlah);
             $data = array(
                 'kodemasuk' => $kodemasuk,
                 'id' => $id,
@@ -135,10 +133,7 @@ class Admin extends CI_Controller
                 'keterangan'       => $keterangan,
             );
             $this->M_admin->insert('masuk_gudang', $data);
-            // $this->M_admin->tabelmasuk('masuk_gudang', $id);
-            // $this->M_admin->sum('stok_gudang', $field, $where);
 
-            // echo "<script>alert('Data berhasil ditambahkan!');</script>";
             $this->session->set_flashdata('msg_berhasil', 'Data Barang Berhasil Ditambahkan');
             redirect(base_url('admin/barangmasuk'));
         } else {
@@ -213,8 +208,6 @@ class Admin extends CI_Controller
             $jumlah      = $this->input->post('jumlah', TRUE);
             $tanggal = $this->input->post('tanggal', TRUE);
 
-            // $where = array('id' => $id);
-            // $field = array('stok' => $jumlah);
             $data = array(
                 'kodekeluar' => $kodekeluar,
                 'id' => $id,
@@ -222,7 +215,6 @@ class Admin extends CI_Controller
                 'tanggal'  => $tanggal,
             );
             $this->M_admin->insert('keluar_gudang', $data);
-            // $this->M_admin->sum('stok_gudang', $field, $where);
 
             $this->session->set_flashdata('msg_berhasil', 'Data Barang Berhasil Ditambahkan');
             redirect(base_url('admin/barangkeluar'));

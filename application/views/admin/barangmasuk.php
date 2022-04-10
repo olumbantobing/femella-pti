@@ -112,7 +112,7 @@
           </h4>
           <form action="<?= base_url('admin/tambah_barangmasuk') ?>" role="form" method="post">
             <label> Kode Masuk</label><br />
-            <input type="text" name="kodemasuk" id="kodemasuk" value="AM-<?= date("M"); ?><?= random_string('numeric', 3); ?>" readonly /><br />
+            <input type="text" name="kodemasuk" id="kodemasuk" value="AM-<?= date("yM"); ?><?= random_string('numeric', 3); ?>" readonly /><br />
             <label> ID Barang</label><br />
             <select class="form-control" name="id" id="id">
               <?php

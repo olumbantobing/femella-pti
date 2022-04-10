@@ -109,7 +109,7 @@
           </h4>
           <form action="<?= base_url('admin/tambah_barangkeluar') ?>" role="form" method="post">
             <label> Kode Keluar</label><br />
-            <input type="text" name="kodekeluar" id="kodekeluar" value="AK-<?= date("M"); ?><?= random_string('numeric', 3); ?>" readonly /><br />
+            <input type="text" name="kodekeluar" id="kodekeluar" value="AK-<?= date("yM"); ?><?= random_string('numeric', 3); ?>" readonly /><br />
             <label> ID Barang</label><br />
             <select class="form-control" name="id" id="id">
               <?php

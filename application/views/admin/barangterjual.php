@@ -73,7 +73,7 @@
                   <td><?= $dd->nama_barang ?></td>
                   <td><?= $dd->tanggal ?></td>
                   <td><?= $dd->terjual ?></td>
-                  <td><?= $dd->sisa ?></td>
+                  <td><?= $dd->stok_toko ?></td>
             </tr>
             <?php $no++; ?>
           <?php endforeach; ?>
