@@ -34,7 +34,7 @@
       <a href=" <?= base_url('admin/index'); ?>"">Beranda</a>
       <a href=" <?= base_url('admin/stokgudang'); ?>"">Stok Gudang</a>
       <a href=" <?= base_url('admin/barangterjual'); ?>"">Barang Terjual</a>
-      <a href=#>Barang Masuk Gudang</a>
+      <a href=# style=" background-color: #EEECB2; font-weight: bold;">Barang Masuk Gudang</a>
       <a href=" <?= base_url('admin/barangkeluar'); ?>"">Barang Keluar Gudang</a>
       <a href=" <?= base_url('admin/pengguna'); ?>"">Pengguna</a>
       <a href=" <?= base_url('admin/laporan'); ?>"">Laporan</a>
@@ -46,147 +46,147 @@
 
   <!-- content -->
   <div class=" content">
-    <!-- header -->
-    <div class="header-content">
-      <br /><br />
-      <h2>BARANG MASUK GUDANG</h2>
-    </div>
-    <!-- header -->
+        <!-- header -->
+        <div class="header-content">
+          <br /><br />
+          <h2>BARANG MASUK GUDANG</h2>
+        </div>
+        <!-- header -->
 
-    <div class="body-content">
-      <div class="content-utama">
-        <!-- Tombol search -->
-        <div class="search-btn">
-          <div>
-            <input type="text" placeholder="Cari Barang..." />
-            <button>
-              <i class="fa-2x fa-solid fa-magnifying-glass"></i>
-            </button>
+        <div class="body-content">
+          <div class="content-utama">
+            <!-- Tombol search -->
+            <div class="search-btn">
+              <div>
+                <input type="text" placeholder="Cari Barang..." />
+                <button>
+                  <i class="fa-2x fa-solid fa-magnifying-glass"></i>
+                </button>
+              </div>
+            </div>
+            <!-- Tombol search -->
+
+            <!-- tabel -->
+            <table>
+              <thead>
+                <tr>
+                  <th width="70px">#</th>
+                  <th width="70px">Kode Masuk</th>
+                  <th width="70px">ID</th>
+                  <th width="700px">Nama Barang</th>
+                  <th width="200px">Jumlah</th>
+                  <th width="200px">Tanggal</th>
+                  <th width="200px">Keterangan</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <?php if (is_array($list_data)) { ?>
+                    <?php $no = 1; ?>
+                    <?php foreach ($list_data as $dd) : ?>
+                      <td><?= $no ?></td>
+                      <td><?= $dd->kodemasuk ?></td>
+                      <td><?= $dd->id ?></td>
+                      <td><?= $dd->nama_barang ?></td>
+                      <td><?= $dd->jumlah ?></td>
+                      <td><?= $dd->tanggal ?></td>
+                      <td><?= $dd->keterangan ?></td>
+                </tr>
+                <?php $no++; ?>
+              <?php endforeach; ?>
+            <?php } else { ?>
+              <td colspan="7" align="center"><strong>Data Kosong</strong></td>
+            <?php } ?>
+              </tbody>
+            </table>
           </div>
-        </div>
-        <!-- Tombol search -->
+          <!-- tabel -->
 
-        <!-- tabel -->
-        <table>
-          <thead>
-            <tr>
-              <th width="70px">#</th>
-              <th width="70px">Kode Masuk</th>
-              <th width="70px">ID</th>
-              <th width="700px">Nama Barang</th>
-              <th width="200px">Jumlah</th>
-              <th width="200px">Tanggal</th>
-              <th width="200px">Keterangan</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              <?php if (is_array($list_data)) { ?>
-                <?php $no = 1; ?>
-                <?php foreach ($list_data as $dd) : ?>
-                  <td><?= $no ?></td>
-                  <td><?= $dd->kodemasuk ?></td>
-                  <td><?= $dd->id ?></td>
-                  <td><?= $dd->nama_barang ?></td>
-                  <td><?= $dd->jumlah ?></td>
-                  <td><?= $dd->tanggal ?></td>
-                  <td><?= $dd->keterangan ?></td>
-            </tr>
-            <?php $no++; ?>
-          <?php endforeach; ?>
-        <?php } else { ?>
-          <td colspan="7" align="center"><strong>Data Kosong</strong></td>
-        <?php } ?>
-          </tbody>
-        </table>
-      </div>
-      <!-- tabel -->
-
-      <!-- Menu Input -->
-      <div class="form-input">
-        <div class="box">
-          <h4 style="background-color: #008fdf87">
-            Tambah Barang Masuk
-            <i class="fa-solid fa-plus"></i>
-          </h4>
-          <form action="<?= base_url('admin/tambah_barangmasuk') ?>" role="form" method="post">
-            <label> Kode Masuk</label><br />
-            <input type="text" name="kodemasuk" id="kodemasuk" value="AM-<?= date("yM"); ?><?= random_string('numeric', 3); ?>" readonly /><br />
-            <label> ID Barang</label><br />
-            <select class="form-control" name="id" id="id">
-              <?php
-              $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
-              $res = mysqli_query($conn, "SELECT id, CONCAT(id, ' ', nama_barang) AS pilihan FROM stok_gudang");
-              while ($rows = mysqli_fetch_array($res)) {
-              ?>
-                <option value="<?php echo $rows['id']; ?>"><?php echo $rows['pilihan']; ?></option>
-              <?php } ?>
-            </select>
-            <!-- <input type="text" name="id" id="id" placeholder="Masukkan ID Barang" /><br /> -->
-            <label>Jumlah</label><br />
-            <input type="text" name="jumlah" id="jumlah" placeholder="Masukkan jumlah barang" /><br />
-            <label>Tanggal</label><br />
-            <input type="text" name="tanggal" id="date" placeholder="Pilih tanggal" /><br />
-            <label>Keterangan</label><br />
-            <input type="text" name="keterangan" id="keterangan" placeholder="Masukkan keterangan" /><br />
-            <button style="background-color: #008fdf87">Tambah</button>
-          </form>
+          <!-- Menu Input -->
+          <div class="form-input">
+            <div class="box">
+              <h4 style="background-color: #008fdf87">
+                Tambah Barang Masuk
+                <i class="fa-solid fa-plus"></i>
+              </h4>
+              <form action="<?= base_url('admin/tambah_barangmasuk') ?>" role="form" method="post">
+                <label> Kode Masuk</label><br />
+                <input type="text" name="kodemasuk" id="kodemasuk" value="AM-<?= date("yM"); ?><?= random_string('numeric', 3); ?>" readonly /><br />
+                <label> ID Barang</label><br />
+                <select class="form-control" name="id" id="id">
+                  <?php
+                  $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
+                  $res = mysqli_query($conn, "SELECT id, CONCAT(id, ' ', nama_barang) AS pilihan FROM stok_gudang");
+                  while ($rows = mysqli_fetch_array($res)) {
+                  ?>
+                    <option value="<?php echo $rows['id']; ?>"><?php echo $rows['pilihan']; ?></option>
+                  <?php } ?>
+                </select>
+                <!-- <input type="text" name="id" id="id" placeholder="Masukkan ID Barang" /><br /> -->
+                <label>Jumlah</label><br />
+                <input type="text" name="jumlah" id="jumlah" placeholder="Masukkan jumlah barang" /><br />
+                <label>Tanggal</label><br />
+                <input type="text" name="tanggal" id="date" placeholder="Pilih tanggal" /><br />
+                <label>Keterangan</label><br />
+                <input type="text" name="keterangan" id="keterangan" placeholder="Masukkan keterangan" /><br />
+                <button style="background-color: #008fdf87">Tambah</button>
+              </form>
+            </div>
+            <div class="box">
+              <h4 style="background-color: #fad541fc">
+                Ubah Barang Masuk
+                <i class="fa-solid fa-minus"></i>
+              </h4>
+              <form action="<?= base_url('admin/ubah_barangmasuk') ?>" role="form" method="post">
+                <label>Kode Masuk</label><br />
+                <select class="form-control" name="kodemasuk" id="kodemasuk">
+                  <?php
+                  $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
+                  $res = mysqli_query($conn, "SELECT kodemasuk FROM masuk_gudang");
+                  while ($rows = mysqli_fetch_array($res)) {
+                  ?>
+                    <option value="<?php echo $rows['kodemasuk']; ?>"><?php echo $rows['kodemasuk']; ?></option>
+                  <?php } ?>
+                </select>
+                <!-- <input type="text" name="kodemasuk" id="kodemasuk" placeholder="Masukkan kode masuk barang yang ingin diubah" /><br /> -->
+                <label>Jumlah</label><br />
+                <input type="text" name="jumlah" id="jumlah" placeholder="Masukkan jumlah" /><br />
+                <label>Tanggal</label><br />
+                <input type="text" name="tanggal" id="date1" placeholder="Pilih tanggal" /><br />
+                <label>Keterangan</label><br />
+                <input type="text" name="keterangan" id="keterangan" placeholder="Masukkan keterangan" /><br />
+                <button style="background-color: #fad541fc">Ubah</button>
+              </form>
+            </div>
+            <div class="box">
+              <h4 style="background-color: #fe4a4af0">
+                Hapus Data Barang
+                <i class="fa-solid fa-minus"></i>
+              </h4>
+              <form action="<?= base_url('admin/hapus_barangmasuk') ?>" role="form" method="post">
+                <label>Kode Masuk</label><br />
+                <select class="form-control" name="kodemasuk" id="kodemasuk">
+                  <?php
+                  $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
+                  $res = mysqli_query($conn, "SELECT kodemasuk FROM masuk_gudang");
+                  while ($rows = mysqli_fetch_array($res)) {
+                  ?>
+                    <option value="<?php echo $rows['kodemasuk']; ?>"><?php echo $rows['kodemasuk']; ?></option>
+                  <?php } ?>
+                </select>
+                <!-- <input type="text" name="kodemasuk" id="kodemasuk" placeholder="Masukkan kode masuk barang" /><br /> -->
+                <button style="background-color: #fe4a4af0">Hapus</button>
+              </form>
+            </div>
+          </div>
+          <!-- Menu Input -->
         </div>
-        <div class="box">
-          <h4 style="background-color: #fad541fc">
-            Ubah Barang Masuk
-            <i class="fa-solid fa-minus"></i>
-          </h4>
-          <form action="<?= base_url('admin/ubah_barangmasuk') ?>" role="form" method="post">
-            <label>Kode Masuk</label><br />
-            <select class="form-control" name="kodemasuk" id="kodemasuk">
-              <?php
-              $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
-              $res = mysqli_query($conn, "SELECT kodemasuk FROM masuk_gudang");
-              while ($rows = mysqli_fetch_array($res)) {
-              ?>
-                <option value="<?php echo $rows['kodemasuk']; ?>"><?php echo $rows['kodemasuk']; ?></option>
-              <?php } ?>
-            </select>
-            <!-- <input type="text" name="kodemasuk" id="kodemasuk" placeholder="Masukkan kode masuk barang yang ingin diubah" /><br /> -->
-            <label>Jumlah</label><br />
-            <input type="text" name="jumlah" id="jumlah" placeholder="Masukkan jumlah" /><br />
-            <label>Tanggal</label><br />
-            <input type="text" name="tanggal" id="date1" placeholder="Pilih tanggal" /><br />
-            <label>Keterangan</label><br />
-            <input type="text" name="keterangan" id="keterangan" placeholder="Masukkan keterangan" /><br />
-            <button style="background-color: #fad541fc">Ubah</button>
-          </form>
+        <div class="footer">
+          <p>Copyright &copy; 2022 Kelompok 2 PTI RB ITERA</p>
         </div>
-        <div class="box">
-          <h4 style="background-color: #fe4a4af0">
-            Hapus Data Barang
-            <i class="fa-solid fa-minus"></i>
-          </h4>
-          <form action="<?= base_url('admin/hapus_barangmasuk') ?>" role="form" method="post">
-            <label>Kode Masuk</label><br />
-            <select class="form-control" name="kodemasuk" id="kodemasuk">
-              <?php
-              $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
-              $res = mysqli_query($conn, "SELECT kodemasuk FROM masuk_gudang");
-              while ($rows = mysqli_fetch_array($res)) {
-              ?>
-                <option value="<?php echo $rows['kodemasuk']; ?>"><?php echo $rows['kodemasuk']; ?></option>
-              <?php } ?>
-            </select>
-            <!-- <input type="text" name="kodemasuk" id="kodemasuk" placeholder="Masukkan kode masuk barang" /><br /> -->
-            <button style="background-color: #fe4a4af0">Hapus</button>
-          </form>
-        </div>
-      </div>
-      <!-- Menu Input -->
     </div>
-    <div class="footer">
-      <p>Copyright &copy; 2022 Kelompok 2 PTI RB ITERA</p>
-    </div>
-  </div>
-  <!-- content -->
+    <!-- content -->
 
 </body>
 

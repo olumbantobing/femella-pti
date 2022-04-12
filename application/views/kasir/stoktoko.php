@@ -17,7 +17,7 @@
     <span>Kasir</span>
     <div class="left-bar">
       <a href=" <?= base_url('kasir/index'); ?>"">Beranda</a>
-      <a href=#>Stok Toko</a>
+      <a href=# style=" background-color: #EEECB2; font-weight: bold;">Stok Toko</a>
       <a href=" <?= base_url('kasir/barangterjual'); ?>"">Barang Terjual</a>
       <a href=" <?= base_url('kasir/laporan'); ?>"">Laporan</a>
       <a href=" <?= base_url('kasir/logout'); ?>"">Keluar</a>
@@ -27,59 +27,59 @@
 
   <!-- content -->
   <div class=" content">
-    <!-- header -->
-    <div class="header-content">
-      <br /><br />
-      <h2>STOK TOKO</h2>
-    </div>
-    <!-- header -->
-
-    <div class="body-content">
-      <div class="content-utama">
-        <!-- Tombol search -->
-        <div class="search-btn">
-          <div>
-            <input type="text" placeholder="Cari Barang..." />
-            <button>
-              <i class="fa-2x fa-solid fa-magnifying-glass"></i>
-            </button>
-          </div>
+        <!-- header -->
+        <div class="header-content">
+          <br /><br />
+          <h2>STOK TOKO</h2>
         </div>
-        <!-- Tombol search -->
+        <!-- header -->
 
-        <!-- tabel -->
-        <table>
-          <thead>
-            <tr>
-              <th width="70px">ID</th>
-              <th width="250px">Nama Barang</th>
-              <th width="150px">Stok di Toko</th>
-              <th width="200px">Harga</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <?php if (is_array($list_data)) { ?>
-                <?php foreach ($list_data as $dd) : ?>
-                  <td><?= $dd->id ?></td>
-                  <td><?= $dd->nama_barang ?></td>
-                  <td><?= $dd->stok_toko ?></td>
-                  <td><?= $dd->harga ?></td>
-            </tr>
-          <?php endforeach; ?>
-        <?php } else { ?>
-          <td colspan="7" align="center"><strong>Data Kosong</strong></td>
-        <?php } ?>
-          </tbody>
-        </table>
-      </div>
-      <!-- tabel -->
+        <div class="body-content">
+          <div class="content-utama">
+            <!-- Tombol search -->
+            <div class="search-btn">
+              <div>
+                <input type="text" placeholder="Cari Barang..." />
+                <button>
+                  <i class="fa-2x fa-solid fa-magnifying-glass"></i>
+                </button>
+              </div>
+            </div>
+            <!-- Tombol search -->
+
+            <!-- tabel -->
+            <table>
+              <thead>
+                <tr>
+                  <th width="70px">ID</th>
+                  <th width="250px">Nama Barang</th>
+                  <th width="150px">Stok di Toko</th>
+                  <th width="200px">Harga</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <?php if (is_array($list_data)) { ?>
+                    <?php foreach ($list_data as $dd) : ?>
+                      <td><?= $dd->id ?></td>
+                      <td><?= $dd->nama_barang ?></td>
+                      <td><?= $dd->stok_toko ?></td>
+                      <td><?= $dd->harga ?></td>
+                </tr>
+              <?php endforeach; ?>
+            <?php } else { ?>
+              <td colspan="7" align="center"><strong>Data Kosong</strong></td>
+            <?php } ?>
+              </tbody>
+            </table>
+          </div>
+          <!-- tabel -->
+        </div>
+        <div class="footer">
+          <p>Copyright &copy; 2022 Kelompok 2 PTI RB ITERA</p>
+        </div>
     </div>
-    <div class="footer">
-      <p>Copyright &copy; 2022 Kelompok 2 PTI RB ITERA</p>
-    </div>
-  </div>
-  <!-- content -->
+    <!-- content -->
 </body>
 
 </html>
@@ -288,7 +288,7 @@
     height: 3%;
     background: #f0f0f0;
     position: absolute;
-    bottom: 90;
+    bottom: 0;
     width: 100%;
   }
 </style>

@@ -26,7 +26,7 @@
                             <strong>Warning!</strong><br> <?php echo $this->session->flashdata('msg'); ?>
                         </div>
                     <?php } ?>
-                    <img src="assets/img/askha-logo.png" alt="" height="100px" width="100px">
+                    <img src="assets/img/askha-logo.png" alt="" height="125px" width="125px">
                     <div class="input">
                         <i class="fa-2x fa-solid fa-circle-user" sty></i>
                         <input type="text" name="username" id="username" placeholder="Nama Pengguna" />

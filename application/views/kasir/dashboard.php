@@ -15,7 +15,7 @@
         <i class="fa-5x fa-solid fa-circle-user"></i>
         <span>Kasir</span>
         <div class="left-bar">
-            <a href=#>Beranda</a>
+            <a href=# style="background-color: #EEECB2; font-weight: bold;">Beranda</a>
             <a href=" <?= base_url('kasir/stoktoko'); ?>"">Stok Toko</a>
             <a href=" <?= base_url('kasir/barangterjual'); ?>"">Barang Terjual</a>
             <a href=" <?= base_url('kasir/laporan'); ?>"">Laporan</a>

@@ -35,7 +35,7 @@
       <a href=" <?= base_url('admin/stokgudang'); ?>"">Stok Gudang</a>
       <a href=" <?= base_url('admin/barangterjual'); ?>"">Barang Terjual</a>
       <a href=" <?= base_url('admin/barangmasuk'); ?>"">Barang Masuk Gudang</a>
-      <a href=#>Barang Keluar Gudang</a>
+      <a href=# style="background-color: #EEECB2; font-weight: bold;">Barang Keluar Gudang</a>
       <a href=" <?= base_url('admin/pengguna'); ?>"">Pengguna</a>
       <a href=" <?= base_url('admin/laporan'); ?>"">Laporan</a>
       <a href=" <?= base_url('admin/nota'); ?>"">Nota</a>

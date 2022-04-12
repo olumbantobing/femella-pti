@@ -30,7 +30,7 @@
     <div class="left-bar">
       <a href=" <?= base_url('kasir/index'); ?>"">Beranda</a>
       <a href=" <?= base_url('kasir/stoktoko'); ?>"">Stok Toko</a>
-      <a href=#>Barang Terjual</a>
+      <a href=# style="background-color: #EEECB2; font-weight: bold;">Barang Terjual</a>
       <a href=" <?= base_url('kasir/laporan'); ?>"">Laporan</a>
       <a href=" <?= base_url('kasir/logout'); ?>"">Keluar</a>
     </div>

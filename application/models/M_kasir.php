@@ -9,7 +9,7 @@ class M_kasir extends CI_Model
 
     public function stoktoko()
     {
-        $query = $this->db->query("SELECT id, nama_barang, stok_toko, harga FROM stok_gudang ORDER BY id ASC");
+        $query = $this->db->query("SELECT id, nama_barang, stok_toko, harga FROM stok_gudang WHERE stok_toko > 0 ORDER BY id ASC");
         return $query->result();
     }
 

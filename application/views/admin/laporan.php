@@ -193,7 +193,7 @@
       <a href=" <?= base_url('admin/barangmasuk'); ?>"">Barang Masuk Gudang</a>
       <a href=" <?= base_url('admin/barangkeluar'); ?>"">Barang Keluar Gudang</a>
       <a href=" <?= base_url('admin/pengguna'); ?>"">Pengguna</a>
-      <a href=#>Laporan</a>
+      <a href=# style="background-color: #EEECB2; font-weight: bold;">Laporan</a>
       <a href=" <?= base_url('admin/nota'); ?>"">Nota</a>
       <a href=" <?= base_url('admin/logout'); ?>"">Keluar</a>
     </div>

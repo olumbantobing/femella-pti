@@ -18,7 +18,7 @@
     <div class="left-bar">
       <a href=" <?= base_url('admin/index'); ?>"">Beranda</a>
       <a href=" <?= base_url('admin/stokgudang'); ?>"">Stok Gudang</a>
-      <a href=#>Barang Terjual</a>
+      <a href=# style="background-color: #EEECB2; font-weight: bold;">Barang Terjual</a>
       <a href=" <?= base_url('admin/barangmasuk'); ?>"">Barang Masuk Gudang</a>
       <a href=" <?= base_url('admin/barangkeluar'); ?>"">Barang Keluar Gudang</a>
       <a href=" <?= base_url('admin/pengguna'); ?>"">Pengguna</a>

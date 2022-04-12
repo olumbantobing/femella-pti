@@ -192,334 +192,334 @@
             <a href=" <?= base_url('admin/barangkeluar'); ?>"">Barang Keluar Gudang</a>
             <a href=" <?= base_url('admin/pengguna'); ?>"">Pengguna</a>
             <a href=" <?= base_url('admin/laporan'); ?>"">Laporan</a>
-            <a href=#>Nota</a>
+            <a href=# style=" background-color: #EEECB2; font-weight: bold;">Nota</a>
             <a href=" <?= base_url('admin/logout'); ?>"">Keluar</a>
         </div>
     </div>
     <!-- sidebar kiri -->
 
     <!-- content -->
-    <div class="content">
-        <!-- header -->
-        <div class="header-content">
-            <br /><br />
-            <h2>NOTA</h2>
-        </div>
-        <!-- header -->
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col col-3">
-                    <button type="button" id="tambahnota" class="form-control form-control-navbar btn btn-large btn-info" data-toggle="modal" data-target="#modal-default"><i class="fa fa-plus"></i> Tambah Nota</button>
+    <div class=" content">
+                <!-- header -->
+                <div class="header-content">
+                    <br /><br />
+                    <h2>NOTA</h2>
                 </div>
-                <div class="col col-3">
-                    <button type="button" id="btnlaporan" class="form-control form-control-navbar btn btn-large btn-success"><i class="fa fa-download"></i> Cetak Nota </button>
-                </div>
-                <div class="col col-6">
-                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                </div>
-            </div>
-            <br />
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <table id="example2" class="table table-bordered table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Jenis ID</th>
-                                        <th>Nama Barang</th>
-                                        <th>Nama Supplier</th>
-                                        <th>Tanggal Masuk</th>
-                                        <th>Barang Masuk</th>
-                                        <th>Barang Terjual</th>
-                                        <th>Sisa</th>
-                                        <th>Tanggal Keluar</th>
-                                        <th>Harga Asli Barang (pcs) </th>
-                                        <th>Harga Jual Barang (pcs) </th>
-                                        <th>Total</th>
-                                        <th>Fee</th>
-                                        <th>Tindakan</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>001</td>
-                                        <td>CASH</td>
-                                        <td>Kripik Pisang
-                                        </td>
-                                        <td>Rama Jaya</td>
-                                        <td>24/02/2022</td>
-                                        <td>35</td>
-                                        <td>20</td>
-                                        <td>15</td>
-                                        <td>25/02/2022</td>
-                                        <td>Rp. 20.000</td>
-                                        <td>Rp. 25.000</td>
-                                        <td>Rp. 750.000</td>
-                                        <td>Rp. 150.000</td>
-                                        <td><button id="edit" class="btn btn-warning">Edit</button> | <button class="btn btn-danger">Hapus</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>001</td>
-                                        <td>CASH</td>
-                                        <td>Kripik Molen
-                                        </td>
-                                        <td>Rama Jaya</td>
-                                        <td>24/02/2022</td>
-                                        <td>35</td>
-                                        <td>20</td>
-                                        <td>15</td>
-                                        <td>25/02/2022</td>
-                                        <td>Rp. 20.000</td>
-                                        <td>Rp. 25.000</td>
-                                        <td>Rp. 750.000</td>
-                                        <td>Rp. 150.000</td>
-                                        <td><button id="edit" class="btn btn-warning">Edit</button> | <button class="btn btn-danger">Hapus</button></td>
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Jenis ID</th>
-                                        <th>Nama Barang</th>
-                                        <th>Nama Supplier</th>
-                                        <th>Tanggal Masuk</th>
-                                        <th>Barang Masuk</th>
-                                        <th>Barang Terjual</th>
-                                        <th>Sisa</th>
-                                        <th>Tanggal Keluar</th>
-                                        <th>Harga Asli Barang (pcs) </th>
-                                        <th>Harga Jual Barang (pcs) </th>
-                                        <th>Total</th>
-                                        <th>Fee</th>
-                                        <th>Tindakan</th>
-                                    </tr>
-                                </tfoot>
-                            </table>
+                <!-- header -->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col col-3">
+                            <button type="button" id="tambahnota" class="form-control form-control-navbar btn btn-large btn-info" data-toggle="modal" data-target="#modal-default"><i class="fa fa-plus"></i> Tambah Nota</button>
                         </div>
-                        <!-- /.card-body -->
+                        <div class="col col-3">
+                            <button type="button" id="btnlaporan" class="form-control form-control-navbar btn btn-large btn-success"><i class="fa fa-download"></i> Cetak Nota </button>
+                        </div>
+                        <div class="col col-6">
+                            <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                        </div>
                     </div>
-                    <!-- /.card -->
+                    <br />
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <table id="example2" class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Jenis ID</th>
+                                                <th>Nama Barang</th>
+                                                <th>Nama Supplier</th>
+                                                <th>Tanggal Masuk</th>
+                                                <th>Barang Masuk</th>
+                                                <th>Barang Terjual</th>
+                                                <th>Sisa</th>
+                                                <th>Tanggal Keluar</th>
+                                                <th>Harga Asli Barang (pcs) </th>
+                                                <th>Harga Jual Barang (pcs) </th>
+                                                <th>Total</th>
+                                                <th>Fee</th>
+                                                <th>Tindakan</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>001</td>
+                                                <td>CASH</td>
+                                                <td>Kripik Pisang
+                                                </td>
+                                                <td>Rama Jaya</td>
+                                                <td>24/02/2022</td>
+                                                <td>35</td>
+                                                <td>20</td>
+                                                <td>15</td>
+                                                <td>25/02/2022</td>
+                                                <td>Rp. 20.000</td>
+                                                <td>Rp. 25.000</td>
+                                                <td>Rp. 750.000</td>
+                                                <td>Rp. 150.000</td>
+                                                <td><button id="edit" class="btn btn-warning">Edit</button> | <button class="btn btn-danger">Hapus</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>001</td>
+                                                <td>CASH</td>
+                                                <td>Kripik Molen
+                                                </td>
+                                                <td>Rama Jaya</td>
+                                                <td>24/02/2022</td>
+                                                <td>35</td>
+                                                <td>20</td>
+                                                <td>15</td>
+                                                <td>25/02/2022</td>
+                                                <td>Rp. 20.000</td>
+                                                <td>Rp. 25.000</td>
+                                                <td>Rp. 750.000</td>
+                                                <td>Rp. 150.000</td>
+                                                <td><button id="edit" class="btn btn-warning">Edit</button> | <button class="btn btn-danger">Hapus</button></td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Jenis ID</th>
+                                                <th>Nama Barang</th>
+                                                <th>Nama Supplier</th>
+                                                <th>Tanggal Masuk</th>
+                                                <th>Barang Masuk</th>
+                                                <th>Barang Terjual</th>
+                                                <th>Sisa</th>
+                                                <th>Tanggal Keluar</th>
+                                                <th>Harga Asli Barang (pcs) </th>
+                                                <th>Harga Jual Barang (pcs) </th>
+                                                <th>Total</th>
+                                                <th>Fee</th>
+                                                <th>Tindakan</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
 
-                </div>
-                <!-- /.col -->
-            </div>
-            <!-- /.row -->
-        </div>
-        <!-- /.container-fluid -->
-        <footer class="main-footer footer">
-            <p>Copyright &copy; 2022 Kelompok 2 PTI RB ITERA</p>
-        </footer>
-    </div>
-    <div class="modal fade" id="modal-default">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Tambah Barang</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label>Pilih Jenis ID:</label>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="radio1">
-                                    <label class="form-check-label">CASH</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="radio1" checked>
-                                    <label class="form-check-label">KONSINYASI</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Masukkan Nama Barang</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Masukkan Nama Supplier</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Tanggal Masuk</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Masukkan Jumlah Barang Masuk</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Masukkan Jumlah Barang Terima</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Tanggal Keluar</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Masukkan Harga Asli Barang</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Masukkan Harga Jual Barang</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
-                            </div>
                         </div>
-                        <!-- /.card-body -->
-                    </form>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
                 </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button id="tambahdata" type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-            <!-- /.modal-content -->
+                <!-- /.container-fluid -->
+                <footer class="main-footer footer">
+                    <p>Copyright &copy; 2022 Kelompok 2 PTI RB ITERA</p>
+                </footer>
         </div>
-        <!-- /.modal-dialog -->
-    </div>
-    <div class="modal fade" id="modal-edit">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit Barang</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label>Pilih Jenis ID:</label>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="radio1">
-                                    <label class="form-check-label">CASH</label>
+        <div class="modal fade" id="modal-default">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Tambah Barang</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label>Pilih Jenis ID:</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="radio1">
+                                        <label class="form-check-label">CASH</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="radio1" checked>
+                                        <label class="form-check-label">KONSINYASI</label>
+                                    </div>
                                 </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="radio1" checked>
-                                    <label class="form-check-label">KONSINYASI</label>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Masukkan Nama Barang</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Masukkan Nama Supplier</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Tanggal Masuk</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Masukkan Jumlah Barang Masuk</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Masukkan Jumlah Barang Terima</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Tanggal Keluar</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Masukkan Harga Asli Barang</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Masukkan Harga Jual Barang</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Masukkan Nama Barang</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" value="Kripik Talas">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Masukkan Nama Supplier</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" value="Joko Talas">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Tanggal Masuk</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" value="24/02/2022">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Masukkan Jumlah Barang Masuk</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" value="50">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Masukkan Jumlah Barang Terima</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" value="50">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Tanggal Keluar</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" value="25/02/2022">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Masukkan Harga Asli Barang</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" value="RP. 20.000">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Masukkan Harga Jual Barang</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" value="RP. 25.000">
-                            </div>
-                        </div>
-                        <!-- /.card-body -->
-                    </form>
+                            <!-- /.card-body -->
+                        </form>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button id="tambahdata" type="button" class="btn btn-primary">Save changes</button>
+                    </div>
                 </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button id="editdata" type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                <!-- /.modal-content -->
             </div>
-            <!-- /.modal-content -->
+            <!-- /.modal-dialog -->
         </div>
-        <!-- /.modal-dialog -->
-    </div>
-    <div class="modal fade" id="modal-unduh">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Cetak Nota</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label>Pilih Supplier</label>
-                                <select class="form-control">
-                                    <option>Jokondo</option>
-                                    <option>Rama Jaya</option>
-                                    <option selected="">Semua</option>
-                                </select>
+        <div class="modal fade" id="modal-edit">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Edit Barang</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label>Pilih Jenis ID:</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="radio1">
+                                        <label class="form-check-label">CASH</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="radio1" checked>
+                                        <label class="form-check-label">KONSINYASI</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Masukkan Nama Barang</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" value="Kripik Talas">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Masukkan Nama Supplier</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" value="Joko Talas">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Tanggal Masuk</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" value="24/02/2022">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Masukkan Jumlah Barang Masuk</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" value="50">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Masukkan Jumlah Barang Terima</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" value="50">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Tanggal Keluar</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" value="25/02/2022">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Masukkan Harga Asli Barang</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" value="RP. 20.000">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Masukkan Harga Jual Barang</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" value="RP. 25.000">
+                                </div>
                             </div>
-                        </div>
-                        <!-- /.card-body -->
-                    </form>
+                            <!-- /.card-body -->
+                        </form>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button id="editdata" type="button" class="btn btn-primary">Save changes</button>
+                    </div>
                 </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button id="unduhdata" type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                <!-- /.modal-content -->
             </div>
-            <!-- /.modal-content -->
+            <!-- /.modal-dialog -->
         </div>
-        <!-- /.modal-dialog -->
-    </div>
-    <!-- content -->
-    <script>
-        $(function() {
-            $('#example2').DataTable({
-                "paging": false,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": false,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
+        <div class="modal fade" id="modal-unduh">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Cetak Nota</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label>Pilih Supplier</label>
+                                    <select class="form-control">
+                                        <option>Jokondo</option>
+                                        <option>Rama Jaya</option>
+                                        <option selected="">Semua</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+                        </form>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button id="unduhdata" type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- content -->
+        <script>
+            $(function() {
+                $('#example2').DataTable({
+                    "paging": false,
+                    "lengthChange": false,
+                    "searching": false,
+                    "ordering": false,
+                    "info": true,
+                    "autoWidth": false,
+                    "responsive": true,
+                });
             });
-        });
-        $('#startdate').datetimepicker({
-            format: 'L'
-        });
-        $('#enddate').datetimepicker({
-            format: 'L'
-        });
-        $('#btnlaporan').click(function() {
-            $('#modal-unduh').modal('show');
-        });
-        $('#tambahdata').click(function() {
-            confirm("Apa Anda Yakin ingin menambah data?");
-        });
-        $('#editdata').click(function() {
-            confirm("Apa Anda Yakin ingin mengedit data?");
-        });
-        $('#unduhdata').click(function() {
-            confirm("Apa Anda Yakin ingin menngunduh data?");
-        });
-        $('#tambahnota').click(function() {
-            $('#modal-default').modal('show');
-        });
-        $('#edit').click(function() {
-            $('#modal-edit').modal('show');
-        });
-    </script>
+            $('#startdate').datetimepicker({
+                format: 'L'
+            });
+            $('#enddate').datetimepicker({
+                format: 'L'
+            });
+            $('#btnlaporan').click(function() {
+                $('#modal-unduh').modal('show');
+            });
+            $('#tambahdata').click(function() {
+                confirm("Apa Anda Yakin ingin menambah data?");
+            });
+            $('#editdata').click(function() {
+                confirm("Apa Anda Yakin ingin mengedit data?");
+            });
+            $('#unduhdata').click(function() {
+                confirm("Apa Anda Yakin ingin menngunduh data?");
+            });
+            $('#tambahnota').click(function() {
+                $('#modal-default').modal('show');
+            });
+            $('#edit').click(function() {
+                $('#modal-edit').modal('show');
+            });
+        </script>
 
 </body>
 

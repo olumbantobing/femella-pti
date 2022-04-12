@@ -188,149 +188,149 @@
             <a href=" <?= base_url('kasir/index'); ?>"">Beranda</a>
             <a href=" <?= base_url('kasir/stoktoko'); ?>"">Stok Toko</a>
             <a href=" <?= base_url('kasir/barangterjual'); ?>"">Barang Terjual</a>
-            <a href=#>Laporan</a>
+            <a href=# style=" background-color: #EEECB2; font-weight: bold;">Laporan</a>
             <a href=" <?= base_url('kasir/logout'); ?>"">Keluar</a>
         </div>
     </div>
     <!-- sidebar kiri -->
 
     <!-- content -->
-    <div class="content">
-        <!-- header -->
-        <div class="header-content">
-            <br /><br />
-            <h2>LAPORAN</h2>
-        </div>
-        <!-- header -->
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="row">
-                                <div class="col">
-                                    <p>Pilih Tanggal Laporan : </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col col-3">
-                                    <div class="form-group">
-                                        <label>Tanggal Awal:</label>
-                                        <div class="input-group date" id="startdate" data-target-input="nearest">
-                                            <input type="text" class="form-control datetimepicker-input" data-target="#startdate" />
-                                            <div class="input-group-append" data-target="#startdate" data-toggle="datetimepicker">
-                                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col col-3">
-                                    <div class="form-group">
-                                        <label>Tanggal Akhir:</label>
-                                        <div class="input-group date" id="enddate" data-target-input="nearest">
-                                            <input type="text" class="form-control datetimepicker-input" data-target="#enddate" />
-                                            <div class="input-group-append" data-target="#enddate" data-toggle="datetimepicker">
-                                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col col-3">
-                                    <div class="form-group">
-                                        <label>&nbsp</label>
-                                        <button class="btn btn-large btn-success" style="margin-top: 20px">SEMUA</button>
-                                    </div>
-                                </div>
-                                <div class="col col-3">
-                                    <div class="form-group">
-                                        <label>&nbsp</label>
-                                        <button id="btnlaporan" class="btn btn-large btn-success" style="margin-top: 20px">UNDUH LAPORAN <i class="fa fa-download"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.card-header -->
-                            <div class="card-body">
-                                <table id="example2" class="table table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Nama Barang</th>
-                                            <th>Tanggal</th>
-                                            <th>Barang Barang Masuk Ke Toko</th>
-                                            <th>Barang Terjual di Toko</th>
-                                            <th>Stok di Toko</th>
-                                            <th>Harga</th>
-                                            <th>Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>001</td>
-                                            <td>Kripik Pisang Original</td>
-                                            <td>24/02/2022</td>
-                                            <td>35</td>
-                                            <td>50</td>
-                                            <td>176</td>
-                                            <td>Rp. 20.000</td>
-                                            <td>Rp. 1.000.000</td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>002</td>
-                                            <td>Kripik Pisang Balado</td>
-                                            <td>24/02/2022</td>
-                                            <td>50</td>
-                                            <td>67</td>
-                                            <td>110</td>
-                                            <td>Rp. 20.000</td>
-                                            <td>Rp. 1.340.000</td>
-                                        </tr>
-                                    </tbody>
-                                    <tfoot>
-
-                                    </tfoot>
-                                </table>
-                            </div>
-                            <!-- /.card-body -->
-                        </div>
-                        <!-- /.card -->
-
-                    </div>
-                    <!-- /.col -->
+    <div class=" content">
+                <!-- header -->
+                <div class="header-content">
+                    <br /><br />
+                    <h2>LAPORAN</h2>
                 </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.container-fluid -->
-        </div>
-        <div class="footer">
-            <p>Copyright &copy; 2022 Kelompok 2 PTI RB ITERA</p>
-        </div>
-    </div>
+                <!-- header -->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="row">
+                                        <div class="col">
+                                            <p>Pilih Tanggal Laporan : </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col col-3">
+                                            <div class="form-group">
+                                                <label>Tanggal Awal:</label>
+                                                <div class="input-group date" id="startdate" data-target-input="nearest">
+                                                    <input type="text" class="form-control datetimepicker-input" data-target="#startdate" />
+                                                    <div class="input-group-append" data-target="#startdate" data-toggle="datetimepicker">
+                                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col col-3">
+                                            <div class="form-group">
+                                                <label>Tanggal Akhir:</label>
+                                                <div class="input-group date" id="enddate" data-target-input="nearest">
+                                                    <input type="text" class="form-control datetimepicker-input" data-target="#enddate" />
+                                                    <div class="input-group-append" data-target="#enddate" data-toggle="datetimepicker">
+                                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col col-3">
+                                            <div class="form-group">
+                                                <label>&nbsp</label>
+                                                <button class="btn btn-large btn-success" style="margin-top: 20px">SEMUA</button>
+                                            </div>
+                                        </div>
+                                        <div class="col col-3">
+                                            <div class="form-group">
+                                                <label>&nbsp</label>
+                                                <button id="btnlaporan" class="btn btn-large btn-success" style="margin-top: 20px">UNDUH LAPORAN <i class="fa fa-download"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <div class="card-body">
+                                        <table id="example2" class="table table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Nama Barang</th>
+                                                    <th>Tanggal</th>
+                                                    <th>Barang Barang Masuk Ke Toko</th>
+                                                    <th>Barang Terjual di Toko</th>
+                                                    <th>Stok di Toko</th>
+                                                    <th>Harga</th>
+                                                    <th>Total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>001</td>
+                                                    <td>Kripik Pisang Original</td>
+                                                    <td>24/02/2022</td>
+                                                    <td>35</td>
+                                                    <td>50</td>
+                                                    <td>176</td>
+                                                    <td>Rp. 20.000</td>
+                                                    <td>Rp. 1.000.000</td>
 
-    <!-- content -->
+                                                </tr>
+                                                <tr>
+                                                    <td>002</td>
+                                                    <td>Kripik Pisang Balado</td>
+                                                    <td>24/02/2022</td>
+                                                    <td>50</td>
+                                                    <td>67</td>
+                                                    <td>110</td>
+                                                    <td>Rp. 20.000</td>
+                                                    <td>Rp. 1.340.000</td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
 
-    <script>
-        $(function() {
-            $('#example2').DataTable({
-                "paging": false,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": false,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                    <!-- /.card-body -->
+                                </div>
+                                <!-- /.card -->
+
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </div>
+                <div class="footer">
+                    <p>Copyright &copy; 2022 Kelompok 2 PTI RB ITERA</p>
+                </div>
+        </div>
+
+        <!-- content -->
+
+        <script>
+            $(function() {
+                $('#example2').DataTable({
+                    "paging": false,
+                    "lengthChange": false,
+                    "searching": false,
+                    "ordering": false,
+                    "info": true,
+                    "autoWidth": false,
+                    "responsive": true,
+                });
             });
-        });
-        $('#startdate').datetimepicker({
-            format: 'L'
-        });
-        $('#enddate').datetimepicker({
-            format: 'L'
-        });
-        $('#btnlaporan').click(function() {
-            confirm("Apa Anda Yakin ingin mengunduh laporan?");
-        })
-    </script>
+            $('#startdate').datetimepicker({
+                format: 'L'
+            });
+            $('#enddate').datetimepicker({
+                format: 'L'
+            });
+            $('#btnlaporan').click(function() {
+                confirm("Apa Anda Yakin ingin mengunduh laporan?");
+            })
+        </script>
 </body>
 
 

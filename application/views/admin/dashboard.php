@@ -16,7 +16,7 @@
         <i class="fa-5x fa-solid fa-circle-user"></i>
         <span>ADMIN</span>
         <div class="left-bar">
-            <a href=#>Beranda</a>
+            <a href=# style="background-color: #EEECB2; font-weight: bold;">Beranda</a>
             <a href=" <?= base_url('admin/stokgudang'); ?>"">Stok Gudang</a>
             <a href=" <?= base_url('admin/barangterjual'); ?>"">Barang Terjual</a>
             <a href=" <?= base_url('admin/barangmasuk'); ?>"">Barang Masuk Gudang</a>
