@@ -95,7 +95,7 @@
                                 <input type="text" name="nama_barang" id="nama_barang" placeholder="Masukkan Nama Barang dan Berat" /><br />
                                 <label for="harga">Harga</label><br />
                                 <input type="text" name="harga" id="harga" placeholder="Masukkan Harga" /><br />
-                                <button id="tambah data" style="background-color: #008fdf87">Tambah</button>
+                                <button id="tambah data" style="background-color: #008fdf87" onclick="return confirm('Anda yakin ingin menambah data?');">Tambah</button>
                             </form>
                         </div>
                         <div class="box">
@@ -119,7 +119,7 @@
                                 <input type="text" name="nama_barang" id="nama_barang" placeholder="Masukkan Nama Barang" /><br />
                                 <label>Harga</label><br />
                                 <input type="text" name="harga" id="harga" placeholder="Masukkan Harga" /><br />
-                                <button id="ubahdata" style="background-color: #fad541fc">Ubah</button>
+                                <button id="ubahdata" style="background-color: #fad541fc" onclick="return confirm('Anda yakin ingin mengubah data?');">Ubah</button>
                             </form>
                         </div>
                         <div class="box">
@@ -139,7 +139,7 @@
                                     <?php } ?>
                                 </select>
                                 <!-- <input type="text" name="id" id="id" placeholder="Masukkan ID Barang" /><br /> -->
-                                <button id="hapusdata" style="background-color: #fe4a4af0">Hapus</button>
+                                <button id="hapusdata" style="background-color: #fe4a4af0" onclick="return confirm('Anda yakin ingin menghapus data?');">Hapus</button>
                             </form>
                         </div>
                     </div>
@@ -153,17 +153,17 @@
 
 
         <script>
-            $(function() {
-                $('#tambahdata').click(function() {
-                    confirm("Apa Anda Yakin ingin menambah data?");
-                });
-                $('#ubahdata').click(function() {
-                    confirm("Apa Anda Yakin ingin mengubah data?");
-                });
-                $('#hapusdata').click(function() {
-                    confirm("Apa Anda Yakin ingin menghapus data?");
-                });
-            });
+            // $(function() {
+            //     $('#tambahdata').click(function() {
+            //         confirm("Apa Anda Yakin ingin menambah data?");
+            //     });
+            //     $('#ubahdata').click(function() {
+            //         confirm("Apa Anda Yakin ingin mengubah data?");
+            //     });
+            //     $('#hapusdata').click(function() {
+            //         confirm("Apa Anda Yakin ingin menghapus data?");
+            //     });
+            // });
         </script>
 
 </body>
@@ -181,9 +181,15 @@
     }
 
     .sidebar {
-        background-color: #c1a660;
+        height: auto;
+        position: sticky;
+        /* for Safari users */
+        position: -webkit-sticky;
+        top: 0;
+        left: 0;
+        background-color: #C1A660;
         display: table-cell;
-        width: 15%;
+        width: 200px;
         vertical-align: top;
     }
 
@@ -229,9 +235,11 @@
     }
 
     .content {
-        display: table-cell;
         width: 85%;
-        vertical-align: top;
+        height: 100%;
+        margin-left: 200px;
+        display: table-cell;
+
     }
 </style>
 
@@ -240,6 +248,8 @@
         width: 100%;
         height: 20%;
         padding-left: 30px;
+        padding-bottom: 20px;
+        margin-bottom: 25px;
         background-color: #daa520;
     }
 

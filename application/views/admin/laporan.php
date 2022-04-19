@@ -15,6 +15,7 @@
   <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js" integrity="sha512-k6/Bkb8Fxf/c1Tkyl39yJwcOZ1P4cRrJu77p83zJjN2Z55prbFHxPs9vN7q3l3+tSMGPDdoH51AEU8Vgo1cgAA==" crossorigin="anonymous"></script>
+  <link rel="shortcut icon" type="image/x-icon" href="assets/img/askha-logo.png">
   <title>INVENTARIS | LAPORAN</title>
   <style>
     * {
@@ -27,11 +28,17 @@
     }
 
     .sidebar {
+      height: auto;
+      position: sticky;
+      /* for Safari users */
+      position: -webkit-sticky;
+      top: 0;
+      left: 0;
       background-color: #C1A660;
-      width: 15%;
-      height: 100%;
-      position: fixed;
-      z-index: 1;
+      display: table-cell;
+      width: 200px;
+      vertical-align: top;
+
     }
 
     .sidebar h2 {
@@ -83,7 +90,7 @@
       width: auto;
       height: 100%;
       margin-left: 15%;
-      display: block;
+      display: table-cell;
     }
 
     .content .header-content {
@@ -165,16 +172,16 @@
       background-color: white;
     }
 
-    .content .footer {
+    .footer {
       background-color: white;
       padding: 10px;
       padding-left: 30px;
-      height: 5%;
+      height: 3%;
       background: #f0f0f0;
       position: absolute;
-      /* bottom: 90; */
+      bottom: 0;
       width: 100%;
-      /* height: fit-content; */
+      height: fit-content;
     }
   </style>
 
@@ -219,39 +226,49 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col col-3">
-                  <div class="form-group">
+                <div class="col col-5">
+                  <!-- <div class="form-group"> -->
+                  <form method="post" class="form-inline">
                     <label>Tanggal Awal:</label>
-                    <div class="input-group date" id="startdate" data-target-input="nearest">
+                    <input type="date" name="tgl_mulai" class="form-control">
+                    <label>Tanggal Akhir:</label>
+                    <input type="date" name="tgl_selesai" class="form-control">
+                    <button type="submit" name="filter_tgl" class="btn btn-info" style="margin-top: 10px">Filter</button>
+                    <button class="btn btn-large btn-success" style="margin-top: 10px">SEMUA</button>
+                    <button id="btnlaporan" class="btn btn-large btn-success" style="margin-top: 10px">UNDUH LAPORAN <i class="fa fa-download"></i></button>
+                  </form>
+                  <!-- <div class="input-group date" id="startdate" data-target-input="nearest">
                       <input type="text" class="form-control datetimepicker-input" data-target="#startdate" />
                       <div class="input-group-append" data-target="#startdate" data-toggle="datetimepicker">
                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                       </div>
-                    </div>
-                  </div>
+                    </div> -->
                 </div>
-                <div class="col col-3">
-                  <div class="form-group">
-                    <label>Tanggal Akhir:</label>
-                    <div class="input-group date" id="enddate" data-target-input="nearest">
+                <!-- </div> -->
+                <!-- <div class="col col-3"> -->
+                <div class="form-group">
+                  <!-- <div class="input-group date" id="enddate" data-target-input="nearest">
                       <input type="text" class="form-control datetimepicker-input" data-target="#enddate" />
                       <div class="input-group-append" data-target="#enddate" data-toggle="datetimepicker">
                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                       </div>
-                    </div>
-                  </div>
+                    </div> -->
                 </div>
+                <!-- </div> -->
+                <!-- <div class="col col-3">
+                  <div class="form-group">
+                    <label>&nbsp</label>
+                  </div>
+                </div> -->
                 <div class="col col-3">
                   <div class="form-group">
                     <label>&nbsp</label>
-                    <button class="btn btn-large btn-success" style="margin-top: 20px">SEMUA</button>
                   </div>
                 </div>
                 <div class="col col-3">
-                  <div class="form-group">
-                    <label>&nbsp</label>
-                    <button id="btnlaporan" class="btn btn-large btn-success" style="margin-top: 20px">UNDUH LAPORAN <i class="fa fa-download"></i></button>
-                  </div>
+                  <!-- <div class="form-group"> -->
+                  <label>&nbsp</label>
+                  <!-- </div> -->
                 </div>
               </div>
               <!-- /.card-header -->
@@ -262,13 +279,13 @@
                       <th>#</th>
                       <th>ID</th>
                       <th>Nama Barang</th>
-                      <!-- <th>Tanggal</th> -->
+                      <th>Tanggal</th>
                       <th>Barang Keluar Gudang</th>
                       <th>Barang Masuk Gudang</th>
                       <th>Stok Gudang</th>
-                      <!-- <th>Barang Terjual di Toko</th>
+                      <th>Barang Terjual di Toko</th>
                       <th>Sisa di Toko</th>
-                      <th>Harga</th> -->
+                      <th>Harga</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -279,14 +296,18 @@
                           <td><?= $no ?></td>
                           <td><?= $dd->id ?></td>
                           <td><?= $dd->nama_barang ?></td>
+                          <td><?= $dd->tanggal ?></td>
                           <td><?= $dd->jumlah ?></td>
                           <td><?= $dd->jumlah ?></td>
-                          <td><?= $dd->stok ?></td>
+                          <td><?= $dd->stok_gudang ?></td>
+                          <td><?= $dd->terjual ?></td>
+                          <td><?= $dd->stok_toko ?></td>
+                          <td><?= $dd->harga ?></td>
                     </tr>
                     <?php $no++; ?>
                   <?php endforeach; ?>
                 <?php } else { ?>
-                  <td colspan="5" align="center"><strong>Data Kosong</strong></td>
+                  <td colspan="10" align="center"><strong>Data Kosong</strong></td>
                 <?php } ?>
                 <!-- <tr>
                   <td>001</td>

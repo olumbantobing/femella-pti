@@ -27,12 +27,16 @@
         }
 
         .sidebar {
+            height: auto;
+            position: sticky;
+            /* for Safari users */
+            position: -webkit-sticky;
+            top: 0;
+            left: 0;
             background-color: #C1A660;
-            border: solid 1px;
-            width: 15%;
-            height: 100%;
-            position: fixed;
-            z-index: 1;
+            display: table-cell;
+            width: 200px;
+            vertical-align: top;
         }
 
         .sidebar h2 {
@@ -82,7 +86,7 @@
             width: max-content;
             height: 100%;
             margin-left: 15%;
-            display: block;
+            display: table-cell;
         }
 
         .content .header-content {
@@ -164,15 +168,16 @@
             background-color: white;
         }
 
-        .content .footer {
+        .footer {
             background-color: white;
             padding: 10px;
             padding-left: 30px;
-            background: #f0f0f0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
             height: 3%;
+            background: #f0f0f0;
+            position: absolute;
+            bottom: 90;
+            width: 100%;
+            height: fit-content;
         }
     </style>
 
@@ -245,58 +250,62 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>001</td>
-                                                <td>CASH</td>
-                                                <td>Kripik Pisang
-                                                </td>
-                                                <td>Rama Jaya</td>
-                                                <td>24/02/2022</td>
-                                                <td>35</td>
-                                                <td>20</td>
-                                                <td>15</td>
-                                                <td>25/02/2022</td>
-                                                <td>Rp. 20.000</td>
-                                                <td>Rp. 25.000</td>
-                                                <td>Rp. 750.000</td>
-                                                <td>Rp. 150.000</td>
-                                                <td><button id="edit" class="btn btn-warning">Edit</button> | <button class="btn btn-danger">Hapus</button></td>
+                                                <?php if (is_array($list_data)) { ?>
+                                                    <?php foreach ($list_data as $dd) : ?>
+                                                        <td><?= $dd->id ?></td>
+                                                        <td><?= $dd->jenis ?></td>
+                                                        <td><?= $dd->nama_barang ?></td>
+                                                        <td><?= $dd->supplier ?></td>
+                                                        <td><?= $dd->tgl_masuk ?></td>
+                                                        <td><?= $dd->jml_masuk ?></td>
+                                                        <td><?= $dd->terjual ?></td>
+                                                        <td><?= $dd->sisa ?></td>
+                                                        <td><?= $dd->tgl_keluar ?></td>
+                                                        <td><?= $dd->hrg_asli ?></td>
+                                                        <td><?= $dd->hrg_keluar ?></td>
+                                                        <td><?= $dd->total ?></td>
+                                                        <td><?= $dd->fee ?></td>
+                                                        <td><button id="edit" class="btn btn-warning">Edit</button> | <button class="btn btn-danger">Hapus</button></td>
                                             </tr>
-                                            <tr>
-                                                <td>001</td>
-                                                <td>CASH</td>
-                                                <td>Kripik Molen
-                                                </td>
-                                                <td>Rama Jaya</td>
-                                                <td>24/02/2022</td>
-                                                <td>35</td>
-                                                <td>20</td>
-                                                <td>15</td>
-                                                <td>25/02/2022</td>
-                                                <td>Rp. 20.000</td>
-                                                <td>Rp. 25.000</td>
-                                                <td>Rp. 750.000</td>
-                                                <td>Rp. 150.000</td>
-                                                <td><button id="edit" class="btn btn-warning">Edit</button> | <button class="btn btn-danger">Hapus</button></td>
-                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php } else { ?>
+                                        <td colspan="14" align="center"><strong>Data Kosong</strong></td>
+                                    <?php } ?>
+                                    <!-- <tr>
+                                        <td>001</td>
+                                        <td>CASH</td>
+                                        <td>Kripik Pisang
+                                        </td>
+                                        <td>Rama Jaya</td>
+                                        <td>24/02/2022</td>
+                                        <td>35</td>
+                                        <td>20</td>
+                                        <td>15</td>
+                                        <td>25/02/2022</td>
+                                        <td>Rp. 20.000</td>
+                                        <td>Rp. 25.000</td>
+                                        <td>Rp. 750.000</td>
+                                        <td>Rp. 150.000</td>
+                                        <td><button id="edit" class="btn btn-warning">Edit</button> | <button class="btn btn-danger">Hapus</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>001</td>
+                                        <td>CASH</td>
+                                        <td>Kripik Molen
+                                        </td>
+                                        <td>Rama Jaya</td>
+                                        <td>24/02/2022</td>
+                                        <td>35</td>
+                                        <td>20</td>
+                                        <td>15</td>
+                                        <td>25/02/2022</td>
+                                        <td>Rp. 20.000</td>
+                                        <td>Rp. 25.000</td>
+                                        <td>Rp. 750.000</td>
+                                        <td>Rp. 150.000</td>
+                                        <td><button id="edit" class="btn btn-warning">Edit</button> | <button class="btn btn-danger">Hapus</button></td>
+                                    </tr> -->
                                         </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Jenis ID</th>
-                                                <th>Nama Barang</th>
-                                                <th>Nama Supplier</th>
-                                                <th>Tanggal Masuk</th>
-                                                <th>Barang Masuk</th>
-                                                <th>Barang Terjual</th>
-                                                <th>Sisa</th>
-                                                <th>Tanggal Keluar</th>
-                                                <th>Harga Asli Barang (pcs) </th>
-                                                <th>Harga Jual Barang (pcs) </th>
-                                                <th>Total</th>
-                                                <th>Fee</th>
-                                                <th>Tindakan</th>
-                                            </tr>
-                                        </tfoot>
                                     </table>
                                 </div>
                                 <!-- /.card-body -->
@@ -309,7 +318,7 @@
                     <!-- /.row -->
                 </div>
                 <!-- /.container-fluid -->
-                <footer class="main-footer footer">
+                <footer class="footer">
                     <p>Copyright &copy; 2022 Kelompok 2 PTI RB ITERA</p>
                 </footer>
         </div>
@@ -318,63 +327,66 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">Tambah Barang</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
-                        </button>
+                        </button> -->
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form action="<?= base_url('admin/tambah_nota') ?>" role="form" method="post">
+                            <!-- <form> -->
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label>Pilih Jenis ID:</label>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="radio1">
-                                        <label class="form-check-label">CASH</label>
+                                    <label>ID</label><br />
+                                    <input type="text" name="id_nota" id="id_nota" value="<?= date("yM"); ?><?= random_string('numeric', 3); ?>" readonly />
+                                </div>
+                                <div>
+                                    <label>Pilih Jenis (klik form)</label>
+                                    <select class="form-control" name="jenis">
+                                        <!-- <option selected=""></option> -->
+                                        <option>CASH</option>
+                                        <option>KONSINYASI</option>
+                                    </select>
+                                    <div class="form-group">
+                                        <label for="nama_barang">Nama Barang</label>
+                                        <input type="text" class="form-control" id="nama_barang" placeholder="Masukkan Nama Barang">
                                     </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="radio1" checked>
-                                        <label class="form-check-label">KONSINYASI</label>
+                                    <div class="form-group">
+                                        <label for="supplier">Nama Supplier</label>
+                                        <input type="text" class="form-control" id="supplier" placeholder="Masukkan Nama Supplier">
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Masukkan Nama Barang</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Masukkan Nama Supplier</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Tanggal Masuk</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Masukkan Jumlah Barang Masuk</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Masukkan Jumlah Barang Terima</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Tanggal Keluar</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Masukkan Harga Asli Barang</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Masukkan Harga Jual Barang</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                                    <div class="form-group">
+                                        <label for="tgl_masuk">Tanggal Masuk</label>
+                                        <input type="date" class="form-control" id="tgl_masuk">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="jmlmasuk">Jumlah Barang Masuk</label>
+                                        <input type="text" class="form-control" id="jml_masuk" placeholder="Masukkan Jumlah Barang Masuk">
+                                    </div>
+                                    <!-- <div class="form-group">
+                                        <label for="terjual">Masukkan Jumlah Barang Terjual</label>
+                                        <input type="text" class="form-control" id="terjual" readonly>
+                                    </div> -->
+                                    <div class="form-group">
+                                        <label for="tgl_keluar">Tanggal Keluar</label>
+                                        <input type="date" class="form-control" id="tgl_keluar">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="hrg_asli">Harga Asli Barang</label>
+                                        <input type="text" class="form-control" id="hrg_asli" placeholder="tulis angka saja (contoh: 25000)">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="hrg_jual">Harga Jual Barang</label>
+                                        <input type="text" class="form-control" id="hrg_jual" placeholder="tulis angka saja (contoh: 25000)">
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+                                        <button class="btn btn-primary" onclick="return confirm('Yakin ingin menambah data?')">Save changes</button>
+                                    </div>
                                 </div>
                             </div>
                             <!-- /.card-body -->
                         </form>
-                    </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button id="tambahdata" type="button" class="btn btn-primary">Save changes</button>
+                        <!-- </form> -->
                     </div>
                 </div>
                 <!-- /.modal-content -->
@@ -405,36 +417,36 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Masukkan Nama Barang</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" value="Kripik Talas">
+                                    <label for="nama_barang">Masukkan Nama Barang</label>
+                                    <input type="text" class="form-control" id="nama_barang" placeholder="" value="Kripik Talas">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Masukkan Nama Supplier</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" value="Joko Talas">
+                                    <label for="supplier">Masukkan Nama Supplier</label>
+                                    <input type="text" class="form-control" id="sumpplier" placeholder="" value="Joko Talas">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Tanggal Masuk</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" value="24/02/2022">
+                                    <label for="tgl_masuk">Tanggal Masuk</label>
+                                    <input type="text" class="form-control" id="tgl_masuk" placeholder="" value="today">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Masukkan Jumlah Barang Masuk</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" value="50">
+                                    <label for="jml_masuk">Masukkan Jumlah Barang Masuk</label>
+                                    <input type="text" class="form-control" id="jml_masuk" placeholder="" value="50">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Masukkan Jumlah Barang Terima</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" value="50">
+                                    <label for="terjual">Masukkan Jumlah Barang Terjual</label>
+                                    <input type="text" class="form-control" id="terjual" placeholder="" value="50">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Tanggal Keluar</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" value="25/02/2022">
+                                    <label for="tgl_keluar">Tanggal Keluar</label>
+                                    <input type="text" class="form-control" id="tgl_keluar" placeholder="" value="today">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Masukkan Harga Asli Barang</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" value="RP. 20.000">
+                                    <label for="hrg_asli">Masukkan Harga Asli Barang</label>
+                                    <input type="text" class="form-control" id="hrg_asli" placeholder="" value="RP. 20.000">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Masukkan Harga Jual Barang</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" value="RP. 25.000">
+                                    <label for="hrg_jual">Masukkan Harga Jual Barang</label>
+                                    <input type="text" class="form-control" id="hrg_jual" placeholder="" value="RP. 25.000">
                                 </div>
                             </div>
                             <!-- /.card-body -->

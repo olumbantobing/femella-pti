@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="shortcut icon" type="image/x-icon" href="assets/img/askha-logo.png">
   <script>
     $(function() {
       $("#date").datepicker({
@@ -125,7 +126,7 @@
             <input type="text" name="jumlah" id="jumlah" placeholder="Masukkan jumlah barang" /><br />
             <label>Tanggal</label><br />
             <input type="text" name="tanggal" id="date" placeholder="Pilih tanggal" /><br />
-            <button style="background-color: #008fdf87">Tambah</button>
+            <button style="background-color: #008fdf87" onclick="return confirm('Anda yakin ingin menambah data?');">Tambah</button>
           </form>
         </div>
         <div class="box">
@@ -149,7 +150,7 @@
             <input type="text" name="jumlah" id="jumlah" placeholder="Masukkan jumlah" /><br />
             <label>Tanggal</label><br />
             <input type="text" name="tanggal" id="date1" placeholder="Pilih tanggal" /><br />
-            <button style="background-color: #fad541fc">Ubah</button>
+            <button style="background-color: #fad541fc" onclick="return confirm('Anda yakin ingin mengubah data?');">Ubah</button>
           </form>
         </div>
         <div class="box">
@@ -169,7 +170,7 @@
               <?php } ?>
             </select>
             <!-- <input type="text" name="kodekeluar" id="kodekeluar" placeholder="Masukkan kode keluar barang" /><br /> -->
-            <button style="background-color: #fe4a4af0">Hapus</button>
+            <button style="background-color: #fe4a4af0" onclick="return confirm('Anda yakin ingin menghapus data?');">Hapus</button>
           </form>
         </div>
       </div>
@@ -195,10 +196,16 @@
   }
 
   .sidebar {
-    background-color: #c1a660;
-    width: 15%;
-    height: 100%;
-    position: fixed;
+    height: auto;
+    position: sticky;
+    /* for Safari users */
+    position: -webkit-sticky;
+    top: 0;
+    left: 0;
+    background-color: #C1A660;
+    display: table-cell;
+    width: 200px;
+    vertical-align: top;
   }
 
   .sidebar h2 {
@@ -218,8 +225,8 @@
     width: 100%;
     text-align: center;
     display: block;
-    margin-top: 20px;
     font-weight: bold;
+    margin-top: 20px;
   }
 
   .sidebar .left-bar {
@@ -246,7 +253,7 @@
     width: 85%;
     height: 100%;
     margin-left: 15%;
-    display: block;
+    display: table-cell;
   }
 </style>
 
@@ -255,6 +262,8 @@
     width: 100%;
     height: 20%;
     padding-left: 30px;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
     background-color: #daa520;
   }
 

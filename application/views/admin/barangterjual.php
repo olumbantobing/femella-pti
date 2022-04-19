@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://kit.fontawesome.com/25495e258e.js" crossorigin="anonymous"></script>
+  <link rel="shortcut icon" type="image/x-icon" href="assets/img/askha-logo.png">
   <title>INVENTARIS | BARANG TERJUAL</title>
 </head>
 
@@ -105,10 +106,16 @@
   }
 
   .sidebar {
+    height: auto;
+    position: sticky;
+    /* for Safari users */
+    position: -webkit-sticky;
+    top: 0;
+    left: 0;
     background-color: #C1A660;
-    width: 15%;
-    height: 100%;
-    position: fixed;
+    display: table-cell;
+    width: 200px;
+    vertical-align: top;
   }
 
   .sidebar h2 {
@@ -156,7 +163,7 @@
     width: 85%;
     height: 100%;
     margin-left: 15%;
-    display: block;
+    display: table-cell;
   }
 </style>
 
@@ -165,7 +172,9 @@
     width: 100%;
     height: 20%;
     padding-left: 30px;
-    background-color: #DAA520;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+    background-color: #daa520;
 
   }
 

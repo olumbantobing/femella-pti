@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="shortcut icon" type="image/x-icon" href="assets/img/askha-logo.png">
   <script>
     $(function() {
       $("#date").datepicker({
@@ -130,7 +131,7 @@
                 <input type="text" name="tanggal" id="date" placeholder="Pilih tanggal" /><br />
                 <label>Keterangan</label><br />
                 <input type="text" name="keterangan" id="keterangan" placeholder="Masukkan keterangan" /><br />
-                <button style="background-color: #008fdf87">Tambah</button>
+                <button style="background-color: #008fdf87" onclick="return confirm('Anda yakin ingin menambah data?');">Tambah</button>
               </form>
             </div>
             <div class="box">
@@ -139,6 +140,16 @@
                 <i class="fa-solid fa-minus"></i>
               </h4>
               <form action="<?= base_url('admin/ubah_barangmasuk') ?>" role="form" method="post">
+                <label> ID Barang</label><br />
+                <select class="form-control" name="id" id="id">
+                  <?php
+                  $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
+                  $res = mysqli_query($conn, "SELECT id, CONCAT(id, ' ', nama_barang) AS pilihan FROM stok_gudang");
+                  while ($rows = mysqli_fetch_array($res)) {
+                  ?>
+                    <option value="<?php echo $rows['id']; ?>"><?php echo $rows['pilihan']; ?></option>
+                  <?php } ?>
+                </select>
                 <label>Kode Masuk</label><br />
                 <select class="form-control" name="kodemasuk" id="kodemasuk">
                   <?php
@@ -156,7 +167,7 @@
                 <input type="text" name="tanggal" id="date1" placeholder="Pilih tanggal" /><br />
                 <label>Keterangan</label><br />
                 <input type="text" name="keterangan" id="keterangan" placeholder="Masukkan keterangan" /><br />
-                <button style="background-color: #fad541fc">Ubah</button>
+                <button style="background-color: #fad541fc" onclick="return confirm('Anda yakin ingin mengubah data?');">Ubah</button>
               </form>
             </div>
             <div class="box">
@@ -176,7 +187,7 @@
                   <?php } ?>
                 </select>
                 <!-- <input type="text" name="kodemasuk" id="kodemasuk" placeholder="Masukkan kode masuk barang" /><br /> -->
-                <button style="background-color: #fe4a4af0">Hapus</button>
+                <button style="background-color: #fe4a4af0" onclick="return confirm('Anda yakin ingin menghapus data?');">Hapus</button>
               </form>
             </div>
           </div>
@@ -190,37 +201,18 @@
 
 </body>
 
-<script type="text/javascript">
-  // function cektambah() {
-  //   var msg = confirm("Yakin ingin menambah data barang?");
-  //   if (msg == true) {
-  //     window.location = "<?= base_url('admin/barangkeluar'); ?>";
-  //   } else {
-  //     window.location = "<?= base_url('admin/barangkeluar'); ?>";
-  //   }
-  // }
-  // function cekubah() {
-  //   var msg = confirm("Yakin ingin mengubah data barang?");
-  //   if (msg == true) {
-  //     window.location = "<?= base_url('admin/barangkeluar'); ?>";
-  //   } else {
-  //     window.location = "<?= base_url('admin/barangkeluar'); ?>";
-  //   }
-  // }
-  // function cekhapus() {
-  //   var msg = confirm("Yakin ingin menghapus data barang?");
-  //   if (msg == true) {
-  //     window.location = "<?= base_url('admin/barangkeluar'); ?>";
-  //   } else {
-  //     window.location = "<?= base_url('admin/barangkeluar'); ?>";
-  //   }
-  // }
-</script>
 
 </html>
 
 <style>
   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
     margin: 0;
     padding: 0;
   }
@@ -230,15 +222,16 @@
   }
 
   .sidebar {
-    background-color: #c1a660;
-    width: 15%;
-    height: 100%;
-    /* float: left; */
-    position: fixed;
-    flex: 30%;
-    display: inline-block;
+    height: auto;
+    position: sticky;
+    /* for Safari users */
+    position: -webkit-sticky;
+    top: 0;
+    left: 0;
+    background-color: #C1A660;
+    display: table-cell;
+    width: 200px;
     vertical-align: top;
-    /* overflow: auto; */
   }
 
   .sidebar h2 {
@@ -258,8 +251,8 @@
     width: 100%;
     text-align: center;
     display: block;
-    margin-top: 20px;
     font-weight: bold;
+    margin-top: 20px;
   }
 
   .sidebar .left-bar {
@@ -283,13 +276,10 @@
   }
 
   .content {
-    flex: 70%;
-    /* width: 85%; */
+    width: 85%;
     height: 100%;
     margin-left: 15%;
-    display: inline-block;
-    vertical-align: top;
-    right: 0;
+    display: table-cell;
   }
 </style>
 
@@ -298,6 +288,8 @@
     width: 100%;
     height: 20%;
     padding-left: 30px;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
     background-color: #daa520;
   }
 
@@ -434,11 +426,10 @@
     background-color: white;
     padding: 10px;
     padding-left: 30px;
-    height: 3%;
+    height: 5%;
     background: #f0f0f0;
     position: absolute;
-    float: bottom;
+    bottom: 90;
     width: 100%;
-    flex: 70%;
   }
 </style>

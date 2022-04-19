@@ -73,11 +73,16 @@
     }
 
     .sidebar {
-        background-color: #c1a660;
-        border: solid 1px;
-        width: 15%;
-        height: 100%;
-        position: fixed;
+        height: auto;
+        position: sticky;
+        /* for Safari users */
+        position: -webkit-sticky;
+        top: 0;
+        left: 0;
+        background-color: #C1A660;
+        display: table-cell;
+        width: 200px;
+        vertical-align: top;
     }
 
     .sidebar h2 {
@@ -124,7 +129,7 @@
         width: 85%;
         height: 700px;
         margin-left: 15%;
-        display: block;
+        display: table-cell;
     }
 </style>
 

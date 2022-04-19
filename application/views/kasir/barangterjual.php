@@ -118,7 +118,7 @@
             <input type="text" name="tanggal" id="date" placeholder="Pilih tanggal" /><br />
             <label>Terjual</label><br />
             <input type="text" name="terjual" id="terjual" placeholder="Masukkan jumlah terjual" /><br />
-            <button style="background-color: #008fdf87">Tambah</button>
+            <button style="background-color: #008fdf87" onclick="return confirm('Anda yakin ingin menambah data?');">Tambah</button>
           </form>
         </div>
         <div class="box">
@@ -140,7 +140,7 @@
             <!-- <input type="text" /><br /> -->
             <label>Terjual</label><br />
             <input type="text" name="terjual" id="terjual" placeholder="Masukkan jumlah terjual" /><br />
-            <button style="background-color: #fad541fc">Ubah</button>
+            <button style="background-color: #fad541fc" onclick="return confirm('Anda yakin ingin mengubah data?');">Ubah</button>
           </form>
         </div>
         <div class="box">
@@ -160,7 +160,7 @@
               <?php } ?>
             </select>
             <!-- <input type="text" /><br /> -->
-            <button style="background-color: #fe4a4af0">Hapus</button>
+            <button style="background-color: #fe4a4af0" onclick="return confirm('Anda yakin ingin menghapus data?');">Hapus</button>
           </form>
         </div>
       </div>
@@ -186,11 +186,16 @@
   }
 
   .sidebar {
-    background-color: #c1a660;
-    border: solid 1px;
-    width: 15%;
-    height: 100%;
-    position: fixed;
+    height: auto;
+    position: sticky;
+    /* for Safari users */
+    position: -webkit-sticky;
+    top: 0;
+    left: 0;
+    background-color: #C1A660;
+    display: table-cell;
+    width: 200px;
+    vertical-align: top;
   }
 
   .sidebar h2 {
@@ -237,7 +242,7 @@
     width: 85%;
     height: 100%;
     margin-left: 15%;
-    display: block;
+    display: table-cell;
   }
 </style>
 

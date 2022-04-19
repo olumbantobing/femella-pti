@@ -96,7 +96,7 @@
 
   .sidebar {
     background-color: #c1a660;
-    border: solid 1px;
+    /* border: solid 1px; */
     width: 15%;
     height: 100%;
     position: fixed;

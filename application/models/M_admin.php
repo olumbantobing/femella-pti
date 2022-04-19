@@ -40,8 +40,17 @@ class M_admin extends CI_Model
 
   public function laporan()
   {
-    $query = $this->db->query("SELECT stok_gudang.id, stok_gudang.nama_barang, keluar_gudang.jumlah, masuk_gudang.jumlah, stok_gudang.stok
-    FROM stok_gudang INNER JOIN (keluar_gudang INNER JOIN masuk_gudang)");
+    $query = $this->db->query("SELECT stok_gudang.id, masuk_gudang.tanggal, stok_gudang.nama_barang, keluar_gudang.jumlah, masuk_gudang.jumlah, stok_gudang.stok_gudang, stok_gudang.stok_toko, stok_gudang.harga
+    FROM stok_gudang INNER JOIN keluar_gudang INNER JOIN masuk_gudang INNER JOIN terjual WHERE stok_gudang.id = keluar_gudang.id and stok_gudang.id = masuk_gudang.id
+    and keluar_gudang.tanggal = masuk_gudang.tanggal and keluar_gudang.tanggal = terjual.tanggal and masuk_gudang.tanggal = terjual.tanggal");
+    return $query->result();
+    // stok_gudang.id = terjual.id
+    // terjual.terjual
+  }
+
+  public function nota()
+  {
+    $query = $this->db->query("SELECT * FROM nota ORDER BY id_nota ASC");
     return $query->result();
   }
 
@@ -51,6 +60,13 @@ class M_admin extends CI_Model
     return $query->result();
   }
 
+  public function cek_jumlah($tabel, $id)
+  {
+    return  $this->db->select('stok_gudang')
+      ->from($tabel)
+      ->where('id', $id)
+      ->get();
+  }
   // public function cek_jumlah($tabel, $id_transaksi)
   // {
   //   return  $this->db->select('*')

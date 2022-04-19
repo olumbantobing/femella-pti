@@ -207,17 +207,29 @@ class Admin extends CI_Controller
             $id = $this->input->post('id', TRUE);
             $jumlah      = $this->input->post('jumlah', TRUE);
             $tanggal = $this->input->post('tanggal', TRUE);
+            // $kodekeluar = $this->input->get('kodekeluar');
+            // $id = $this->input->get('id');
+            // $jumlah      = $this->input->get('jumlah');
+            // $tanggal = $this->input->get('tanggal');
 
-            $data = array(
-                'kodekeluar' => $kodekeluar,
-                'id' => $id,
-                'jumlah' => $jumlah,
-                'tanggal'  => $tanggal,
-            );
-            $this->M_admin->insert('keluar_gudang', $data);
+            if ($this->M_admin->cek_jumlah('stok_gudang', $id) >= $jumlah) {
+                // $kodekeluar = $this->input->post('kodekeluar', TRUE);
+                // $id = $this->input->post('id', TRUE);
+                // $jumlah      = $this->input->post('jumlah', TRUE);
+                // $tanggal = $this->input->post('tanggal', TRUE);
+                $data = array(
+                    'kodekeluar' => $kodekeluar,
+                    'id' => $id,
+                    'jumlah' => $jumlah,
+                    'tanggal'  => $tanggal,
+                );
+                $this->M_admin->insert('keluar_gudang', $data);
 
-            $this->session->set_flashdata('msg_berhasil', 'Data Barang Berhasil Ditambahkan');
-            redirect(base_url('admin/barangkeluar'));
+                $this->session->set_flashdata('msg_berhasil', 'Data Barang Berhasil Ditambahkan');
+                redirect(base_url('admin/barangkeluar'));
+            } else {
+                echo "<script>alert('Stok Gudang Tidak Cukup!');history.go(-1);</script>";
+            }
         } else {
             echo "<script>alert('Gagal menambah data: Jangan ada data yang kosong!');history.go(-1);</script>";
         }
@@ -330,7 +342,52 @@ class Admin extends CI_Controller
 
     public function nota()
     {
-        $this->load->view('admin/nota');
+        $data = array(
+            'list_data' => $this->M_admin->nota()
+        );
+        $this->load->view('admin/nota', $data);
+    }
+
+    public function tambah_nota()
+    {
+        $this->form_validation->set_rules('jenis', 'Pilih Jenis (klik form)', 'required');
+        $this->form_validation->set_rules('nama_barang', 'Masukkan Nama Barang', 'required');
+        $this->form_validation->set_rules('supplier', 'Masukkan Nama Supplier', 'required');
+        $this->form_validation->set_rules('tgl_masuk', 'Tanggal Masuk', 'required');
+        $this->form_validation->set_rules('jml_masuk', 'Jumlah Barang Masuk', 'required');
+        $this->form_validation->set_rules('tgl_keluar', 'Tanggal Keluar', 'required');
+        $this->form_validation->set_rules('hrg_asli', 'Masukkan Harga Asli Barang', 'required');
+        $this->form_validation->set_rules('hrg_jual', 'Masukkan Harga Jual Barang', 'required');
+
+        if ($this->form_validation->run() == TRUE) {
+            $id = $this->input->post('id', TRUE);
+            $jenis = $this->input->post('jenis', TRUE);
+            $nama_barang = $this->input->post('nama_barang', TRUE);
+            $supplier      = $this->input->post('supplier', TRUE);
+            $tgl_masuk = $this->input->post('tgl_masuk', TRUE);
+            $jml_masuk = $this->input->post('jml_masuk', TRUE);
+            $tgl_keluar = $this->input->post('tgl_keluar', TRUE);
+            $hrg_asli = $this->input->post('hrg_asli', TRUE);
+            $hrg_jual = $this->input->post('hrg_jual', TRUE);
+
+            $data = array(
+                'id' => $id,
+                'jenis' => $jenis,
+                'nama_barang' => $nama_barang,
+                'supplier' => $supplier,
+                'tgl_masuk'  => $tgl_masuk,
+                'jml_masuk'  => $jml_masuk,
+                'tgl_keluar'  => $tgl_keluar,
+                'hrg_asli'  => $hrg_asli,
+                'hrg_jual'  => $hrg_jual,
+            );
+            $this->M_admin->insert('nota', $data);
+
+            $this->session->set_flashdata('msg_berhasil', 'Data Barang Berhasil Ditambahkan');
+            redirect(base_url('admin/pengguna'));
+        } else {
+            echo "<script>alert('Gagal menambah data: Jangan ada data yang kosong!');history.go(-1);</script>";
+        }
     }
 
     public function logout()

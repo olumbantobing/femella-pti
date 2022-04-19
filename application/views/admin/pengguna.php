@@ -42,24 +42,24 @@
                 <div class="body-content">
                     <div class="content-utama">
                         <!-- Tombol search -->
-                        <div class="search-btn">
+                        <!-- <div class="search-btn">
                             <div>
                                 <input type="text" placeholder="Cari Barang..." />
                                 <button>
                                     <i class="fa-2x fa-solid fa-magnifying-glass"></i>
                                 </button>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- Tombol search -->
 
                         <!-- tabel -->
                         <table>
                             <thead>
                                 <tr>
-                                    <th width="50px">ID</th>
+                                    <th width="80px">ID</th>
                                     <th width="150px">Nama Pengguna</th>
                                     <th width="150px">Hak Akses</th>
-                                    <th width="200px">Kata Sandi</th>
+                                    <th width="90px">Kata Sandi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -100,7 +100,7 @@
                                 </select>
                                 <label>Kata Sandi</label><br />
                                 <input type="text" name="password" placeholder="Masukkan kata sandi" /><br />
-                                <button style="background-color: #008FDF87;">Tambah</button>
+                                <button style="background-color: #008FDF87;" onclick="return confirm('Anda yakin ingin menambah data?');">Tambah</button>
                             </form>
                         </div>
 
@@ -121,7 +121,7 @@
                                     <?php } ?>
                                 </select>
                                 <!-- <input type="text" name="id" placeholder="Masukkan ID pengguna" /><br /> -->
-                                <button style="background-color: #FE4A4AF0 ;">Hapus</button>
+                                <button style="background-color: #FE4A4AF0;" onclick="return confirm('Anda yakin ingin menghapus data?');">Hapus</button>
                             </form>
                         </div>
                     </div>
@@ -142,6 +142,13 @@
     * {
         margin: 0;
         padding: 0;
+        /* box-sizing: border-box; */
+    }
+
+    html,
+    body {
+        margin: 0;
+        padding: 0;
     }
 
     a {
@@ -149,10 +156,16 @@
     }
 
     .sidebar {
+        height: auto;
+        position: sticky;
+        /* for Safari users */
+        position: -webkit-sticky;
+        top: 0;
+        left: 0;
         background-color: #C1A660;
-        width: 15%;
-        height: 100%;
-        position: fixed;
+        display: table-cell;
+        width: 200px;
+        vertical-align: top;
     }
 
     .sidebar h2 {
@@ -172,8 +185,8 @@
         width: 100%;
         text-align: center;
         display: block;
-        margin-top: 20px;
         font-weight: bold;
+        margin-top: 20px;
     }
 
     .sidebar .left-bar {
@@ -186,7 +199,7 @@
         font-size: 14pt;
         color: black;
         padding-left: 20px;
-        padding-right: 15px;
+        padding-right: 10px;
         padding-top: 10px;
         padding-bottom: 7px;
         box-sizing: border-box;
@@ -200,7 +213,7 @@
         width: 85%;
         height: 100%;
         margin-left: 15%;
-        display: block;
+        display: table-cell;
     }
 </style>
 
@@ -209,19 +222,19 @@
         width: 100%;
         height: 20%;
         padding-left: 30px;
-        background-color: #DAA520;
-
+        padding-bottom: 20px;
+        margin-bottom: 25px;
+        background-color: #daa520;
     }
 
     body {
-        background-color: #EEECB2;
+        background-color: #eeecb2;
     }
 
     .content .body-content {
         width: 100%;
         height: 80%;
         display: flex;
-
     }
 
     .content .body-content .content-utama {
@@ -266,7 +279,7 @@
 
 <style>
     .content-utama table {
-        margin: 20px;
+        margin-left: 20px;
         text-align: center;
         font-size: 12pt;
         padding: 2px;
@@ -279,7 +292,7 @@
     }
 
     tr:nth-child(even) {
-        background-color: #DDDDDD;
+        background-color: #dddddd;
     }
 </style>
 
@@ -292,15 +305,13 @@
         width: 400px;
         height: auto;
         background-color: white;
-        margin: 20px;
+        margin-left: 5px;
         border: solid black 1px;
     }
 
     .form-input .box h4 {
         font-size: large;
         padding: 10px;
-
-        ;
     }
 
     .form-input .box h4 i {
@@ -328,12 +339,17 @@
         border-radius: 6px;
         cursor: pointer;
         border-color: transparent;
-
     }
 
     .form-input .box form button:hover {
         background-color: rgb(224, 216, 206);
-        ;
+    }
+
+    .form-control {
+        height: 23px;
+        width: 100%;
+        font-size: 12pt;
+        margin-bottom: 10px;
     }
 
     table {
@@ -349,14 +365,5 @@
         position: absolute;
         bottom: 90;
         width: 100%;
-    }
-</style>
-
-<style>
-    .form-control {
-        height: 25px;
-        width: 100%;
-        font-size: 12pt;
-        margin-bottom: 10px;
     }
 </style>
