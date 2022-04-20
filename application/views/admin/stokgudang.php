@@ -96,6 +96,10 @@
                                 <label for="harga">Harga</label><br />
                                 <input type="text" name="harga" id="harga" placeholder="Masukkan Harga" /><br />
                                 <button id="tambah data" style="background-color: #008fdf87" onclick="return confirm('Anda yakin ingin menambah data?');">Tambah</button>
+
+                                <?php if ($this->session->flashdata('msg_tambah')) {
+                                    echo "<script>alert('Data barang berhasil ditambahkan!');</script>"; ?>
+                                <?php } ?>
                             </form>
                         </div>
                         <div class="box">
@@ -120,6 +124,10 @@
                                 <label>Harga</label><br />
                                 <input type="text" name="harga" id="harga" placeholder="Masukkan Harga" /><br />
                                 <button id="ubahdata" style="background-color: #fad541fc" onclick="return confirm('Anda yakin ingin mengubah data?');">Ubah</button>
+
+                                <?php if ($this->session->flashdata('msg_ubah')) {
+                                    echo "<script>alert('Data barang berhasil diubah!');</script>"; ?>
+                                <?php } ?>
                             </form>
                         </div>
                         <div class="box">
@@ -140,6 +148,10 @@
                                 </select>
                                 <!-- <input type="text" name="id" id="id" placeholder="Masukkan ID Barang" /><br /> -->
                                 <button id="hapusdata" style="background-color: #fe4a4af0" onclick="return confirm('Anda yakin ingin menghapus data?');">Hapus</button>
+
+                                <?php if ($this->session->flashdata('msg_hapus')) {
+                                    echo "<script>alert('Data barang berhasil dihapus!');</script>"; ?>
+                                <?php } ?>
                             </form>
                         </div>
                     </div>
@@ -328,10 +340,11 @@
     }
 
     .form-input .box {
-        width: 400px;
+        width: 350px;
         height: auto;
         background-color: white;
-        margin: 20px;
+        margin-left: 5px;
+        margin-bottom: 20px;
         border: solid black 1px;
     }
 

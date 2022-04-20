@@ -10,19 +10,19 @@ class M_admin extends CI_Model
 
   public function tabelterjual()
   {
-    $query = $this->db->query("SELECT terjual.kodeterjual, terjual.id, stok_gudang.nama_barang, terjual.tanggal, terjual.terjual, stok_gudang.stok_toko FROM terjual INNER JOIN stok_gudang ON terjual.id = stok_gudang.id ORDER BY terjual.tanggal ASC");
+    $query = $this->db->query("SELECT terjual.kodeterjual, terjual.id, stok_gudang.nama_barang, terjual.tanggal, terjual.terjual, stok_gudang.stok_toko FROM terjual INNER JOIN stok_gudang ON terjual.id = stok_gudang.id ORDER BY terjual.tanggal DESC");
     return $query->result();
   }
 
   public function tabelmasuk()
   {
-    $query = $this->db->query("SELECT masuk_gudang.kodemasuk, masuk_gudang.id, stok_gudang.nama_barang, masuk_gudang.jumlah, masuk_gudang.tanggal, masuk_gudang.keterangan FROM masuk_gudang INNER JOIN stok_gudang ON masuk_gudang.id = stok_gudang.id ORDER BY masuk_gudang.tanggal ASC");
+    $query = $this->db->query("SELECT masuk_gudang.kodemasuk, masuk_gudang.id, stok_gudang.nama_barang, masuk_gudang.jumlah, masuk_gudang.tanggal, masuk_gudang.keterangan FROM masuk_gudang INNER JOIN stok_gudang ON masuk_gudang.id = stok_gudang.id ORDER BY masuk_gudang.tanggal DESC");
     return $query->result();
   }
 
   public function tabelkeluar()
   {
-    $query = $this->db->query("SELECT keluar_gudang.kodekeluar, keluar_gudang.id, stok_gudang.nama_barang, keluar_gudang.jumlah, keluar_gudang.tanggal FROM keluar_gudang INNER JOIN stok_gudang ON keluar_gudang.id = stok_gudang.id ORDER BY keluar_gudang.tanggal ASC");
+    $query = $this->db->query("SELECT keluar_gudang.kodekeluar, keluar_gudang.id, stok_gudang.nama_barang, keluar_gudang.jumlah, keluar_gudang.tanggal FROM keluar_gudang INNER JOIN stok_gudang ON keluar_gudang.id = stok_gudang.id ORDER BY keluar_gudang.tanggal DESC");
     return $query->result();
   }
 
@@ -30,6 +30,14 @@ class M_admin extends CI_Model
   {
     $query = $this->db->query("SELECT * FROM stok_gudang ORDER BY id ASC");
     return $query->result();
+  }
+
+  public function cek_username($tabel, $username)
+  {
+    return $this->db->select('username')
+      ->from($tabel)
+      ->where('username', $username)
+      ->get()->result();
   }
 
   public function pengguna()

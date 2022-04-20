@@ -115,7 +115,7 @@
             <select class="form-control" name="id" id="id">
               <?php
               $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
-              $res = mysqli_query($conn, "SELECT id, CONCAT(id, ' ', nama_barang) AS pilihan FROM stok_gudang");
+              $res = mysqli_query($conn, "SELECT id, CONCAT(id, ' ', nama_barang) AS pilihan FROM stok_gudang WHERE stok_gudang > 0");
               while ($rows = mysqli_fetch_array($res)) {
               ?>
                 <option value="<?php echo $rows['id']; ?>"><?php echo $rows['pilihan']; ?></option>
@@ -127,6 +127,10 @@
             <label>Tanggal</label><br />
             <input type="text" name="tanggal" id="date" placeholder="Pilih tanggal" /><br />
             <button style="background-color: #008fdf87" onclick="return confirm('Anda yakin ingin menambah data?');">Tambah</button>
+
+            <?php if ($this->session->flashdata('msg_tambah')) {
+              echo "<script>alert('Data barang berhasil ditambahkan!');</script>"; ?>
+            <?php } ?>
           </form>
         </div>
         <div class="box">
@@ -151,6 +155,10 @@
             <label>Tanggal</label><br />
             <input type="text" name="tanggal" id="date1" placeholder="Pilih tanggal" /><br />
             <button style="background-color: #fad541fc" onclick="return confirm('Anda yakin ingin mengubah data?');">Ubah</button>
+
+            <?php if ($this->session->flashdata('msg_ubah')) {
+              echo "<script>alert('Data barang berhasil diubah!');</script>"; ?>
+            <?php } ?>
           </form>
         </div>
         <div class="box">
@@ -171,6 +179,10 @@
             </select>
             <!-- <input type="text" name="kodekeluar" id="kodekeluar" placeholder="Masukkan kode keluar barang" /><br /> -->
             <button style="background-color: #fe4a4af0" onclick="return confirm('Anda yakin ingin menghapus data?');">Hapus</button>
+
+            <?php if ($this->session->flashdata('msg_hapus')) {
+              echo "<script>alert('Data barang berhasil dihapus!');</script>"; ?>
+            <?php } ?>
           </form>
         </div>
       </div>
@@ -342,10 +354,11 @@
   }
 
   .form-input .box {
-    width: 400px;
+    width: 350px;
     height: auto;
     background-color: white;
-    margin: 20px;
+    margin-left: 5px;
+    margin-bottom: 20px;
     border: solid black 1px;
   }
 

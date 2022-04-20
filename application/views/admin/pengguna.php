@@ -59,7 +59,7 @@
                                     <th width="80px">ID</th>
                                     <th width="150px">Nama Pengguna</th>
                                     <th width="150px">Hak Akses</th>
-                                    <th width="90px">Kata Sandi</th>
+                                    <!-- <th width="90px">Kata Sandi</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -69,7 +69,7 @@
                                             <td><?= $dd->id ?></td>
                                             <td><?= $dd->username ?></td>
                                             <td><?= $dd->akses ?></td>
-                                            <td><?= $dd->password ?></td>
+                                            <!-- <td><?= $dd->password ?></td> -->
                                 </tr>
                             <?php endforeach; ?>
                         <?php } else { ?>
@@ -101,6 +101,10 @@
                                 <label>Kata Sandi</label><br />
                                 <input type="text" name="password" placeholder="Masukkan kata sandi" /><br />
                                 <button style="background-color: #008FDF87;" onclick="return confirm('Anda yakin ingin menambah data?');">Tambah</button>
+
+                                <?php if ($this->session->flashdata('msg_tambah')) {
+                                    echo "<script>alert('Data pengguna baru berhasil ditambahkan!');</script>"; ?>
+                                <?php } ?>
                             </form>
                         </div>
 
@@ -114,7 +118,7 @@
                                 <select class="form-control" name="id" id="id">
                                     <?php
                                     $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
-                                    $res = mysqli_query($conn, "SELECT id, CONCAT(id, ' : ', username) AS pilihan FROM user");
+                                    $res = mysqli_query($conn, "SELECT id, CONCAT(id, ' : ', username, ' (', akses, ')') AS pilihan FROM user");
                                     while ($rows = mysqli_fetch_array($res)) {
                                     ?>
                                         <option value="<?php echo $rows['id']; ?>"><?php echo $rows['pilihan']; ?></option>
@@ -122,6 +126,10 @@
                                 </select>
                                 <!-- <input type="text" name="id" placeholder="Masukkan ID pengguna" /><br /> -->
                                 <button style="background-color: #FE4A4AF0;" onclick="return confirm('Anda yakin ingin menghapus data?');">Hapus</button>
+
+                                <?php if ($this->session->flashdata('msg_hapus')) {
+                                    echo "<script>alert('Data pengguna berhasil dihapus!');</script>"; ?>
+                                <?php } ?>
                             </form>
                         </div>
                     </div>
@@ -302,10 +310,11 @@
     }
 
     .form-input .box {
-        width: 400px;
+        width: 350px;
         height: auto;
         background-color: white;
         margin-left: 5px;
+        margin-bottom: 20px;
         border: solid black 1px;
     }
 

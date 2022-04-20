@@ -19,7 +19,7 @@
 
             <!-- form login -->
             <center>
-                <form method="post" action="<?= base_url('auth/cek_login'); ?>">
+                <form method="post" action="<?= base_url('auth/cek_login'); ?>" role="form">
                     <?php if ($this->session->flashdata('msg')) { ?>
                         <div class="alert alert-warning alert-dismissible">
                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

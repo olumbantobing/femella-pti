@@ -44,7 +44,7 @@ class Admin extends CI_Controller
             );
             $this->M_admin->insert('stok_gudang', $data);
 
-            $this->session->set_flashdata('msg_berhasil', 'Data Barang Berhasil Ditambahkan');
+            $this->session->set_flashdata('msg_tambah', 'Data Barang Berhasil Ditambahkan');
             redirect(base_url('admin/stokgudang'));
         } else {
             echo "<script>alert('Gagal menambah data: Jangan ada data yang kosong!');history.go(-1);</script>";
@@ -70,7 +70,7 @@ class Admin extends CI_Controller
             );
             $this->M_admin->update('stok_gudang', $data, $where);
 
-            $this->session->set_flashdata('msg_berhasil', 'Data Barang Berhasil Ditambahkan');
+            $this->session->set_flashdata('msg_ubah', 'Data Barang Berhasil Diubah');
             redirect(base_url('admin/stokgudang'));
         } else {
             echo "<script>alert('Gagal mengubah data: Jangan ada data yang kosong!');history.go(-1);</script>";
@@ -90,8 +90,10 @@ class Admin extends CI_Controller
             );
             $this->M_admin->delete('stok_gudang', $data, $where);
 
-            $this->session->set_flashdata('msg_berhasil', 'Data Barang Berhasil Ditambahkan');
+            $this->session->set_flashdata('msg_hapus', 'Data Barang Berhasil Dihapus');
             redirect(base_url('admin/stokgudang'));
+        } else {
+            echo "<script>alert('Gagal mengubah data: Jangan ada data yang kosong!');history.go(-1);</script>";
         }
     }
 
@@ -134,7 +136,7 @@ class Admin extends CI_Controller
             );
             $this->M_admin->insert('masuk_gudang', $data);
 
-            $this->session->set_flashdata('msg_berhasil', 'Data Barang Berhasil Ditambahkan');
+            $this->session->set_flashdata('msg_tambah', 'Data Barang Berhasil Ditambahkan');
             redirect(base_url('admin/barangmasuk'));
         } else {
             echo "<script>alert('Gagal menambah data: Jangan ada data yang kosong!');history.go(-1);</script>";
@@ -163,7 +165,7 @@ class Admin extends CI_Controller
             );
             $this->M_admin->update('masuk_gudang', $data, $where);
 
-            $this->session->set_flashdata('msg_berhasil', 'Data Barang Berhasil Ditambahkan');
+            $this->session->set_flashdata('msg_ubah', 'Data Barang Berhasil Diubah');
             redirect(base_url('admin/barangmasuk'));
         } else {
             echo "<script>alert('Gagal mengubah data: Jangan ada data yang kosong!');history.go(-1);</script>";
@@ -183,8 +185,10 @@ class Admin extends CI_Controller
             );
             $this->M_admin->delete('masuk_gudang', $data, $where);
 
-            $this->session->set_flashdata('msg_berhasil', 'Data Barang Berhasil Ditambahkan');
+            $this->session->set_flashdata('msg_hapus', 'Data Barang Berhasil Dihapus');
             redirect(base_url('admin/barangmasuk'));
+        } else {
+            echo "<script>alert('Gagal mengubah data: Jangan ada data yang kosong!');history.go(-1);</script>";
         }
     }
 
@@ -225,7 +229,7 @@ class Admin extends CI_Controller
                 );
                 $this->M_admin->insert('keluar_gudang', $data);
 
-                $this->session->set_flashdata('msg_berhasil', 'Data Barang Berhasil Ditambahkan');
+                $this->session->set_flashdata('msg_tambah', 'Data Barang Berhasil Ditambahkan');
                 redirect(base_url('admin/barangkeluar'));
             } else {
                 echo "<script>alert('Stok Gudang Tidak Cukup!');history.go(-1);</script>";
@@ -254,7 +258,7 @@ class Admin extends CI_Controller
             );
             $this->M_admin->update('keluar_gudang', $data, $where);
 
-            $this->session->set_flashdata('msg_berhasil', 'Data Barang Berhasil Ditambahkan');
+            $this->session->set_flashdata('msg_ubah', 'Data Barang Berhasil Diubah');
             redirect(base_url('admin/barangkeluar'));
         } else {
             echo "<script>alert('Gagal mengubah data: Jangan ada data yang kosong!');history.go(-1);</script>";
@@ -274,8 +278,10 @@ class Admin extends CI_Controller
             );
             $this->M_admin->delete('keluar_gudang', $data, $where);
 
-            $this->session->set_flashdata('msg_berhasil', 'Data Barang Berhasil Ditambahkan');
+            $this->session->set_flashdata('msg_hapus', 'Data Barang Berhasil Dihapus');
             redirect(base_url('admin/barangkeluar'));
+        } else {
+            echo "<script>alert('Gagal mengubah data: Jangan ada data yang kosong!');history.go(-1);</script>";
         }
     }
 
@@ -285,6 +291,16 @@ class Admin extends CI_Controller
             'list_data' => $this->M_admin->pengguna()
         );
         $this->load->view('admin/pengguna', $data);
+    }
+
+    public function token_generate()
+    {
+        return $tokens = md5(uniqid(rand(), true));
+    }
+
+    private function hash_password($password)
+    {
+        return password_hash($password, PASSWORD_DEFAULT);
     }
 
     public function tambah_pengguna()
@@ -299,16 +315,21 @@ class Admin extends CI_Controller
             $akses      = $this->input->post('akses', TRUE);
             $password = $this->input->post('password', TRUE);
 
-            $data = array(
-                'id' => $id,
-                'username' => $username,
-                'akses' => $akses,
-                'password'  => $password,
-            );
-            $this->M_admin->insert('user', $data);
+            if ($this->M_admin->cek_username('user', $username)) {
+                echo "<script>alert('Username sudah digunakan!');history.go(-1);</script>";
+            } else {
+                $data = array(
+                    'id' => $id,
+                    'username' => $username,
+                    'akses' => $akses,
+                    'password'  => $password,
+                );
 
-            $this->session->set_flashdata('msg_berhasil', 'Data Barang Berhasil Ditambahkan');
-            redirect(base_url('admin/pengguna'));
+                $this->M_admin->insert('user', $data);
+
+                $this->session->set_flashdata('msg_tambah', 'Data Pengguna Baru Berhasil Ditambahkan');
+                redirect(base_url('admin/pengguna'));
+            }
         } else {
             echo "<script>alert('Gagal menambah data: Jangan ada data yang kosong!');history.go(-1);</script>";
         }
@@ -327,8 +348,10 @@ class Admin extends CI_Controller
             );
             $this->M_admin->delete('user', $data, $where);
 
-            $this->session->set_flashdata('msg_berhasil', 'Data Barang Berhasil Ditambahkan');
+            $this->session->set_flashdata('msg_hapus', 'Data Barang Berhasil Dihapus');
             redirect(base_url('admin/pengguna'));
+        } else {
+            echo "<script>alert('Gagal mengubah data: Jangan ada data yang kosong!');history.go(-1);</script>";
         }
     }
 
@@ -360,7 +383,7 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules('hrg_jual', 'Masukkan Harga Jual Barang', 'required');
 
         if ($this->form_validation->run() == TRUE) {
-            $id = $this->input->post('id', TRUE);
+            $id_nota = $this->input->post('id_nota', TRUE);
             $jenis = $this->input->post('jenis', TRUE);
             $nama_barang = $this->input->post('nama_barang', TRUE);
             $supplier      = $this->input->post('supplier', TRUE);
@@ -371,7 +394,7 @@ class Admin extends CI_Controller
             $hrg_jual = $this->input->post('hrg_jual', TRUE);
 
             $data = array(
-                'id' => $id,
+                'id_nota' => $id_nota,
                 'jenis' => $jenis,
                 'nama_barang' => $nama_barang,
                 'supplier' => $supplier,
