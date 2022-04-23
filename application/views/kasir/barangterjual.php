@@ -79,7 +79,7 @@
                   <td><?= $dd->kodeterjual ?></td>
                   <td><?= $dd->id ?></td>
                   <td><?= $dd->nama_barang ?></td>
-                  <td><?= $dd->tanggal ?></td>
+                  <td><?= date('d F Y', strtotime($dd->tanggal)) ?></td>
                   <td><?= $dd->terjual ?></td>
                   <td><?= $dd->stok_toko ?></td>
             </tr>
@@ -329,10 +329,11 @@
   }
 
   .form-input .box {
-    width: 400px;
+    width: 350px;
     height: auto;
     background-color: white;
-    margin: 20px;
+    margin-left: 5px;
+    margin-bottom: 20px;
     border: solid black 1px;
   }
 

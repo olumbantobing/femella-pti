@@ -91,7 +91,7 @@
                       <td><?= $dd->id ?></td>
                       <td><?= $dd->nama_barang ?></td>
                       <td><?= $dd->jumlah ?></td>
-                      <td><?= $dd->tanggal ?></td>
+                      <td><?= date('d F Y', strtotime($dd->tanggal)) ?></td>
                       <td><?= $dd->keterangan ?></td>
                 </tr>
                 <?php $no++; ?>
@@ -144,7 +144,7 @@
                 <i class="fa-solid fa-minus"></i>
               </h4>
               <form action="<?= base_url('admin/ubah_barangmasuk') ?>" role="form" method="post">
-                <label> ID Barang</label><br />
+                <!-- <label> ID Barang</label><br />
                 <select class="form-control" name="id" id="id">
                   <?php
                   $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
@@ -153,7 +153,7 @@
                   ?>
                     <option value="<?php echo $rows['id']; ?>"><?php echo $rows['pilihan']; ?></option>
                   <?php } ?>
-                </select>
+                </select> -->
                 <label>Kode Masuk</label><br />
                 <select class="form-control" name="kodemasuk" id="kodemasuk">
                   <?php

@@ -72,7 +72,7 @@
                   <td><?= $dd->kodeterjual ?></td>
                   <td><?= $dd->id ?></td>
                   <td><?= $dd->nama_barang ?></td>
-                  <td><?= $dd->tanggal ?></td>
+                  <td><?= date('d F Y', strtotime($dd->tanggal)) ?></td>
                   <td><?= $dd->terjual ?></td>
                   <td><?= $dd->stok_toko ?></td>
             </tr>

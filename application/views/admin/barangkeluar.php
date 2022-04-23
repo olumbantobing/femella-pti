@@ -89,7 +89,7 @@
                   <td><?= $dd->id ?></td>
                   <td><?= $dd->nama_barang ?></td>
                   <td><?= $dd->jumlah ?></td>
-                  <td><?= $dd->tanggal ?></td>
+                  <td><?= date('d F Y', strtotime($dd->tanggal)) ?></td>
             </tr>
             <?php $no++; ?>
           <?php endforeach; ?>
