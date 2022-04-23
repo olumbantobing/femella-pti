@@ -36,7 +36,7 @@
                         <input type="password" name="password" id="password" placeholder="Kata Sandi" />
                     </div>
 
-                    <button class="btn btn-success">MASUK</button>
+                    <button class="btn btn-success" type="submit" name="login">MASUK</button>
                     <!-- <div class="btn btn-success">MASUK</div> -->
                 </form>
             </center>

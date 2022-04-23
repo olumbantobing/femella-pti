@@ -115,7 +115,7 @@ class Admin extends CI_Controller
 
     public function tambah_barangmasuk()
     {
-        $this->form_validation->set_rules('id', 'ID Barang', 'required');
+        // $this->form_validation->set_rules('id', 'ID Barang', 'required');
         $this->form_validation->set_rules('jumlah', 'Jumlah', 'required');
         $this->form_validation->set_rules('tanggal', 'Tanggal', 'required');
         $this->form_validation->set_rules('keterangan', 'Keterangan', 'required');
@@ -293,16 +293,6 @@ class Admin extends CI_Controller
         $this->load->view('admin/pengguna', $data);
     }
 
-    public function token_generate()
-    {
-        return $tokens = md5(uniqid(rand(), true));
-    }
-
-    private function hash_password($password)
-    {
-        return password_hash($password, PASSWORD_DEFAULT);
-    }
-
     public function tambah_pengguna()
     {
         $this->form_validation->set_rules('username', 'Nama Pengguna', 'required');
@@ -310,25 +300,16 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules('password', 'Kata Sandi', 'required');
 
         if ($this->form_validation->run() == TRUE) {
-            $id = $this->input->post('id', TRUE);
-            $username = $this->input->post('username', TRUE);
-            $akses      = $this->input->post('akses', TRUE);
-            $password = $this->input->post('password', TRUE);
+            $data = $this->input->post(null, TRUE);
 
-            if ($this->M_admin->cek_username('user', $username)) {
+            if ($this->M_admin->cek_username('user', $data['username'])) {
                 echo "<script>alert('Username sudah digunakan!');history.go(-1);</script>";
             } else {
-                $data = array(
-                    'id' => $id,
-                    'username' => $username,
-                    'akses' => $akses,
-                    'password'  => $password,
-                );
-
-                $this->M_admin->insert('user', $data);
-
-                $this->session->set_flashdata('msg_tambah', 'Data Pengguna Baru Berhasil Ditambahkan');
-                redirect(base_url('admin/pengguna'));
+                $this->M_admin->add_user($data);
+                if ($this->db->affected_rows() > 0) {
+                    $this->session->set_flashdata('msg_tambah', 'Data Pengguna Baru Berhasil Ditambahkan');
+                    redirect(base_url('admin/pengguna'));
+                }
             }
         } else {
             echo "<script>alert('Gagal menambah data: Jangan ada data yang kosong!');history.go(-1);</script>";

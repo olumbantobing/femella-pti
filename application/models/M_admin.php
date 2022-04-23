@@ -32,11 +32,11 @@ class M_admin extends CI_Model
     return $query->result();
   }
 
-  public function cek_username($tabel, $username)
+  public function cek_username($tabel, $data)
   {
     return $this->db->select('username')
       ->from($tabel)
-      ->where('username', $username)
+      ->where('username', $data)
       ->get()->result();
   }
 
@@ -44,6 +44,15 @@ class M_admin extends CI_Model
   {
     $query = $this->db->query("SELECT * FROM user ORDER BY id ASC");
     return $query->result();
+  }
+
+  public function add_user($data)
+  {
+    $params['id'] = $data['id'];
+    $params['username'] = $data['username'];
+    $params['akses'] = $data['akses'];
+    $params['password'] = sha1($data['password']);
+    $this->db->insert('user', $params);
   }
 
   public function laporan()
@@ -68,12 +77,12 @@ class M_admin extends CI_Model
     return $query->result();
   }
 
-  public function cek_jumlah($tabel, $id)
+  public function cek_jumlah($id)
   {
-    return  $this->db->select('stok_gudang')
-      ->from($tabel)
+    return $this->db->select('stok_gudang')
+      ->from('stok_gudang')
       ->where('id', $id)
-      ->get();
+      ->get()->result();
   }
   // public function cek_jumlah($tabel, $id_transaksi)
   // {
