@@ -46,17 +46,25 @@ class Kasir extends CI_Controller
             $terjual      = $this->input->post('terjual', TRUE);
             $tanggal = $this->input->post('tanggal', TRUE);
 
-            $data = array(
-                'kodeterjual' => $kodeterjual,
-                'id' => $id,
-                'terjual' => $terjual,
-                'tanggal'  => $tanggal,
-            );
+            $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
+            $cek =  mysqli_query($conn, "SELECT * FROM gudang WHERE id = '$id'");
+            $hasil = mysqli_fetch_array($cek);
+            $stok = $hasil['stok_toko'];
+            if ($terjual <= $stok) {
+                $data = array(
+                    'kodeterjual' => $kodeterjual,
+                    'id' => $id,
+                    'terjual' => $terjual,
+                    'tanggal'  => $tanggal,
+                );
 
-            $this->M_kasir->insert('terjual', $data);
+                $this->M_kasir->insert('terjual', $data);
 
-            $this->session->set_flashdata('msg_berhasil', 'Data Barang Berhasil Ditambahkan');
-            redirect(base_url('kasir/barangterjual'));
+                $this->session->set_flashdata('msg_berhasil', 'Data Barang Berhasil Ditambahkan');
+                redirect(base_url('kasir/barangterjual'));
+            } else {
+                echo "<script>alert('Stok Toko Tidak Cukup!');history.go(-1);</script>";
+            }
         } else {
             echo "<script>alert('Gagal menambah data: Jangan ada data yang kosong!');history.go(-1);</script>";
         }
@@ -105,7 +113,10 @@ class Kasir extends CI_Controller
 
     public function laporan()
     {
-        $data['username'] = $this->session->userdata('username');
+        $data = array(
+            'list_data' => $this->M_kasir->laporan()
+        );
+
         $this->load->view('kasir/laporan', $data);
     }
 

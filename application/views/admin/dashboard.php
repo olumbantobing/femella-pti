@@ -162,9 +162,10 @@
     }
 
     .content {
+        width: 85%;
+        height: 100%;
+        margin-left: 200px;
         display: table-cell;
-        margin-right: 200px;
-        vertical-align: top;
     }
 </style>
 

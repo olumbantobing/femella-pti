@@ -115,7 +115,7 @@
             <select class="form-control" name="id" id="id">
               <?php
               $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
-              $res = mysqli_query($conn, "SELECT id, CONCAT(id, ' ', nama_barang) AS pilihan FROM stok_gudang WHERE stok_gudang > 0");
+              $res = mysqli_query($conn, "SELECT id, CONCAT(id, ' ', nama_barang) AS pilihan FROM gudang WHERE stok_gudang > 0");
               while ($rows = mysqli_fetch_array($res)) {
               ?>
                 <option value="<?php echo $rows['id']; ?>"><?php echo $rows['pilihan']; ?></option>
