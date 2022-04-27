@@ -8,13 +8,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.min.css" integrity="sha512-3JRrEUwaCkFUBLK1N8HehwQgu8e23jTH4np5NHOmQOobuC4ROQxFwFgBLTnhcnQRMs84muMh0PnnwXlPq5MGjg==" crossorigin="anonymous" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://kit.fontawesome.com/25495e258e.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js" integrity="sha512-k6/Bkb8Fxf/c1Tkyl39yJwcOZ1P4cRrJu77p83zJjN2Z55prbFHxPs9vN7q3l3+tSMGPDdoH51AEU8Vgo1cgAA==" crossorigin="anonymous"></script>
+
   <link rel="shortcut icon" type="image/x-icon" href="assets/img/askha-logo.png">
   <title>INVENTARIS | LAPORAN</title>
   <style>
@@ -87,7 +81,7 @@
     }
 
     .content {
-      width: auto;
+      width: 85%;
       height: 100%;
       margin-left: 15%;
       display: table-cell;
@@ -162,6 +156,11 @@
     th {
       border: 1px solid #0f0e0e;
       padding: 8px;
+      text-align: center;
+    }
+
+    thead {
+      background: #DAA520;
     }
 
     tr:nth-child(even) {
@@ -179,7 +178,7 @@
       height: 3%;
       background: #f0f0f0;
       position: absolute;
-      bottom: 0;
+      bottom: 90;
       width: 100%;
       height: fit-content;
     }
@@ -200,7 +199,8 @@
       <a href=" <?= base_url('admin/barangmasuk'); ?>"">Barang Masuk Gudang</a>
       <a href=" <?= base_url('admin/barangkeluar'); ?>"">Barang Keluar Gudang</a>
       <a href=" <?= base_url('admin/pengguna'); ?>"">Pengguna</a>
-      <a href=# style="background-color: #EEECB2; font-weight: bold;">Laporan</a>
+      <a href=# style="background-color: #EEECB2; font-weight: bold;">Laporan Barang Masuk</a>
+      <a href=" <?= base_url('admin/laporan_k'); ?>">Laporan Barang Keluar</a>
       <a href=" <?= base_url('admin/nota'); ?>"">Nota</a>
       <a href=" <?= base_url('admin/logout'); ?>"">Keluar</a>
     </div>
@@ -212,7 +212,7 @@
     <!-- header -->
     <div class="header-content">
       <br /><br />
-      <h2>LAPORAN</h2>
+      <h2>LAPORAN BARANG MASUK</h2>
     </div>
     <!-- header -->
     <div class="container-fluid">
@@ -221,45 +221,38 @@
           <div class="card">
             <div class="card-header">
               <div class="row">
-                <div class="col">
-                  <p>Pilih Tanggal Laporan : </p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col col-5">
-                  <!-- <div class="form-group"> -->
-                  <form method="post" class="form-inline">
-                    <label>Tanggal Awal:</label>
-                    <input type="date" name="tgl_mulai" class="form-control">
-                    <label>Tanggal Akhir:</label>
-                    <input type="date" name="tgl_selesai" class="form-control">
-                    <button type="submit" name="filter_tgl" class="btn btn-info" style="margin-top: 10px">Filter</button>
-                    <button class="btn btn-large btn-success" style="margin-top: 10px">SEMUA</button>
-                    <button id="btnlaporan" class="btn btn-large btn-success" style="margin-top: 10px">UNDUH LAPORAN <i class="fa fa-download"></i></button>
-                  </form>
-                  <!-- <div class="input-group date" id="startdate" data-target-input="nearest">
-                      <input type="text" class="form-control datetimepicker-input" data-target="#startdate" />
-                      <div class="input-group-append" data-target="#startdate" data-toggle="datetimepicker">
-                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                      </div>
-                    </div> -->
-                </div>
-                <!-- </div> -->
-                <!-- <div class="col col-3"> -->
-                <div class="form-group">
-                  <!-- <div class="input-group date" id="enddate" data-target-input="nearest">
-                      <input type="text" class="form-control datetimepicker-input" data-target="#enddate" />
-                      <div class="input-group-append" data-target="#enddate" data-toggle="datetimepicker">
-                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                      </div>
-                    </div> -->
-                </div>
-                <!-- </div> -->
-                <!-- <div class="col col-3">
-                  <div class="form-group">
-                    <label>&nbsp</label>
+                <!-- <form action="<?= base_url('admin/show_lap') ?>" role="form" method="post">
+                  <div class="col col-6">
+                    <label><b> Pilih Laporan</b></label><br>
+                    <select name="showtable" id="showtable">
+                      <option value="masuk" name="masuk">Laporan Barang Masuk</option>
+                      <option value="keluar" name="keluar">Laporan Barang Keluar</option>
+                    </select>
+                    <button class="btn btn-sm btn-primary">Tampilkan</button>
                   </div>
-                </div> -->
+                </form> -->
+                <div class="col col-6">
+                  <form action="<?= base_url('admin/f_masuk') ?>" role="form" method="post">
+                    <!-- <form action="<?= base_url('kasir/laporan') ?>" role="form" method="post"> -->
+                    <div><b> Pilih Tanggal Laporan : </b></div>
+                    <!-- <div class="form-group"> -->
+                    <!-- <form method="post" class="form-inline"> -->
+                    <label>Tanggal Awal:</label>
+                    <input type="date" name="tgl_awal" class="form-control">
+                    <label>Tanggal Akhir:</label>
+                    <input type="date" name="tgl_akhir" class="form-control">
+                    <button type="submit" class="btn btn-info" style="margin-top: 10px">Filter</button>
+                  </form>
+                </div>
+                <div class="col col-4">
+                  <form action="<?= base_url('admin/laporan') ?>" role="form" method="post">
+                    <button name="reset" class="btn btn-large btn-secondary" style="margin-top: 10px">Reset <i class="fa fa-refresh"></i></button>
+                  </form>
+                  <form action="<?= base_url('GeneratePdfController/index') ?>" role="form" method="post">
+                    <button name="unduh" class="btn btn-large btn-success" style="margin-top: 10px">UNDUH LAPORAN <i class="fa fa-download"></i></button>
+                  </form>
+                </div>
+
                 <div class="col col-3">
                   <div class="form-group">
                     <label>&nbsp</label>
@@ -273,18 +266,19 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
+                <table id="example2" class="table table-hover">
                   <thead>
                     <tr>
                       <th>#</th>
                       <th>ID</th>
                       <th>Nama Barang</th>
                       <th>Tanggal</th>
-                      <th>Barang Keluar Gudang</th>
-                      <th>Barang Masuk Gudang</th>
-                      <th>Stok Gudang</th>
-                      <th>Barang Terjual di Toko</th>
-                      <th>Sisa di Toko</th>
+                      <th>Jumlah Barang</th>
+                      <!-- <th>Barang Keluar Gudang</th>
+                        <th>Barang Masuk Gudang</th> -->
+                      <!-- <th>Stok Gudang</th> -->
+                      <!-- <th>Barang Terjual di Toko</th> -->
+                      <!-- <th>Sisa di Toko</th> -->
                       <th>Harga</th>
                     </tr>
                   </thead>
@@ -296,12 +290,12 @@
                           <td><?= $no ?></td>
                           <td><?= $dd->id ?></td>
                           <td><?= $dd->nama_barang ?></td>
-                          <td><?= $dd->tanggal ?></td>
+                          <td><?= date('d F Y', strtotime($dd->tanggal)) ?></td>
                           <td><?= $dd->jumlah ?></td>
-                          <td><?= $dd->jumlah ?></td>
-                          <td><?= $dd->stok_gudang ?></td>
-                          <td><?= $dd->terjual ?></td>
-                          <td><?= $dd->stok_toko ?></td>
+                          <!-- <td><?= $dd->jumlah ?></td> -->
+                          <!-- <td><?= $dd->stok_gudang ?></td> -->
+                          <!-- <td><?= $dd->terjual ?></td> -->
+                          <!-- <td><?= $dd->stok_toko ?></td> -->
                           <td><?= $dd->harga ?></td>
                     </tr>
                     <?php $no++; ?>
@@ -309,44 +303,6 @@
                 <?php } else { ?>
                   <td colspan="10" align="center"><strong>Data Kosong</strong></td>
                 <?php } ?>
-                <!-- <tr>
-                  <td>001</td>
-                  <td>Kripik Pisang
-                  </td>
-                  <td>24/02/2022</td>
-                  <td>35</td>
-                  <td>35</td>
-                  <td>250</td>
-                  <td>50</td>
-                  <td>176</td>
-                  <td>Rp. 20.000</td>
-                </tr>
-                <tr>
-                  <td>002</td>
-                  <td>Kripik Nangka
-                  </td>
-                  <td>24/02/2022</td>
-                  <td>35</td>
-                  <td>35</td>
-                  <td>250</td>
-                  <td>50</td>
-                  <td>176</td>
-                  <td>Rp. 20.000</td>
-                </tr>
-                  </tbody>
-                  <tfoot>
-                    <tr>
-                      <th>ID</th>
-                      <th>Nama Barang</th>
-                      <th>Tanggal</th>
-                      <th>Barang Keluar Gudang</th>
-                      <th>Barang Masuk Gudang</th>
-                      <th>Stok Gudang</th>
-                      <th>Barang Terjual di Toko</th>
-                      <th>Sisa di Toko</th>
-                      <th>Harga</th>
-                    </tr>
-                  </tfoot> -->
                 </table>
               </div>
               <!-- /.card-body -->
@@ -366,6 +322,14 @@
       <p>Copyright &copy; 2022 Kelompok 2 PTI RB ITERA</p>
     </div>
   </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://kit.fontawesome.com/25495e258e.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js" integrity="sha512-k6/Bkb8Fxf/c1Tkyl39yJwcOZ1P4cRrJu77p83zJjN2Z55prbFHxPs9vN7q3l3+tSMGPDdoH51AEU8Vgo1cgAA==" crossorigin="anonymous"></script>
 
   <script>
     $(function() {

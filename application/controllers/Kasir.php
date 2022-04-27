@@ -120,6 +120,44 @@ class Kasir extends CI_Controller
         $this->load->view('kasir/laporan', $data);
     }
 
+    public function filter()
+    {
+        if (isset($_POST["tgl_awal"], $_POST["tgl_akhir"])) {
+            $tgl_a = $this->input->post('tgl_awal', TRUE);
+            $tgl_b = $this->input->post('tgl_akhir', TRUE);
+            $data = array(
+                'list_data' => $this->M_kasir->filter($tgl_a, $tgl_b)
+            );
+            $this->load->view('kasir/laporan', $data);
+        }
+        // $this->form_validation->set_rules('tgl_awal', 'Tanggal Awal', 'required');
+        // $this->form_validation->set_rules('tgl_akhir', 'Tanggal Akhir', 'required');
+        // if ($this->form_validation->run() == TRUE) {
+        //     $tgl_a = $this->input->post('tgl_awal', TRUE);
+        //     $tgl_b = $this->input->post('tgl_akhir', TRUE);
+
+        // $data = array(
+        //     'list_data' => $this->M_kasir->filter($tgl_a, $tgl_b)
+        // );
+        // $this->load->view('kasir/laporan', $data);
+        // } else {
+        //     $data = array(
+        //         'list_data' => $this->M_admin->f_keluar($tgl_a, $tgl_b)
+        //     );
+        //     $this->load->view('kasir/laporan', $data);
+        // }
+
+    }
+
+    public function reset()
+    {
+        $data = array(
+            'list_data' => $this->M_kasir->laporan()
+        );
+
+        $this->load->view('kasir/laporan', $data);
+    }
+
     public function logout()
     {
         $this->session->unset_userdata('username');

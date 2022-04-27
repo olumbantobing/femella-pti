@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/25495e258e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/25495e258e.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/askha-logo.png">
     <title>INVENTARIS | BERANDA</title>
 </head>
 
@@ -32,31 +35,31 @@
 
         <div class="body-content">
             <div class="box">
-                <a href=" <?= base_url('kasir/stoktoko'); ?>"">
-                            <div>
-                                <i class=" fa-4x fa-solid fa-box-open"></i>
-                    <span>Stok Toko</span>
-            </div>
-            </a>
+                <a href=" <?= base_url('kasir/stoktoko'); ?>">
+                    <div>
+                        <i class=" fa-4x fa-solid fa-box-open"></i>
+                        <span>Stok Toko</span>
+                    </div>
+                </a>
 
-            <a href=" <?= base_url('kasir/barangterjual'); ?>"">
-                            <div>
-                                <i class=" fa-4x fa-solid fa-hand-holding-dollar"></i>
-                <span>Barang Terjual</span>
+                <a href=" <?= base_url('kasir/barangterjual'); ?>">
+                    <div>
+                        <i class=" fa-4x fa-solid fa-hand-holding-dollar"></i>
+                        <span>Barang Terjual</span>
+                    </div>
+                </a>
+
+                <a href="<?= base_url('kasir/laporan'); ?>">
+                    <div>
+                        <i class="fa-4x fa-solid fa-clipboard"></i>
+                        <span>Laporan</span>
+                    </div>
+                </a>
+            </div>
         </div>
-        </a>
-
-        <a href="">
-            <div>
-                <i class="fa-4x fa-solid fa-clipboard"></i>
-                <span>Laporan</span>
-            </div>
-        </a>
-    </div>
-    </div>
-    <div class="footer">
-        <p>Copyright &copy; 2022 Kelompok 2 PTI RB ITERA</p>
-    </div>
+        <div class="footer">
+            <p>Copyright &copy; 2022 Kelompok 2 PTI RB ITERA</p>
+        </div>
     </div>
 </body>
 
@@ -73,22 +76,16 @@
     }
 
     .sidebar {
-        height: auto;
-        position: sticky;
-        /* for Safari users */
-        position: -webkit-sticky;
-        top: 0;
-        left: 0;
-        background-color: #C1A660;
-        display: table-cell;
-        width: 200px;
-        vertical-align: top;
+        background-color: #c1a660;
+        width: 15%;
+        height: 100%;
+        position: fixed;
     }
 
     .sidebar h2 {
         background-color: #756439;
         text-align: center;
-        padding: 10px;
+        padding: 14px;
         color: white;
     }
 
@@ -109,12 +106,12 @@
     }
 
     .sidebar .left-bar {
-        margin-top: 40px;
+        margin-top: 20px;
     }
 
     .sidebar a {
         display: block;
-        line-height: 40px;
+        line-height: 50px;
         font-size: 14pt;
         color: black;
         padding-left: 20px;
@@ -127,9 +124,9 @@
 
     .content {
         width: 85%;
-        height: 700px;
+        height: 100%;
         margin-left: 15%;
-        display: table-cell;
+        display: block;
     }
 </style>
 
@@ -148,7 +145,7 @@
     .content .body-content {
         background-color: #eeecb2;
         width: 100%;
-        height: 60%;
+        height: 80%;
         padding-top: 5%;
     }
 
@@ -182,9 +179,14 @@
     }
 
     .footer {
-        background-color: white;
-        padding: 10px;
-        padding-left: 30px;
-        height: 3%;
+        background-color: #eeecb2;
+        padding: 30px;
+        padding-top: 11px;
+        padding-left: 20px;
+        height: 1%;
+        background: #f0f0f0;
+        position: absolute;
+        width: 100%;
+        bottom: 0;
     }
 </style>

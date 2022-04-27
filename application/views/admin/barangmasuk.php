@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/25495e258e.js" crossorigin="anonymous"></script>
   <link rel="shortcut icon" type="image/x-icon" href="assets/img/askha-logo.png">
   <script>
     $(function() {
@@ -38,7 +40,8 @@
       <a href=# style=" background-color: #EEECB2; font-weight: bold;">Barang Masuk Gudang</a>
       <a href=" <?= base_url('admin/barangkeluar'); ?>"">Barang Keluar Gudang</a>
       <a href=" <?= base_url('admin/pengguna'); ?>"">Pengguna</a>
-      <a href=" <?= base_url('admin/laporan'); ?>"">Laporan</a>
+      <a href=" <?= base_url('admin/laporan'); ?>">Laporan Barang Masuk</a>
+      <a href=" <?= base_url('admin/laporan_k'); ?>">Laporan Barang Keluar</a>
       <a href=" <?= base_url('admin/nota'); ?>"">Nota</a>
       <a href=" <?= base_url('admin/logout'); ?>"">Keluar</a>
     </div>
@@ -47,170 +50,176 @@
 
   <!-- content -->
   <div class=" content">
-        <!-- header -->
-        <div class="header-content">
-          <br /><br />
-          <h2>BARANG MASUK GUDANG</h2>
-        </div>
-        <!-- header -->
+    <!-- header -->
+    <div class="header-content">
+      <br /><br />
+      <h2>BARANG MASUK GUDANG</h2>
+    </div>
+    <!-- header -->
 
-        <div class="body-content">
-          <div class="content-utama">
-            <!-- Tombol search -->
-            <div class="search-btn">
+    <div class="body-content">
+      <div class="content-utama">
+        <!-- Tombol search -->
+        <!-- <div class="search-btn">
               <div>
                 <input type="text" placeholder="Cari Barang..." />
                 <button>
                   <i class="fa-2x fa-solid fa-magnifying-glass"></i>
                 </button>
               </div>
-            </div>
-            <!-- Tombol search -->
+            </div> -->
+        <!-- Tombol search -->
 
-            <!-- tabel -->
-            <table>
-              <thead>
-                <tr>
-                  <th width="70px">#</th>
-                  <th width="70px">Kode Masuk</th>
-                  <th width="70px">ID</th>
-                  <th width="700px">Nama Barang</th>
-                  <th width="200px">Jumlah</th>
-                  <th width="200px">Tanggal</th>
-                  <th width="200px">Keterangan</th>
-                </tr>
-              </thead>
+        <!-- tabel -->
+        <table id="search">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Kode Masuk</th>
+              <th>ID</th>
+              <th>Nama Barang</th>
+              <th>Jumlah</th>
+              <th>Tanggal</th>
+              <th>Keterangan</th>
+            </tr>
+          </thead>
 
-              <tbody>
-                <tr>
-                  <?php if (is_array($list_data)) { ?>
-                    <?php $no = 1; ?>
-                    <?php foreach ($list_data as $dd) : ?>
-                      <td><?= $no ?></td>
-                      <td><?= $dd->kodemasuk ?></td>
-                      <td><?= $dd->id ?></td>
-                      <td><?= $dd->nama_barang ?></td>
-                      <td><?= $dd->jumlah ?></td>
-                      <td><?= date('d F Y', strtotime($dd->tanggal)) ?></td>
-                      <td><?= $dd->keterangan ?></td>
-                </tr>
-                <?php $no++; ?>
-              <?php endforeach; ?>
-            <?php } else { ?>
-              <td colspan="7" align="center"><strong>Data Kosong</strong></td>
+          <tbody>
+            <tr>
+              <?php if (is_array($list_data)) { ?>
+                <?php $no = 1; ?>
+                <?php foreach ($list_data as $dd) : ?>
+                  <td><?= $no ?></td>
+                  <td><?= $dd->kodemasuk ?></td>
+                  <td><?= $dd->id ?></td>
+                  <td><?= $dd->nama_barang ?></td>
+                  <td><?= $dd->jumlah ?></td>
+                  <td><?= date('d F Y', strtotime($dd->tanggal)) ?></td>
+                  <td><?= $dd->keterangan ?></td>
+            </tr>
+            <?php $no++; ?>
+          <?php endforeach; ?>
+        <?php } else { ?>
+          <td colspan="7" align="center"><strong>Data Kosong</strong></td>
+        <?php } ?>
+          </tbody>
+        </table>
+      </div>
+      <!-- tabel -->
+
+      <!-- Menu Input -->
+      <div class="form-input">
+        <div class="box">
+          <h4 style="background-color: #008fdf87">
+            Tambah Barang Masuk
+            <i class="fa-solid fa-plus"></i>
+          </h4>
+          <form action="<?= base_url('admin/tambah_barangmasuk') ?>" role="form" method="post">
+            <label> Kode Masuk</label><br />
+            <input type="text" name="kodemasuk" id="kodemasuk" value="AM-<?= date("yM"); ?><?= random_string('numeric', 3); ?>" readonly /><br />
+            <label> ID Barang</label><br />
+            <select class="form-control" name="id" id="id">
+              <?php
+              $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
+              $res = mysqli_query($conn, "SELECT id, CONCAT(id, ' ', nama_barang) AS pilihan FROM gudang ORDER BY id ASC");
+              while ($rows = mysqli_fetch_array($res)) {
+              ?>
+                <option value="<?php echo $rows['id']; ?>"><?php echo $rows['pilihan']; ?></option>
+              <?php } ?>
+            </select>
+            <!-- <input type="text" name="id" id="id" placeholder="Masukkan ID Barang" /><br /> -->
+            <label>Jumlah</label><br />
+            <input type="text" name="jumlah" id="jumlah" placeholder="Masukkan jumlah barang" /><br />
+            <label>Tanggal</label><br />
+            <input type="text" name="tanggal" id="date" placeholder="Pilih tanggal" /><br />
+            <label>Keterangan</label><br />
+            <input type="text" name="keterangan" id="keterangan" placeholder="Masukkan keterangan" /><br />
+            <button style="background-color: #008fdf87" onclick="return confirm('Anda yakin ingin menambah data?');">Tambah</button>
+
+            <?php if ($this->session->flashdata('msg_tambah')) {
+              echo "<script>alert('Data barang berhasil ditambahkan!');</script>"; ?>
             <?php } ?>
-              </tbody>
-            </table>
-          </div>
-          <!-- tabel -->
-
-          <!-- Menu Input -->
-          <div class="form-input">
-            <div class="box">
-              <h4 style="background-color: #008fdf87">
-                Tambah Barang Masuk
-                <i class="fa-solid fa-plus"></i>
-              </h4>
-              <form action="<?= base_url('admin/tambah_barangmasuk') ?>" role="form" method="post">
-                <label> Kode Masuk</label><br />
-                <input type="text" name="kodemasuk" id="kodemasuk" value="AM-<?= date("yM"); ?><?= random_string('numeric', 3); ?>" readonly /><br />
-                <label> ID Barang</label><br />
-                <select class="form-control" name="id" id="id">
-                  <?php
-                  $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
-                  $res = mysqli_query($conn, "SELECT id, CONCAT(id, ' ', nama_barang) AS pilihan FROM stok_gudang");
-                  while ($rows = mysqli_fetch_array($res)) {
-                  ?>
-                    <option value="<?php echo $rows['id']; ?>"><?php echo $rows['pilihan']; ?></option>
-                  <?php } ?>
-                </select>
-                <!-- <input type="text" name="id" id="id" placeholder="Masukkan ID Barang" /><br /> -->
-                <label>Jumlah</label><br />
-                <input type="text" name="jumlah" id="jumlah" placeholder="Masukkan jumlah barang" /><br />
-                <label>Tanggal</label><br />
-                <input type="text" name="tanggal" id="date" placeholder="Pilih tanggal" /><br />
-                <label>Keterangan</label><br />
-                <input type="text" name="keterangan" id="keterangan" placeholder="Masukkan keterangan" /><br />
-                <button style="background-color: #008fdf87" onclick="return confirm('Anda yakin ingin menambah data?');">Tambah</button>
-
-                <?php if ($this->session->flashdata('msg_tambah')) {
-                  echo "<script>alert('Data barang berhasil ditambahkan!');</script>"; ?>
-                <?php } ?>
-              </form>
-            </div>
-            <div class="box">
-              <h4 style="background-color: #fad541fc">
-                Ubah Barang Masuk
-                <i class="fa-solid fa-minus"></i>
-              </h4>
-              <form action="<?= base_url('admin/ubah_barangmasuk') ?>" role="form" method="post">
-                <!-- <label> ID Barang</label><br />
-                <select class="form-control" name="id" id="id">
-                  <?php
-                  $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
-                  $res = mysqli_query($conn, "SELECT id, CONCAT(id, ' ', nama_barang) AS pilihan FROM stok_gudang");
-                  while ($rows = mysqli_fetch_array($res)) {
-                  ?>
-                    <option value="<?php echo $rows['id']; ?>"><?php echo $rows['pilihan']; ?></option>
-                  <?php } ?>
-                </select> -->
-                <label>Kode Masuk</label><br />
-                <select class="form-control" name="kodemasuk" id="kodemasuk">
-                  <?php
-                  $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
-                  $res = mysqli_query($conn, "SELECT kodemasuk FROM masuk_gudang");
-                  while ($rows = mysqli_fetch_array($res)) {
-                  ?>
-                    <option value="<?php echo $rows['kodemasuk']; ?>"><?php echo $rows['kodemasuk']; ?></option>
-                  <?php } ?>
-                </select>
-                <!-- <input type="text" name="kodemasuk" id="kodemasuk" placeholder="Masukkan kode masuk barang yang ingin diubah" /><br /> -->
-                <label>Jumlah</label><br />
-                <input type="text" name="jumlah" id="jumlah" placeholder="Masukkan jumlah" /><br />
-                <label>Tanggal</label><br />
-                <input type="text" name="tanggal" id="date1" placeholder="Pilih tanggal" /><br />
-                <label>Keterangan</label><br />
-                <input type="text" name="keterangan" id="keterangan" placeholder="Masukkan keterangan" /><br />
-                <button style="background-color: #fad541fc" onclick="return confirm('Anda yakin ingin mengubah data?');">Ubah</button>
-
-                <?php if ($this->session->flashdata('msg_ubah')) {
-                  echo "<script>alert('Data barang berhasil diubah!');</script>"; ?>
-                <?php } ?>
-              </form>
-            </div>
-            <div class="box">
-              <h4 style="background-color: #fe4a4af0">
-                Hapus Data Barang
-                <i class="fa-solid fa-minus"></i>
-              </h4>
-              <form action="<?= base_url('admin/hapus_barangmasuk') ?>" role="form" method="post">
-                <label>Kode Masuk</label><br />
-                <select class="form-control" name="kodemasuk" id="kodemasuk">
-                  <?php
-                  $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
-                  $res = mysqli_query($conn, "SELECT kodemasuk FROM masuk_gudang");
-                  while ($rows = mysqli_fetch_array($res)) {
-                  ?>
-                    <option value="<?php echo $rows['kodemasuk']; ?>"><?php echo $rows['kodemasuk']; ?></option>
-                  <?php } ?>
-                </select>
-                <!-- <input type="text" name="kodemasuk" id="kodemasuk" placeholder="Masukkan kode masuk barang" /><br /> -->
-                <button style="background-color: #fe4a4af0" onclick="return confirm('Anda yakin ingin menghapus data?');">Hapus</button>
-
-                <?php if ($this->session->flashdata('msg_hapus')) {
-                  echo "<script>alert('Data barang berhasil dihapus!');</script>"; ?>
-                <?php } ?>
-              </form>
-            </div>
-          </div>
-          <!-- Menu Input -->
+          </form>
         </div>
-        <div class="footer">
-          <p>Copyright &copy; 2022 Kelompok 2 PTI RB ITERA</p>
+        <div class="box">
+          <h4 style="background-color: #fad541fc">
+            Ubah Barang Masuk
+            <i class="fa fa-pencil-square-o"></i>
+          </h4>
+          <form action="<?= base_url('admin/ubah_barangmasuk') ?>" role="form" method="post">
+            <label>Kode Masuk</label><br />
+            <select class="form-control" name="kodemasuk" id="kodemasuk">
+              <?php
+              $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
+              $res = mysqli_query($conn, "SELECT masuk_gudang.kodemasuk as kodemasuk, CONCAT(masuk_gudang.kodemasuk, ' : ', gudang.nama_barang) AS pilihan FROM masuk_gudang INNER JOIN gudang WHERE masuk_gudang.id = gudang.id ORDER BY gudang.id ASC");
+              while ($rows = mysqli_fetch_array($res)) {
+              ?>
+                <option value="<?php echo $rows['kodemasuk']; ?>"><?php echo $rows['pilihan']; ?></option>
+              <?php } ?>
+            </select>
+            <!-- <input type="text" name="kodemasuk" id="kodemasuk" placeholder="Masukkan kode masuk barang yang ingin diubah" /><br /> -->
+            <label>Jumlah</label><br />
+            <input type="text" name="jumlah" id="jumlah" placeholder="Masukkan jumlah" /><br />
+            <label>Tanggal</label><br />
+            <input type="text" name="tanggal" id="date1" placeholder="Pilih tanggal" /><br />
+            <label>Keterangan</label><br />
+            <input type="text" name="keterangan" id="keterangan" placeholder="Masukkan keterangan" /><br />
+            <button style="background-color: #fad541fc" onclick="return confirm('Anda yakin ingin mengubah data?');">Ubah</button>
+
+            <?php if ($this->session->flashdata('msg_ubah')) {
+              echo "<script>alert('Data barang berhasil diubah!');</script>"; ?>
+            <?php } ?>
+          </form>
         </div>
+        <div class="box">
+          <h4 style="background-color: #fe4a4af0">
+            Hapus Data Barang
+            <i class="fa fa-trash-o"></i>
+          </h4>
+          <form action="<?= base_url('admin/hapus_barangmasuk') ?>" role="form" method="post">
+            <label>Kode Masuk</label><br />
+            <select class="form-control" name="kodemasuk" id="kodemasuk">
+              <?php
+              $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
+              $res = mysqli_query($conn, "SELECT masuk_gudang.kodemasuk as kodemasuk, CONCAT(masuk_gudang.kodemasuk, ' : ', gudang.nama_barang) AS pilihan FROM masuk_gudang INNER JOIN gudang WHERE masuk_gudang.id = gudang.id");
+              while ($rows = mysqli_fetch_array($res)) {
+              ?>
+                <option value="<?php echo $rows['kodemasuk']; ?>"><?php echo $rows['pilihan']; ?></option>
+              <?php } ?>
+            </select>
+            <!-- <input type="text" name="kodemasuk" id="kodemasuk" placeholder="Masukkan kode masuk barang" /><br /> -->
+            <button style="background-color: #fe4a4af0" onclick="return confirm('Anda yakin ingin menghapus data?');">Hapus</button>
+
+            <?php if ($this->session->flashdata('msg_hapus')) {
+              echo "<script>alert('Data barang berhasil dihapus!');</script>"; ?>
+            <?php } ?>
+          </form>
+        </div>
+      </div>
+      <!-- Menu Input -->
     </div>
-    <!-- content -->
+    <div class="footer">
+      <p>Copyright &copy; 2022 Kelompok 2 PTI RB ITERA</p>
+    </div>
+  </div>
+  <!-- content -->
 
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#search').DataTable({
+        "paging": false,
+        "lengthChange": false,
+        "searching": true,
+        "ordering": false,
+        "info": false,
+        "autoWidth": true,
+        "responsive": true,
+      });
+    });
+  </script>
 </body>
 
 
@@ -424,11 +433,11 @@
     background-color: rgb(224, 216, 206);
   }
 
-  .form-control {
-    height: 23px;
+  .id {
+    /* height: 23px; */
     width: 100%;
     font-size: 12pt;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
 
   table {
@@ -437,6 +446,18 @@
 
   .footer {
     background-color: white;
+    padding: 30px;
+    padding-top: 11px;
+    padding-left: 20px;
+    height: 1%;
+    background: #f0f0f0;
+    position: absolute;
+    bottom: 90;
+    width: 100%;
+  }
+
+  /* .footer {
+    background-color: white;
     padding: 10px;
     padding-left: 30px;
     height: 5%;
@@ -444,5 +465,5 @@
     position: absolute;
     bottom: 90;
     width: 100%;
-  }
+  } */
 </style>

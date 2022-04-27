@@ -15,7 +15,20 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js" integrity="sha512-k6/Bkb8Fxf/c1Tkyl39yJwcOZ1P4cRrJu77p83zJjN2Z55prbFHxPs9vN7q3l3+tSMGPDdoH51AEU8Vgo1cgAA==" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/askha-logo.png">
     <title>INVENTARIS | NOTA</title>
+
+    <script>
+        $(function() {
+            $("#tgl_masuk").datepicker({
+                dateFormat: "yy-mm-dd"
+            });
+            $("#tgl_keluar").datepicker({
+                dateFormat: "yy-mm-dd"
+            });
+        });
+    </script>
+
     <style>
         * {
             margin: 0;
@@ -37,6 +50,7 @@
             display: table-cell;
             width: 200px;
             vertical-align: top;
+
         }
 
         .sidebar h2 {
@@ -57,8 +71,7 @@
             text-align: center;
             display: block;
             margin-top: 20px;
-            font-size: 14pt;
-            font: bold;
+            font-weight: bold;
         }
 
         .sidebar .left-bar {
@@ -67,10 +80,13 @@
 
         .sidebar a {
             display: block;
-            line-height: 40px;
-            font-size: 13pt;
+            line-height: 20px;
+            font-size: 14pt;
             color: black;
             padding-left: 20px;
+            padding-right: 15px;
+            padding-top: 10px;
+            padding-bottom: 7px;
             box-sizing: border-box;
         }
 
@@ -83,7 +99,7 @@
         }
 
         .content {
-            width: max-content;
+            width: 85%;
             height: 100%;
             margin-left: 15%;
             display: table-cell;
@@ -158,6 +174,11 @@
         th {
             border: 1px solid #0f0e0e;
             padding: 8px;
+            text-align: center;
+        }
+
+        thead {
+            background: #DAA520;
         }
 
         tr:nth-child(even) {
@@ -196,7 +217,8 @@
             <a href=" <?= base_url('admin/barangmasuk'); ?>"">Barang Masuk Gudang</a>
             <a href=" <?= base_url('admin/barangkeluar'); ?>"">Barang Keluar Gudang</a>
             <a href=" <?= base_url('admin/pengguna'); ?>"">Pengguna</a>
-            <a href=" <?= base_url('admin/laporan'); ?>"">Laporan</a>
+            <a href=" <?= base_url('admin/laporan'); ?>">Laporan Barang Masuk</a>
+            <a href=" <?= base_url('admin/laporan_k'); ?>">Laporan Barang Keluar</a>
             <a href=# style=" background-color: #EEECB2; font-weight: bold;">Nota</a>
             <a href=" <?= base_url('admin/logout'); ?>"">Keluar</a>
         </div>
@@ -213,15 +235,21 @@
                 <!-- header -->
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col col-3">
+                        <div class="col col-2">
                             <button type="button" id="tambahnota" class="form-control form-control-navbar btn btn-large btn-info" data-toggle="modal" data-target="#modal-default"><i class="fa fa-plus"></i> Tambah Nota</button>
                         </div>
-                        <div class="col col-3">
+                        <div class="col col-2">
+                            <button type="button" id="editnota" class="form-control form-control-navbar btn btn-large btn-warning" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-pencil-square-o"></i> Edit Nota</button>
+                        </div>
+                        <div class="col col-2">
+                            <button type="button" id="hapusnota" class="form-control form-control-navbar btn btn-large btn-danger" data-toggle="modal" data-target="#modal-hapus"><i class="fa fa-trash-o"></i> Hapus Nota</button>
+                        </div>
+                        <div class="col col-2">
                             <button type="button" id="btnlaporan" class="form-control form-control-navbar btn btn-large btn-success"><i class="fa fa-download"></i> Cetak Nota </button>
                         </div>
-                        <div class="col col-6">
+                        <!-- <div class="col col-4">
                             <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                        </div>
+                        </div> -->
                     </div>
                     <br />
                     <div class="row">
@@ -229,7 +257,7 @@
                             <div class="card">
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                    <table id="example2" class="table table-bordered table-hover">
+                                    <table id="example2" class="table table-hover">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
@@ -239,72 +267,38 @@
                                                 <th>Tanggal Masuk</th>
                                                 <th>Barang Masuk</th>
                                                 <th>Barang Terjual</th>
-                                                <th>Sisa</th>
+                                                <!-- <th>Sisa</th> -->
                                                 <th>Tanggal Keluar</th>
-                                                <th>Harga Asli Barang (pcs) </th>
-                                                <th>Harga Jual Barang (pcs) </th>
+                                                <th>Harga Asli (pcs) </th>
+                                                <th>Harga Jual (pcs) </th>
                                                 <th>Total</th>
                                                 <th>Fee</th>
-                                                <th>Tindakan</th>
+                                                <!-- <th>Tindakan</th> -->
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <?php if (is_array($list_data)) { ?>
                                                     <?php foreach ($list_data as $dd) : ?>
-                                                        <td><?= $dd->id ?></td>
+                                                        <td><?= $dd->id_nota ?></td>
                                                         <td><?= $dd->jenis ?></td>
                                                         <td><?= $dd->nama_barang ?></td>
                                                         <td><?= $dd->supplier ?></td>
-                                                        <td><?= $dd->tgl_masuk ?></td>
+                                                        <td><?= date('d F Y', strtotime($dd->tgl_masuk)) ?></td>
                                                         <td><?= $dd->jml_masuk ?></td>
                                                         <td><?= $dd->terjual ?></td>
-                                                        <td><?= $dd->sisa ?></td>
-                                                        <td><?= $dd->tgl_keluar ?></td>
+                                                        <!-- <td><?= $dd->sisa ?></td> -->
+                                                        <td><?= date('d F Y', strtotime($dd->tgl_keluar)) ?></td>
                                                         <td><?= $dd->hrg_asli ?></td>
-                                                        <td><?= $dd->hrg_keluar ?></td>
+                                                        <td><?= $dd->hrg_jual ?></td>
                                                         <td><?= $dd->total ?></td>
                                                         <td><?= $dd->fee ?></td>
-                                                        <td><button id="edit" class="btn btn-warning">Edit</button> | <button class="btn btn-danger">Hapus</button></td>
+                                                        <!-- <td><button id="edit" class="btn btn-warning">Edit</button> | <button class="btn btn-danger">Hapus</button></td> -->
                                             </tr>
                                         <?php endforeach; ?>
                                     <?php } else { ?>
                                         <td colspan="14" align="center"><strong>Data Kosong</strong></td>
                                     <?php } ?>
-                                    <!-- <tr>
-                                        <td>001</td>
-                                        <td>CASH</td>
-                                        <td>Kripik Pisang
-                                        </td>
-                                        <td>Rama Jaya</td>
-                                        <td>24/02/2022</td>
-                                        <td>35</td>
-                                        <td>20</td>
-                                        <td>15</td>
-                                        <td>25/02/2022</td>
-                                        <td>Rp. 20.000</td>
-                                        <td>Rp. 25.000</td>
-                                        <td>Rp. 750.000</td>
-                                        <td>Rp. 150.000</td>
-                                        <td><button id="edit" class="btn btn-warning">Edit</button> | <button class="btn btn-danger">Hapus</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>001</td>
-                                        <td>CASH</td>
-                                        <td>Kripik Molen
-                                        </td>
-                                        <td>Rama Jaya</td>
-                                        <td>24/02/2022</td>
-                                        <td>35</td>
-                                        <td>20</td>
-                                        <td>15</td>
-                                        <td>25/02/2022</td>
-                                        <td>Rp. 20.000</td>
-                                        <td>Rp. 25.000</td>
-                                        <td>Rp. 750.000</td>
-                                        <td>Rp. 150.000</td>
-                                        <td><button id="edit" class="btn btn-warning">Edit</button> | <button class="btn btn-danger">Hapus</button></td>
-                                    </tr> -->
                                         </tbody>
                                     </table>
                                 </div>
@@ -336,55 +330,65 @@
                             <!-- <form> -->
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label>ID</label><br />
-                                    <input type="text" name="id_nota" id="id_nota" value="<?= date("yM"); ?><?= random_string('numeric', 3); ?>" readonly />
-                                </div>
-                                <div>
-                                    <label>Pilih Jenis (klik form)</label>
-                                    <select class="form-control" name="jenis">
+                                    <label for="id_nota">ID</label><br />
+                                    <input type="text" class="form-control" name="id_nota" id="id_nota" value="N<?= date("yM"); ?><?= random_string('numeric', 2); ?>" readonly />
+                                    <!-- </div>
+                                <div> -->
+
+                                    <label for="jenis">Pilih Jenis (klik form)</label><br>
+                                    <select class="form-control" name="jenis" id="jenis">
                                         <!-- <option selected=""></option> -->
                                         <option>CASH</option>
                                         <option>KONSINYASI</option>
                                     </select>
-                                    <div class="form-group">
-                                        <label for="nama_barang">Nama Barang</label>
-                                        <input type="text" class="form-control" id="nama_barang" placeholder="Masukkan Nama Barang">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="supplier">Nama Supplier</label>
-                                        <input type="text" class="form-control" id="supplier" placeholder="Masukkan Nama Supplier">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="tgl_masuk">Tanggal Masuk</label>
-                                        <input type="date" class="form-control" id="tgl_masuk">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="jmlmasuk">Jumlah Barang Masuk</label>
-                                        <input type="text" class="form-control" id="jml_masuk" placeholder="Masukkan Jumlah Barang Masuk">
-                                    </div>
+                                    <!-- <div class="form-group"> -->
+
+                                    <label for="nama_barang">Nama Barang</label><br>
+                                    <input class="form-control" type="text" id="nama_barang" name="nama_barang" placeholder="Masukkan Nama Barang">
+                                    <!-- </div>
+                                    <div class="form-group"> -->
+
+                                    <label for="supplier">Nama Supplier</label><br>
+                                    <input class="form-control" type="text" id="supplier" name="supplier" placeholder="Masukkan Nama Supplier">
+                                    <!-- </div>
+                                    <div class="form-group"> -->
+
+                                    <label for="tgl_masuk">Tanggal Masuk</label><br>
+                                    <input class="form-control" type="date" id="tgl_masuk" name="tgl_masuk">
+                                    <!-- </div>
+                                    <div class="form-group"> -->
+
+                                    <label for="jml_masuk">Jumlah Barang Masuk</label><br>
+                                    <input class="form-control" type="text" id="jml_masuk" name="jml_masuk" placeholder="Masukkan Jumlah Barang Masuk">
+                                    <!-- </div> -->
                                     <!-- <div class="form-group">
                                         <label for="terjual">Masukkan Jumlah Barang Terjual</label>
                                         <input type="text" class="form-control" id="terjual" readonly>
                                     </div> -->
-                                    <div class="form-group">
-                                        <label for="tgl_keluar">Tanggal Keluar</label>
-                                        <input type="date" class="form-control" id="tgl_keluar">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="hrg_asli">Harga Asli Barang</label>
-                                        <input type="text" class="form-control" id="hrg_asli" placeholder="tulis angka saja (contoh: 25000)">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="hrg_jual">Harga Jual Barang</label>
-                                        <input type="text" class="form-control" id="hrg_jual" placeholder="tulis angka saja (contoh: 25000)">
-                                    </div>
-                                    <div class="modal-footer justify-content-between">
-                                        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
-                                        <button class="btn btn-primary" onclick="return confirm('Yakin ingin menambah data?')">Save changes</button>
-                                    </div>
+                                    <!-- <div class="form-group"> -->
+
+                                    <label for="tgl_keluar">Tanggal Keluar</label><br>
+                                    <input class="form-control" type="date" id="tgl_keluar" name="tgl_keluar">
+                                    <!-- </div>
+                                    <div class="form-group"> -->
+
+                                    <label for="hrg_asli">Harga Asli Barang</label><br>
+                                    <input class="form-control" type="text" id="hrg_asli" name="hrg_asli" placeholder="tulis angka saja (contoh: 25000)">
+                                    <!-- </div>
+                                    <div class="form-group"> -->
+
+                                    <label for="hrg_jual">Harga Jual Barang</label><br>
+                                    <input class="form-control" type="text" id="hrg_jual" name="hrg_jual" placeholder="tulis angka saja (contoh: 25000)">
+                                    <!-- </div>
+                                    <div class="modal-footer justify-content-between"> -->
+                                    <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+                                    <!-- </div> -->
                                 </div>
                             </div>
                             <!-- /.card-body -->
+                            <div class="modal-footer justify-content-between">
+                                <button class="btn btn-primary" onclick="return confirm('Yakin ingin menambah data?')">Tambah Data</button>
+                            </div>
                         </form>
                         <!-- </form> -->
                     </div>
@@ -397,64 +401,70 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Edit Barang</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <h4 class="modal-title">Edit Nota</h4>
+                        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
-                        </button>
+                        </button> -->
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form action="<?= base_url('admin/edit_nota') ?>" role="form" method="post">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label>Pilih Jenis ID:</label>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="radio1">
-                                        <label class="form-check-label">CASH</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="radio1" checked>
-                                        <label class="form-check-label">KONSINYASI</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="nama_barang">Masukkan Nama Barang</label>
-                                    <input type="text" class="form-control" id="nama_barang" placeholder="" value="Kripik Talas">
-                                </div>
-                                <div class="form-group">
-                                    <label for="supplier">Masukkan Nama Supplier</label>
-                                    <input type="text" class="form-control" id="sumpplier" placeholder="" value="Joko Talas">
-                                </div>
-                                <div class="form-group">
-                                    <label for="tgl_masuk">Tanggal Masuk</label>
-                                    <input type="text" class="form-control" id="tgl_masuk" placeholder="" value="today">
-                                </div>
-                                <div class="form-group">
-                                    <label for="jml_masuk">Masukkan Jumlah Barang Masuk</label>
-                                    <input type="text" class="form-control" id="jml_masuk" placeholder="" value="50">
-                                </div>
-                                <div class="form-group">
+                                    <label>ID (klik form)</label><br />
+                                    <select class="form-control" name="id_nota" id="id_nota">
+                                        <?php
+                                        $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
+                                        $res = mysqli_query($conn, "SELECT id_nota FROM nota");
+                                        while ($rows = mysqli_fetch_array($res)) {
+                                        ?>
+                                            <option value="<?php echo $rows['id_nota']; ?>"><?php echo $rows['id_nota']; ?></option>
+                                        <?php } ?>
+                                    </select>
                                     <label for="terjual">Masukkan Jumlah Barang Terjual</label>
-                                    <input type="text" class="form-control" id="terjual" placeholder="" value="50">
-                                </div>
-                                <div class="form-group">
-                                    <label for="tgl_keluar">Tanggal Keluar</label>
-                                    <input type="text" class="form-control" id="tgl_keluar" placeholder="" value="today">
-                                </div>
-                                <div class="form-group">
-                                    <label for="hrg_asli">Masukkan Harga Asli Barang</label>
-                                    <input type="text" class="form-control" id="hrg_asli" placeholder="" value="RP. 20.000">
-                                </div>
-                                <div class="form-group">
-                                    <label for="hrg_jual">Masukkan Harga Jual Barang</label>
-                                    <input type="text" class="form-control" id="hrg_jual" placeholder="" value="RP. 25.000">
+                                    <input type="text" class="form-control" id="terjual" name="terjual" placeholder="Masukkan jumlah barang terjual">
                                 </div>
                             </div>
                             <!-- /.card-body -->
+                            <div class="modal-footer justify-content-between">
+                                <button class="btn btn-primary" onclick="return confirm('Yakin ingin mengubah data?')">Ubah Data</button>
+                            </div>
                         </form>
                     </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button id="editdata" type="button" class="btn btn-primary">Save changes</button>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <div class="modal fade" id="modal-hapus">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Hapus Nota</h4>
+                        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button> -->
+                    </div>
+                    <div class="modal-body">
+                        <form action="<?= base_url('admin/hapus_nota') ?>" role="form" method="post">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label>ID (klik form)</label><br />
+                                    <select class="form-control" name="id_nota" id="id_nota">
+                                        <?php
+                                        $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
+                                        $res = mysqli_query($conn, "SELECT id_nota FROM nota");
+                                        while ($rows = mysqli_fetch_array($res)) {
+                                        ?>
+                                            <option value="<?php echo $rows['id_nota']; ?>"><?php echo $rows['id_nota']; ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="modal-footer justify-content-between">
+                                <button class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus data?')">Hapus</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <!-- /.modal-content -->
@@ -500,7 +510,7 @@
                 $('#example2').DataTable({
                     "paging": false,
                     "lengthChange": false,
-                    "searching": false,
+                    "searching": true,
                     "ordering": false,
                     "info": true,
                     "autoWidth": false,
@@ -516,20 +526,23 @@
             $('#btnlaporan').click(function() {
                 $('#modal-unduh').modal('show');
             });
-            $('#tambahdata').click(function() {
-                confirm("Apa Anda Yakin ingin menambah data?");
-            });
-            $('#editdata').click(function() {
-                confirm("Apa Anda Yakin ingin mengedit data?");
-            });
+            // $('#tambahdata').click(function() {
+            //     confirm("Apa Anda Yakin ingin menambah data?");
+            // });
+            // $('#editdata').click(function() {
+            //     confirm("Apa Anda Yakin ingin mengedit data?");
+            // });
             $('#unduhdata').click(function() {
-                confirm("Apa Anda Yakin ingin menngunduh data?");
+                confirm("Apa Anda Yakin ingin mengunduh data?");
             });
             $('#tambahnota').click(function() {
                 $('#modal-default').modal('show');
             });
-            $('#edit').click(function() {
+            $('#editnota').click(function() {
                 $('#modal-edit').modal('show');
+            });
+            $('#hapusnota').click(function() {
+                $('#modal-hapus').modal('show');
             });
         </script>
 

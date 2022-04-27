@@ -340,6 +340,14 @@ class Admin extends CI_Controller
         $this->load->view('admin/laporan', $data);
     }
 
+    public function laporan_k()
+    {
+        $data = array(
+            'list_data' => $this->M_admin->laporan_k()
+        );
+        $this->load->view('admin/laporan_k', $data);
+    }
+
     public function show_lap()
     {
         $this->form_validation->set_rules('showtable', 'Pilih Laporan', 'required');
@@ -349,69 +357,96 @@ class Admin extends CI_Controller
                     'list_data' => $this->M_admin->laporan_m()
                 );
 
-                if ($this->input->post('filter_tgl') == 1) {
-                    $this->form_validation->set_rules('tgl_awal', 'Tanggal Awal', 'required');
-                    $this->form_validation->set_rules('tgl_akhir', 'Tanggal Akhir', 'required');
-                    if ($this->form_validation->run() == TRUE) {
-                        $tgl_a = $this->input->post('tgl_awal', TRUE);
-                        $tgl_b = $this->input->post('tgl_akhir', TRUE);
+                // if ($this->input->post('filter_tgl') == 1) {
+                //     $this->form_validation->set_rules('tgl_awal', 'Tanggal Awal', 'required');
+                //     $this->form_validation->set_rules('tgl_akhir', 'Tanggal Akhir', 'required');
+                //     if ($this->form_validation->run() == TRUE) {
 
-                        $data = array(
-                            'list_data' => $this->M_admin->f_masuk($tgl_a, $tgl_b)
-                        );
-                    }
-                    // } else {
-                    //     $data = array(
-                    //         'list_data' => $this->M_admin->f_keluar($tgl_a, $tgl_b)
-                    //     );
-                    // }
-                }
+                //         $tgl_a = $this->input->post('tgl_awal', TRUE);
+                //         $tgl_b = $this->input->post('tgl_akhir', TRUE);
+                //         die($tgl_a. "===" .$tgl_b);
+                //         $data = array(
+                //             'list_data' => $this->M_admin->f_masuk($tgl_a, $tgl_b)
+                //         );
+                //     }
+
+                //     // } else {
+                //     //     $data = array(
+                //     //         'list_data' => $this->M_admin->f_keluar($tgl_a, $tgl_b)
+                //     //     );
+                //     // }
+                // }
             } else {
                 $data = array(
                     'list_data' => $this->M_admin->laporan_k()
                 );
 
-                $this->form_validation->set_rules('tgl_awal', 'Tanggal Awal', 'required');
-                $this->form_validation->set_rules('tgl_akhir', 'Tanggal Akhir', 'required');
-                if ($this->form_validation->run() == TRUE) {
-                    $tgl_a = $this->input->post('tgl_awal', TRUE);
-                    $tgl_b = $this->input->post('tgl_akhir', TRUE);
+                // $this->form_validation->set_rules('tgl_awal', 'Tanggal Awal', 'required');
+                // $this->form_validation->set_rules('tgl_akhir', 'Tanggal Akhir', 'required');
+                // if ($this->form_validation->run() == TRUE) {
+                //     $tgl_a = $this->input->post('tgl_awal', TRUE);
+                //     $tgl_b = $this->input->post('tgl_akhir', TRUE);
 
-                    $data = array(
-                        'list_data' => $this->M_admin->f_keluar($tgl_a, $tgl_b)
-                    );
+                //     $data = array(
+                //         'list_data' => $this->M_admin->f_keluar($tgl_a, $tgl_b)
+                //     );
 
-                    // } else {
-                    //     $data = array(
-                    //         'list_data' => $this->M_admin->f_keluar($tgl_a, $tgl_b)
-                    //     );
-                    // }
-                }
+                //     // } else {
+                //     //     $data = array(
+                //     //         'list_data' => $this->M_admin->f_keluar($tgl_a, $tgl_b)
+                //     //     );
+                //     // }
+                // }
             }
             $this->load->view('admin/laporan', $data);
         }
     }
 
-    public function filter()
+    public function f_masuk()
     {
-        $this->form_validation->set_rules('tgl_awal', 'Tanggal Awal', 'required');
-        $this->form_validation->set_rules('tgl_akhir', 'Tanggal Akhir', 'required');
-        if ($this->form_validation->run() == TRUE) {
+        if (isset($_POST["tgl_awal"], $_POST["tgl_akhir"])) {
             $tgl_a = $this->input->post('tgl_awal', TRUE);
             $tgl_b = $this->input->post('tgl_akhir', TRUE);
-
-            if ($this->input->post('showtable') == 'masuk') {
-                $data = array(
-                    'list_data' => $this->M_admin->f_masuk($tgl_a, $tgl_b)
-                );
-            } else {
-                $data = array(
-                    'list_data' => $this->M_admin->f_keluar($tgl_a, $tgl_b)
-                );
-            }
+            $data = array(
+                'list_data' => $this->M_admin->f_masuk($tgl_a, $tgl_b)
+            );
             $this->load->view('admin/laporan', $data);
         }
     }
+
+    public function f_keluar()
+    {
+        if (isset($_POST["tgl_awal"], $_POST["tgl_akhir"])) {
+            $tgl_a = $this->input->post('tgl_awal', TRUE);
+            $tgl_b = $this->input->post('tgl_akhir', TRUE);
+            $data = array(
+                'list_data' => $this->M_admin->f_keluar($tgl_a, $tgl_b)
+            );
+            $this->load->view('admin/laporan_k', $data);
+        }
+    }
+
+    // public function filter()
+    // {
+    //     $this->form_validation->set_rules('tgl_awal', 'Tanggal Awal', 'required');
+    //     $this->form_validation->set_rules('tgl_akhir', 'Tanggal Akhir', 'required');
+    //     if ($this->form_validation->run() == TRUE) {
+    //         $tgl_a = $this->input->post('tgl_awal', TRUE);
+    //         $tgl_b = $this->input->post('tgl_akhir', TRUE);
+
+    //         if ($this->input->post('filter_tgl') == 1) {
+    //             $data = array(
+    //                 'list_data' => $this->M_admin->f_masuk($tgl_a, $tgl_b)
+    //             );
+    //             $this->load->view('admin/laporan', $data);
+    //         } else {
+    //             $data = array(
+    //                 'list_data' => $this->M_admin->f_keluar($tgl_a, $tgl_b)
+    //             );
+    //             $this->load->view('admin/laporan', $data);
+    //         }
+    //     }
+    // }
 
     public function nota()
     {
@@ -457,9 +492,52 @@ class Admin extends CI_Controller
             $this->M_admin->insert('nota', $data);
 
             $this->session->set_flashdata('msg_berhasil', 'Data Barang Berhasil Ditambahkan');
-            redirect(base_url('admin/pengguna'));
+            redirect(base_url('admin/nota'));
         } else {
             echo "<script>alert('Gagal menambah data: Jangan ada data yang kosong!');history.go(-1);</script>";
+        }
+    }
+
+    public function edit_nota()
+    {
+        $this->form_validation->set_rules('id_nota', 'ID (klik form)', 'required');
+        $this->form_validation->set_rules('terjual', 'Masukkan Jumlah Barang Terjual', 'required');
+
+        if ($this->form_validation->run() == TRUE) {
+            $id_nota = $this->input->post('id_nota', TRUE);
+            $terjual = $this->input->post('terjual', TRUE);
+
+            $where = array('id_nota' => $id_nota);
+            $data = array(
+                'id_nota' => $id_nota,
+                'terjual' => $terjual,
+            );
+            $this->M_admin->update('nota', $data, $where);
+
+            $this->session->set_flashdata('msg_berhasil', 'Data Barang Berhasil Ditambahkan');
+            redirect(base_url('admin/nota'));
+        } else {
+            echo "<script>alert('Gagal menambah data: Jangan ada data yang kosong!');history.go(-1);</script>";
+        }
+    }
+
+    public function hapus_nota()
+    {
+        $this->form_validation->set_rules('id_nota', 'ID (klik form)', 'required');
+
+        if ($this->form_validation->run() == TRUE) {
+            $id_nota = $this->input->post('id_nota', TRUE);
+
+            $where = array('id_nota' => $id_nota);
+            $data = array(
+                'id_nota' => $id_nota,
+            );
+            $this->M_admin->delete('nota', $data, $where);
+
+            $this->session->set_flashdata('msg_hapus', 'Data Barang Berhasil Dihapus');
+            redirect(base_url('admin/nota'));
+        } else {
+            echo "<script>alert('Gagal mengubah data: Jangan ada data yang kosong!');history.go(-1);</script>";
         }
     }
 

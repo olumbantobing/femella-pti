@@ -6,6 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://kit.fontawesome.com/25495e258e.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/25495e258e.js" crossorigin="anonymous"></script>
   <link rel="shortcut icon" type="image/x-icon" href="assets/img/askha-logo.png">
   <title>INVENTARIS | BARANG TERJUAL</title>
 </head>
@@ -23,7 +25,8 @@
       <a href=" <?= base_url('admin/barangmasuk'); ?>"">Barang Masuk Gudang</a>
       <a href=" <?= base_url('admin/barangkeluar'); ?>"">Barang Keluar Gudang</a>
       <a href=" <?= base_url('admin/pengguna'); ?>"">Pengguna</a>
-      <a href=" <?= base_url('admin/laporan'); ?>"">Laporan</a>
+      <a href=" <?= base_url('admin/laporan'); ?>">Laporan Barang Masuk</a>
+      <a href=" <?= base_url('admin/laporan_k'); ?>">Laporan Barang Keluar</a>
       <a href=" <?= base_url('admin/nota'); ?>"">Nota</a>
       <a href=" <?= base_url('admin/logout'); ?>"">Keluar</a>
     </div>
@@ -53,15 +56,15 @@
         <!-- Tombol search -->
 
         <!-- tabel -->
-        <table>
+        <table id="search">
           <tr>
-            <th width="70px">#</th>
-            <th width="70px">Kode Terjual</th>
-            <th width="70px">ID</th>
-            <th width="700px">Nama Barang</th>
-            <th width="150px">Tanggal</th>
-            <th width="200px">Terjual</th>
-            <th width="200px">Sisa</th>
+            <th>#</th>
+            <th>Kode Terjual</th>
+            <th>ID</th>
+            <th>Nama Barang</th>
+            <th>Tanggal</th>
+            <th>Terjual</th>
+            <th width="90px">Sisa</th>
           </tr>
           <tbody>
             <tr>
@@ -91,6 +94,23 @@
         <p>Copyright &copy; 2022 Kelompok 2 PTI RB ITERA</p>
       </div>
       <!-- content -->
+
+      <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+      <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+      <script>
+        $(document).ready(function() {
+          $('#search').DataTable({
+            "paging": false,
+            "lengthChange": false,
+            "searching": true,
+            "ordering": false,
+            "info": false,
+            "autoWidth": true,
+            "responsive": true,
+          });
+        });
+      </script>
 </body>
 
 </html>
@@ -307,6 +327,18 @@
 
   .footer {
     background-color: white;
+    padding: 30px;
+    padding-top: 11px;
+    padding-left: 20px;
+    height: 1%;
+    background: #f0f0f0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+
+  /* .footer {
+    background-color: white;
     padding: 10px;
     padding-left: 30px;
     height: 3%;
@@ -314,5 +346,5 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-  }
+  } */
 </style>

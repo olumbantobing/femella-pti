@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/25495e258e.js" crossorigin="anonymous"></script>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" /> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/25495e258e.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/askha-logo.png">
     <title>INVENTARIS | BERANDA</title>
 </head>
@@ -23,12 +24,13 @@
             <a href=" <?= base_url('admin/barangmasuk'); ?>"">Barang Masuk Gudang</a>
             <a href=" <?= base_url('admin/barangkeluar'); ?>"">Barang Keluar Gudang</a>
             <a href=" <?= base_url('admin/pengguna'); ?>"">Pengguna</a>
-            <a href=" <?= base_url('admin/laporan'); ?>"">Laporan</a>
+            <a href=" <?= base_url('admin/laporan'); ?>">Laporan Barang Masuk</a>
+            <a href=" <?= base_url('admin/laporan_k'); ?>">Laporan Barang Keluar</a>
             <a href=" <?= base_url('admin/nota'); ?>"">Nota</a>
             <a href=" <?= base_url('admin/logout'); ?>"">Keluar</a>
         </div>
     </div>
-    <div class=" content">
+    <div class="content">
         <div class="header-content">
             <h2>BERANDA</h2>
             <span>Selamat Datang Di Inventaris Toko Askha Jaya</span>
@@ -42,55 +44,61 @@
                     <span>Stok Gudang </span>
             </div>
             </a>
-            <a href=" <?= base_url('admin/pengguna'); ?>"">
-                    <div>
-
-                        <i class=" fa-4x fa-solid fa-user-group"></i>
-                <span>Data Pengguna</span>
-        </div>
-        </a>
-        <a href=" <?= base_url('admin/barangterjual'); ?>"">
-                    <div>
-                        <i class=" fa-4x fa-solid fa-hand-holding-dollar"></i>
-            <span>Barang Terjual</span>
-    </div>
-    </a>
-    </div>
-
-    <div class="body-content1">
-        <div class="box">
-            <a href="<?= base_url('admin/barangmasuk'); ?>"">
+            <a href="<?= base_url('admin/barangmasuk'); ?>">
                 <div>
                     <i class=" fa-4x fa-solid fa-folder-plus"></i>
-                <span>Barang Masuk Gudang</span>
-        </div>
-        </a>
-        <a href=" <?= base_url('admin/barangkeluar'); ?>"">
+                    <span>Barang Masuk Gudang</span>
+                </div>
+            </a>
+            <a href=" <?= base_url('admin/barangkeluar'); ?>">
                 <div>
                     <i class=" fa-4x fa-solid fa-folder-minus"></i>
-            <span>Barang Keluar Gudang</span>
-    </div>
-    </a>
-    <a href="laporan">
-        <div>
-            <i class="fa-4x fa-solid fa-clipboard"></i>
-            <span>Laporan</span>
+                    <span>Barang Keluar Gudang</span>
+                </div>
+            </a>
+            <a href=" <?= base_url('admin/barangterjual'); ?>">
+                <div>
+                    <i class=" fa-4x fa-solid fa-hand-holding-dollar"></i>
+                    <span>Barang Terjual</span>
+                </div>
+            </a>
         </div>
-    </a>
 
-    <a href="#">
-        <div>
-            <i class="fa-4x fa-solid fa-address-book"></i>
-            <span>Nota</span>
+        <div class="body-content1">
+            <div class="box">
+                <a href=" <?= base_url('admin/pengguna'); ?>">
+                    <div>
+                        <i class=" fa-4x fa-solid fa-user-group"></i>
+                        <span>Data Pengguna</span>
+                    </div>
+                </a>
+
+                <a href="<?= base_url('admin/laporan'); ?>">
+                    <div>
+                        <i class="fa-4x fa-solid fa-file-text"></i>
+                        <span>Laporan Barang Masuk</span>
+                    </div>
+                </a>
+                <a href="<?= base_url('admin/laporan_k'); ?>">
+                    <div>
+                        <i class="fa-4x fa-solid fa-clipboard"></i>
+                        <span>Laporan Barang Keluar</span>
+                    </div>
+                </a>
+
+                <a href="<?= base_url('admin/nota'); ?>">
+                    <div>
+                        <i class="fa-4x fa-solid fa-address-book"></i>
+                        <span>Nota</span>
+                    </div>
+                </a>
+
+            </div>
+
         </div>
-    </a>
-
-    </div>
-
-    </div>
-    <div class="footer">
-        <p>Copyright &copy; 2022 Kelompok 2 PTI RB ITERA</p>
-    </div>
+        <div class="footer">
+            <p>Copyright &copy; 2022 Kelompok 2 PTI RB ITERA</p>
+        </div>
     </div>
 </body>
 
@@ -235,11 +243,13 @@
 
     .footer {
         background-color: white;
-        padding: 10px;
-        padding-left: 30px;
-        height: 5%;
+        padding: 30px;
+        padding-top: 11px;
+        padding-left: 20px;
+        height: 1%;
         background: #f0f0f0;
-        bottom: 0;
+        position: absolute;
+        bottom: 90;
         width: 100%;
     }
 </style>

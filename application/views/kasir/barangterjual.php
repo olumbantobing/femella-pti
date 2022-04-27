@@ -6,6 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://kit.fontawesome.com/25495e258e.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/25495e258e.js" crossorigin="anonymous"></script>
+  <link rel="shortcut icon" type="image/x-icon" href="assets/img/askha-logo.png">
   <title>INVENTARIS | BARANG TERJUAL</title>
 
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -124,7 +127,7 @@
         <div class="box">
           <h4 style="background-color: #fad541fc">
             Ubah Data Barang
-            <i class="fa-solid fa-minus"></i>
+            <i class="fa fa-pencil-square-o"></i>
           </h4>
           <form action="<?= base_url('kasir/ubah_barangterjual') ?>" role="form" method="post">
             <label>Kode Terjual</label><br />
@@ -146,7 +149,7 @@
         <div class="box">
           <h4 style="background-color: #fe4a4af0">
             Hapus Data Barang
-            <i class="fa-solid fa-minus"></i>
+            <i class="fa fa-trash-o"></i>
           </h4>
           <form action="<?= base_url('kasir/hapus_barangterjual') ?>" role="form" method="post">
             <label>Kode Keluar</label><br />
@@ -332,6 +335,7 @@
     width: 350px;
     height: auto;
     background-color: white;
+    margin-top: 20px;
     margin-left: 5px;
     margin-bottom: 20px;
     border: solid black 1px;
@@ -373,7 +377,7 @@
     background-color: rgb(224, 216, 206);
   }
 
-  .form-control {
+  .id {
     height: 23px;
     width: 100%;
     font-size: 12pt;
@@ -386,9 +390,10 @@
 
   .footer {
     background-color: white;
-    padding: 10px;
-    padding-left: 30px;
-    height: 3%;
+    padding: 30px;
+    padding-top: 11px;
+    padding-left: 20px;
+    height: 1%;
     background: #f0f0f0;
     position: absolute;
     bottom: 90;

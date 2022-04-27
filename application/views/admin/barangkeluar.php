@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/25495e258e.js" crossorigin="anonymous"></script>
   <link rel="shortcut icon" type="image/x-icon" href="assets/img/askha-logo.png">
   <script>
     $(function() {
@@ -38,7 +40,8 @@
       <a href=" <?= base_url('admin/barangmasuk'); ?>"">Barang Masuk Gudang</a>
       <a href=# style="background-color: #EEECB2; font-weight: bold;">Barang Keluar Gudang</a>
       <a href=" <?= base_url('admin/pengguna'); ?>"">Pengguna</a>
-      <a href=" <?= base_url('admin/laporan'); ?>"">Laporan</a>
+      <a href=" <?= base_url('admin/laporan'); ?>">Laporan Barang Masuk</a>
+      <a href=" <?= base_url('admin/laporan_k'); ?>">Laporan Barang Keluar</a>
       <a href=" <?= base_url('admin/nota'); ?>"">Nota</a>
       <a href=" <?= base_url('admin/logout'); ?>"">Keluar</a>
     </div>
@@ -57,26 +60,26 @@
     <div class="body-content">
       <div class="content-utama">
         <!-- Tombol search -->
-        <div class="search-btn">
+        <!-- <div class="search-btn">
           <div>
             <input type="text" placeholder="Cari Barang..." />
             <button>
               <i class="fa-2x fa-solid fa-magnifying-glass"></i>
             </button>
           </div>
-        </div>
+        </div> -->
         <!-- Tombol search -->
 
         <!-- tabel -->
-        <table>
+        <table id="search">
           <thead>
             <tr>
-              <th width="30px">#</th>
-              <th width="70px">Kode Keluar</th>
-              <th width="70px">ID</th>
-              <th width="200px">Nama Barang</th>
+              <th width="60px">#</th>
+              <th width="90px">Kode Keluar</th>
+              <th width="90px">ID</th>
+              <th width="250px">Nama Barang</th>
               <th width="70px">Jumlah</th>
-              <th width="90px">Tanggal</th>
+              <th width="100px">Tanggal</th>
             </tr>
           </thead>
           <tbody>
@@ -115,7 +118,7 @@
             <select class="form-control" name="id" id="id">
               <?php
               $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
-              $res = mysqli_query($conn, "SELECT id, CONCAT(id, ' ', nama_barang) AS pilihan FROM gudang WHERE stok_gudang > 0");
+              $res = mysqli_query($conn, "SELECT id, CONCAT(id, ' ', nama_barang) AS pilihan FROM gudang WHERE stok_gudang > 0 ORDER BY gudang.id");
               while ($rows = mysqli_fetch_array($res)) {
               ?>
                 <option value="<?php echo $rows['id']; ?>"><?php echo $rows['pilihan']; ?></option>
@@ -136,17 +139,17 @@
         <div class="box">
           <h4 style="background-color: #fad541fc">
             Ubah Barang Keluar
-            <i class="fa-solid fa-minus"></i>
+            <i class="fa fa-pencil-square-o"></i>
           </h4>
           <form action="<?= base_url('admin/ubah_barangkeluar') ?>" role="form" method="post">
             <label>Kode Keluar</label><br />
             <select class="form-control" name="kodekeluar" id="kodekeluar">
               <?php
               $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
-              $res = mysqli_query($conn, "SELECT kodekeluar FROM keluar_gudang");
+              $res = mysqli_query($conn, "SELECT keluar_gudang.kodekeluar as kodekeluar, CONCAT(keluar_gudang.kodekeluar, ' : ', gudang.nama_barang) AS pilihan FROM keluar_gudang INNER JOIN gudang WHERE keluar_gudang.id = gudang.id ORDER BY gudang.id");
               while ($rows = mysqli_fetch_array($res)) {
               ?>
-                <option value="<?php echo $rows['kodekeluar']; ?>"><?php echo $rows['kodekeluar']; ?></option>
+                <option value="<?php echo $rows['kodekeluar']; ?>"><?php echo $rows['pilihan']; ?></option>
               <?php } ?>
             </select>
             <!-- <input type="text" name="kodekeluar" id="kodekeluar" placeholder="Masukkan kode keluar barang yang ingin diubah" /><br /> -->
@@ -164,17 +167,17 @@
         <div class="box">
           <h4 style="background-color: #fe4a4af0">
             Hapus Data Barang
-            <i class="fa-solid fa-minus"></i>
+            <i class="fa fa-trash-o"></i>
           </h4>
           <form action="<?= base_url('admin/hapus_barangkeluar') ?>" role="form" method="post">
             <label>Kode Keluar</label><br />
             <select class="form-control" name="kodekeluar" id="kodekeluar">
               <?php
               $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
-              $res = mysqli_query($conn, "SELECT kodekeluar FROM keluar_gudang");
+              $res = mysqli_query($conn, "SELECT keluar_gudang.kodekeluar as kodekeluar, CONCAT(keluar_gudang.kodekeluar, ' : ', gudang.nama_barang) AS pilihan FROM keluar_gudang INNER JOIN gudang WHERE keluar_gudang.id = gudang.id");
               while ($rows = mysqli_fetch_array($res)) {
               ?>
-                <option value="<?php echo $rows['kodekeluar']; ?>"><?php echo $rows['kodekeluar']; ?></option>
+                <option value="<?php echo $rows['kodekeluar']; ?>"><?php echo $rows['pilihan']; ?></option>
               <?php } ?>
             </select>
             <!-- <input type="text" name="kodekeluar" id="kodekeluar" placeholder="Masukkan kode keluar barang" /><br /> -->
@@ -193,6 +196,22 @@
     </div>
   </div>
   <!-- content -->
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#search').DataTable({
+        "paging": false,
+        "lengthChange": false,
+        "searching": true,
+        "ordering": false,
+        "info": false,
+        "autoWidth": true,
+        "responsive": true,
+      });
+    });
+  </script>
 </body>
 
 </html>
@@ -340,7 +359,7 @@
   td,
   th {
     border: 1px solid #0f0e0e;
-    padding: 8px;
+    padding: 2px;
   }
 
   tr:nth-child(even) {
@@ -398,7 +417,7 @@
     background-color: rgb(224, 216, 206);
   }
 
-  .form-control {
+  .id {
     height: 23px;
     width: 100%;
     font-size: 12pt;
@@ -411,6 +430,18 @@
 
   .footer {
     background-color: white;
+    padding: 30px;
+    padding-top: 11px;
+    padding-left: 20px;
+    height: 1%;
+    background: #f0f0f0;
+    position: absolute;
+    bottom: 90;
+    width: 100%;
+  }
+
+  /* .footer {
+    background-color: white;
     padding: 10px;
     padding-left: 30px;
     height: 3%;
@@ -418,5 +449,5 @@
     position: absolute;
     bottom: 90;
     width: 100%;
-  }
+  } */
 </style>

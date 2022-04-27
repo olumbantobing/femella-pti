@@ -9,7 +9,7 @@ class M_kasir extends CI_Model
 
     public function stoktoko()
     {
-        $query = $this->db->query("SELECT id, nama_barang, stok_toko, harga FROM gudang WHERE stok_toko > 0 ORDER BY id DESC");
+        $query = $this->db->query("SELECT id, nama_barang, stok_toko, harga FROM gudang WHERE stok_toko > 0 ORDER BY id ASC");
         return $query->result();
     }
 
@@ -21,7 +21,13 @@ class M_kasir extends CI_Model
 
     public function laporan()
     {
-        $query = $this->db->query("SELECT * FROM terjual INNER JOIN gudang WHERE terjual.id = gudang.id ORDER BY terjual.tanggal DESC");
+        $query = $this->db->query("SELECT * FROM terjual INNER JOIN gudang WHERE terjual.id = gudang.id ORDER BY terjual.tanggal ASC");
+        return $query->result();
+    }
+
+    public function filter($tgl_a, $tgl_b)
+    {
+        $query = $this->db->query("SELECT * FROM gudang INNER JOIN terjual WHERE terjual.id = gudang.id and (tanggal BETWEEN '$tgl_a' and '$tgl_b') ORDER BY terjual.tanggal ASC");
         return $query->result();
     }
 

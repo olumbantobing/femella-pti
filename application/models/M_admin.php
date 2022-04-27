@@ -61,17 +61,17 @@ class M_admin extends CI_Model
     $this->db->insert('user', $params);
   }
 
-  public function laporan()
-  {
-    // $query = $this->db->query("SELECT stok_gudang.id, stok_gudang.nama_barang, masuk_gudang.tanggal, keluar_gudang.jumlah, masuk_gudang.jumlah, terjual.terjual, stok_gudang.harga
-    // FROM stok_gudang INNER JOIN keluar_gudang INNER JOIN masuk_gudang INNER JOIN terjual WHERE stok_gudang.id = keluar_gudang.id and stok_gudang.id = masuk_gudang.id
-    // and keluar_gudang.tanggal = masuk_gudang.tanggal and keluar_gudang.tanggal = terjual.tanggal and masuk_gudang.tanggal = terjual.tanggal");
-    // return $query->result();
-    // stok_gudang.id = terjual.id
-    // terjual.terjual
-  }
+  // public function laporan()
+  // {
+  //   $query = $this->db->query("SELECT stok_gudang.id, stok_gudang.nama_barang, masuk_gudang.tanggal, keluar_gudang.jumlah, masuk_gudang.jumlah, terjual.terjual, stok_gudang.harga
+  //   FROM stok_gudang INNER JOIN keluar_gudang INNER JOIN masuk_gudang INNER JOIN terjual WHERE stok_gudang.id = keluar_gudang.id and stok_gudang.id = masuk_gudang.id
+  //   and keluar_gudang.tanggal = masuk_gudang.tanggal and keluar_gudang.tanggal = terjual.tanggal and masuk_gudang.tanggal = terjual.tanggal");
+  //   return $query->result();
+  //   stok_gudang.id = terjual.id
+  //   terjual.terjual
+  // }
 
-  public function laporan_m()
+  public function laporan()
   {
     $query = $this->db->query("SELECT * FROM gudang INNER JOIN masuk_gudang WHERE masuk_gudang.id = gudang.id ORDER BY masuk_gudang.tanggal ASC");
     return $query->result();
@@ -85,19 +85,23 @@ class M_admin extends CI_Model
 
   public function f_masuk($tgl_a, $tgl_b)
   {
-    $query = $this->db->query("SELECT * FROM gudang INNER JOIN masuk_gudang WHERE masuk_gudang.id = gudang.id and (tanggal BETWEEN '$tgl_a' and '$tgl_b') ORDER BY masuk_gudang.tanggal ASC");
+    $query = $this->db->query("SELECT * FROM gudang INNER JOIN masuk_gudang 
+    WHERE masuk_gudang.id = gudang.id and (tanggal BETWEEN '$tgl_a' and '$tgl_b') 
+    ORDER BY masuk_gudang.tanggal ASC");
     return $query->result();
   }
 
   public function f_keluar($tgl_a, $tgl_b)
   {
-    $query = $this->db->query("SELECT * FROM gudang INNER JOIN keluar_gudang WHERE keluar_gudang.id = gudang.id and (tanggal BETWEEN '$tgl_a' and '$tgl_b') ORDER BY keluar_gudang.tanggal ASC");
+    $query = $this->db->query("SELECT * FROM gudang INNER JOIN keluar_gudang 
+    WHERE keluar_gudang.id = gudang.id and (tanggal BETWEEN '$tgl_a' and '$tgl_b') 
+    ORDER BY keluar_gudang.tanggal ASC");
     return $query->result();
   }
 
   public function nota()
   {
-    $query = $this->db->query("SELECT * FROM nota ORDER BY id_nota ASC");
+    $query = $this->db->query("SELECT * FROM nota ORDER BY tgl_masuk ASC");
     return $query->result();
   }
 

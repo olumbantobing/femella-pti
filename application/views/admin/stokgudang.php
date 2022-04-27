@@ -6,7 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/25495e258e.js" crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/25495e258e.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/askha-logo.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
     <title>INVENTARIS | STOK GUDANG</title>
 </head>
 
@@ -42,24 +46,24 @@
                 <div class="body-content">
                     <div class="content-utama">
                         <!-- Tombol search -->
-                        <div class="search-btn">
+                        <!-- <div class="search-btn">
                             <div>
                                 <input type="text" placeholder="Cari Barang..." />
                                 <button>
                                     <i class="fa-2x fa-solid fa-magnifying-glass"></i>
                                 </button>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- Tombol search -->
 
                         <!-- tabel -->
                         <table id="search">
                             <thead>
                                 <tr>
-                                    <th width="70px">ID</th>
+                                    <th width="90px">ID</th>
                                     <th width="300px">Nama Barang</th>
-                                    <th width="150px">Stok</th>
-                                    <th width="200px">Harga</th>
+                                    <th width="100px">Stok</th>
+                                    <th width="100px">Harga</th>
                                 </tr>
                             </thead>
 
@@ -105,19 +109,20 @@
                         <div class="box">
                             <h4 style="background-color: #fad541fc">
                                 Ubah Data Barang
-                                <i class="fa-solid fa-plus"></i>
+                                <i class="fa fa-pencil-square-o"></i>
+                                <!-- <i class="fa-solid fa-plus"></i> -->
                             </h4>
                             <form action="<?= base_url('admin/ubah_stokgudang') ?>" role="form" method="post">
                                 <label>ID Barang</label><br />
-                                <select class="form-control" name="id" id="id">
+                                <select class="form-control" name="id">
                                     <?php
                                     $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
-                                    $res = mysqli_query($conn, "SELECT id, CONCAT(id, ' ', nama_barang) AS pilihan FROM stok_gudang");
+                                    $res = mysqli_query($conn, "SELECT id, CONCAT(id, ' ', nama_barang) AS pilihan FROM gudang");
                                     while ($rows = mysqli_fetch_array($res)) {
                                     ?>
                                         <option value="<?php echo $rows['id']; ?>"><?php echo $rows['pilihan']; ?></option>
                                     <?php } ?>
-                                </select>
+                                </select><br>
                                 <!-- <input type="text" name="id" id="id" placeholder="Masukkan ID Barang" /><br /> -->
                                 <label>Nama Barang</label><br />
                                 <input type="text" name="nama_barang" id="nama_barang" placeholder="Masukkan Nama Barang" /><br />
@@ -133,19 +138,19 @@
                         <div class="box">
                             <h4 style="background-color: #fe4a4af0">
                                 Hapus Data Barang
-                                <i class="fa-solid fa-minus"></i>
+                                <i class="fa fa-trash-o"></i>
                             </h4>
                             <form action="<?= base_url('admin/hapus_stokgudang') ?>" role="form" method="post">
                                 <label>ID Barang</label><br />
-                                <select class="form-control" name="id" id="id">
+                                <select class="form-control" name="id">
                                     <?php
                                     $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
-                                    $res = mysqli_query($conn, "SELECT id, CONCAT(id, ' ', nama_barang) AS pilihan FROM stok_gudang");
+                                    $res = mysqli_query($conn, "SELECT id, CONCAT(id, ' ', nama_barang) AS pilihan FROM gudang");
                                     while ($rows = mysqli_fetch_array($res)) {
                                     ?>
                                         <option value="<?php echo $rows['id']; ?>"><?php echo $rows['pilihan']; ?></option>
                                     <?php } ?>
-                                </select>
+                                </select><br>
                                 <!-- <input type="text" name="id" id="id" placeholder="Masukkan ID Barang" /><br /> -->
                                 <button id="hapusdata" style="background-color: #fe4a4af0" onclick="return confirm('Anda yakin ingin menghapus data?');">Hapus</button>
 
@@ -162,8 +167,22 @@
                 </div>
         </div>
         <!-- content -->
-
-
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#search').DataTable({
+                    "paging": false,
+                    "lengthChange": false,
+                    "searching": true,
+                    "ordering": false,
+                    "info": false,
+                    "autoWidth": true,
+                    "responsive": true,
+                });
+            });
+        </script>
         <script>
             // $(function() {
             //     $('#tambahdata').click(function() {
@@ -316,6 +335,11 @@
 </style>
 
 <style>
+    /* #search_length,
+    #search_filter {
+        margin: 20px;
+    } */
+
     .content-utama table {
         margin: 20px;
         text-align: center;
@@ -326,7 +350,7 @@
     td,
     th {
         border: 1px solid #0f0e0e;
-        padding: 8px;
+        padding: 2px;
     }
 
     tr:nth-child(even) {
@@ -360,12 +384,12 @@
     .form-input .box form {
         display: block;
         padding: 15px;
-        padding-left: 20px;
-        padding-right: 30px;
+        /* padding-left: 20px;
+        padding-right: 30px; */
     }
 
     .form-input .box form input {
-        height: 23px;
+        height: 28px;
         width: 100%;
         font-size: 12pt;
         margin-bottom: 10px;
@@ -385,10 +409,10 @@
     }
 
     .form-control {
-        height: 23px;
+        /* height: 23px; */
         width: 100%;
         font-size: 12pt;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
     }
 
     table {
@@ -397,6 +421,18 @@
 
     .footer {
         background-color: white;
+        padding: 30px;
+        padding-top: 11px;
+        padding-left: 20px;
+        height: 1%;
+        background: #f0f0f0;
+        position: absolute;
+        bottom: 90;
+        width: 100%;
+    }
+
+    /* .footer {
+        background-color: white;
         padding: 10px;
         padding-left: 30px;
         height: 3%;
@@ -404,5 +440,5 @@
         position: absolute;
         bottom: 90;
         width: 100%;
-    }
+    } */
 </style>

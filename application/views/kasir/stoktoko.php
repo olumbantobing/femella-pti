@@ -6,6 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://kit.fontawesome.com/25495e258e.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/25495e258e.js" crossorigin="anonymous"></script>
+  <link rel="shortcut icon" type="image/x-icon" href="assets/img/askha-logo.png">
   <title>INVENTARIS | STOK BARANG</title>
 </head>
 
@@ -95,11 +98,16 @@
   }
 
   .sidebar {
-    background-color: #c1a660;
-    /* border: solid 1px; */
-    width: 15%;
-    height: 100%;
-    position: fixed;
+    height: 100vmin;
+    position: sticky;
+    /* for Safari users */
+    position: -webkit-sticky;
+    top: 0;
+    left: 0;
+    background-color: #C1A660;
+    display: table-cell;
+    width: 200px;
+    vertical-align: top;
   }
 
   .sidebar h2 {
@@ -146,7 +154,7 @@
     width: 85%;
     height: 100%;
     margin-left: 15%;
-    display: block;
+    display: table-cell;
   }
 </style>
 
@@ -283,9 +291,10 @@
 
   .footer {
     background-color: white;
-    padding: 10px;
-    padding-left: 30px;
-    height: 3%;
+    padding: 30px;
+    padding-top: 11px;
+    padding-left: 20px;
+    height: 1%;
     background: #f0f0f0;
     position: absolute;
     bottom: 0;
