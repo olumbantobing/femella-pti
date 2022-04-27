@@ -74,13 +74,13 @@
         <table id="search">
           <thead>
             <tr>
-              <th>#</th>
-              <th>Kode Masuk</th>
-              <th>ID</th>
-              <th>Nama Barang</th>
-              <th>Jumlah</th>
-              <th>Tanggal</th>
-              <th>Keterangan</th>
+              <th width="60px">#</th>
+              <th width="90px">Kode Keluar</th>
+              <th width="90px">ID</th>
+              <th width="250px">Nama Barang</th>
+              <th width="70px">Jumlah</th>
+              <th width="100px">Tanggal</th>
+              <th width="70px">Keterangan</th>
             </tr>
           </thead>
 
@@ -366,7 +366,7 @@
 
 <style>
   .content-utama table {
-    margin: 20px;
+    margin: 35px;
     text-align: center;
     font-size: 12pt;
     padding: 2px;
@@ -375,7 +375,7 @@
   td,
   th {
     border: 1px solid #0f0e0e;
-    padding: 8px;
+    padding: 3px;
   }
 
   tr:nth-child(even) {

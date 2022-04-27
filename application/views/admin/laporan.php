@@ -248,9 +248,9 @@
                   <form action="<?= base_url('admin/laporan') ?>" role="form" method="post">
                     <button name="reset" class="btn btn-large btn-secondary" style="margin-top: 10px">Reset <i class="fa fa-refresh"></i></button>
                   </form>
-                  <form action="<?= base_url('GeneratePdfController/index') ?>" role="form" method="post">
-                    <button name="unduh" class="btn btn-large btn-success" style="margin-top: 10px">UNDUH LAPORAN <i class="fa fa-download"></i></button>
-                  </form>
+                  <!-- <form action="<?= base_url('GeneratePdfController/index') ?>" role="form" method="post"> -->
+                  <button name="unduh" class="btn btn-large btn-success" style="margin-top: 10px">UNDUH LAPORAN <i class="fa fa-download"></i></button>
+                  <!-- </form> -->
                 </div>
 
                 <div class="col col-3">

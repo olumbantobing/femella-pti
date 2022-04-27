@@ -27,8 +27,8 @@
             <a href=" <?= base_url('admin/barangmasuk'); ?>"">Barang Masuk Gudang</a>
             <a href=" <?= base_url('admin/barangkeluar'); ?>"">Barang Keluar Gudang</a>
             <a href=" <?= base_url('admin/pengguna'); ?>"">Pengguna</a>
-            <a href=" <?= base_url('admin/laporan'); ?>"">Laporan</a>
-            <a href=" <?= base_url('admin/nota'); ?>"">Nota</a>
+            <a href=" <?= base_url('admin/laporan'); ?>">Laporan Barang Masuk</a>
+            <a href=" <?= base_url('admin/laporan_k'); ?>">Laporan Barang Keluar< <a href=" <?= base_url('admin/nota'); ?>"">Nota</a>
             <a href=" <?= base_url('admin/logout'); ?>"">Keluar</a>
         </div>
     </div>
@@ -36,17 +36,17 @@
 
     <!-- content -->
     <div class=" content">
-                <!-- header -->
-                <div class="header-content">
-                    <br /><br />
-                    <h2>STOK GUDANG</h2>
-                </div>
-                <!-- header -->
+        <!-- header -->
+        <div class="header-content">
+            <br /><br />
+            <h2>STOK GUDANG</h2>
+        </div>
+        <!-- header -->
 
-                <div class="body-content">
-                    <div class="content-utama">
-                        <!-- Tombol search -->
-                        <!-- <div class="search-btn">
+        <div class="body-content">
+            <div class="content-utama">
+                <!-- Tombol search -->
+                <!-- <div class="search-btn">
                             <div>
                                 <input type="text" placeholder="Cari Barang..." />
                                 <button>
@@ -54,148 +54,148 @@
                                 </button>
                             </div>
                         </div> -->
-                        <!-- Tombol search -->
+                <!-- Tombol search -->
 
-                        <!-- tabel -->
-                        <table id="search">
-                            <thead>
-                                <tr>
-                                    <th width="90px">ID</th>
-                                    <th width="300px">Nama Barang</th>
-                                    <th width="100px">Stok</th>
-                                    <th width="100px">Harga</th>
-                                </tr>
-                            </thead>
+                <!-- tabel -->
+                <table id="search">
+                    <thead>
+                        <tr>
+                            <th width="90px">ID</th>
+                            <th width="300px">Nama Barang</th>
+                            <th width="100px">Stok</th>
+                            <th width="100px">Harga</th>
+                        </tr>
+                    </thead>
 
-                            <tbody>
-                                <tr>
-                                    <?php if (is_array($list_data)) { ?>
-                                        <?php foreach ($list_data as $dd) : ?>
-                                            <td><?= $dd->id ?></td>
-                                            <td><?= $dd->nama_barang ?></td>
-                                            <td><?= $dd->stok_gudang ?></td>
-                                            <td><?= $dd->harga ?></td>
-                                </tr>
-                            <?php endforeach; ?>
-                        <?php } else { ?>
-                            <td colspan="7" align="center"><strong>Data Kosong</strong></td>
+                    <tbody>
+                        <tr>
+                            <?php if (is_array($list_data)) { ?>
+                                <?php foreach ($list_data as $dd) : ?>
+                                    <td><?= $dd->id ?></td>
+                                    <td><?= $dd->nama_barang ?></td>
+                                    <td><?= $dd->stok_gudang ?></td>
+                                    <td><?= $dd->harga ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php } else { ?>
+                    <td colspan="7" align="center"><strong>Data Kosong</strong></td>
+                <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+            <!-- tabel -->
+
+            <!-- Menu Input -->
+            <div class="form-input">
+                <div class="box">
+                    <h4 style="background-color: #008fdf87">
+                        Tambah Data Barang
+                        <i class="fa-solid fa-plus"></i>
+                    </h4>
+                    <form action="<?= base_url('admin/tambah_stokgudang') ?>" role="form" method="post">
+                        <label>ID Barang</label><br />
+                        <input type="text" name="id" id="id" value="AJ-<?= random_string('numeric', 3); ?>" readonly /><br />
+                        <label for="nama_barang">Nama Barang (Berat)</label><br />
+                        <input type="text" name="nama_barang" id="nama_barang" placeholder="Masukkan Nama Barang dan Berat" /><br />
+                        <label for="harga">Harga</label><br />
+                        <input type="text" name="harga" id="harga" placeholder="Masukkan Harga" /><br />
+                        <button id="tambah data" style="background-color: #008fdf87" onclick="return confirm('Anda yakin ingin menambah data?');">Tambah</button>
+
+                        <?php if ($this->session->flashdata('msg_tambah')) {
+                            echo "<script>alert('Data barang berhasil ditambahkan!');</script>"; ?>
                         <?php } ?>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- tabel -->
-
-                    <!-- Menu Input -->
-                    <div class="form-input">
-                        <div class="box">
-                            <h4 style="background-color: #008fdf87">
-                                Tambah Data Barang
-                                <i class="fa-solid fa-plus"></i>
-                            </h4>
-                            <form action="<?= base_url('admin/tambah_stokgudang') ?>" role="form" method="post">
-                                <label>ID Barang</label><br />
-                                <input type="text" name="id" id="id" value="AJ-<?= random_string('numeric', 3); ?>" readonly /><br />
-                                <label for="nama_barang">Nama Barang (Berat)</label><br />
-                                <input type="text" name="nama_barang" id="nama_barang" placeholder="Masukkan Nama Barang dan Berat" /><br />
-                                <label for="harga">Harga</label><br />
-                                <input type="text" name="harga" id="harga" placeholder="Masukkan Harga" /><br />
-                                <button id="tambah data" style="background-color: #008fdf87" onclick="return confirm('Anda yakin ingin menambah data?');">Tambah</button>
-
-                                <?php if ($this->session->flashdata('msg_tambah')) {
-                                    echo "<script>alert('Data barang berhasil ditambahkan!');</script>"; ?>
-                                <?php } ?>
-                            </form>
-                        </div>
-                        <div class="box">
-                            <h4 style="background-color: #fad541fc">
-                                Ubah Data Barang
-                                <i class="fa fa-pencil-square-o"></i>
-                                <!-- <i class="fa-solid fa-plus"></i> -->
-                            </h4>
-                            <form action="<?= base_url('admin/ubah_stokgudang') ?>" role="form" method="post">
-                                <label>ID Barang</label><br />
-                                <select class="form-control" name="id">
-                                    <?php
-                                    $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
-                                    $res = mysqli_query($conn, "SELECT id, CONCAT(id, ' ', nama_barang) AS pilihan FROM gudang");
-                                    while ($rows = mysqli_fetch_array($res)) {
-                                    ?>
-                                        <option value="<?php echo $rows['id']; ?>"><?php echo $rows['pilihan']; ?></option>
-                                    <?php } ?>
-                                </select><br>
-                                <!-- <input type="text" name="id" id="id" placeholder="Masukkan ID Barang" /><br /> -->
-                                <label>Nama Barang</label><br />
-                                <input type="text" name="nama_barang" id="nama_barang" placeholder="Masukkan Nama Barang" /><br />
-                                <label>Harga</label><br />
-                                <input type="text" name="harga" id="harga" placeholder="Masukkan Harga" /><br />
-                                <button id="ubahdata" style="background-color: #fad541fc" onclick="return confirm('Anda yakin ingin mengubah data?');">Ubah</button>
-
-                                <?php if ($this->session->flashdata('msg_ubah')) {
-                                    echo "<script>alert('Data barang berhasil diubah!');</script>"; ?>
-                                <?php } ?>
-                            </form>
-                        </div>
-                        <div class="box">
-                            <h4 style="background-color: #fe4a4af0">
-                                Hapus Data Barang
-                                <i class="fa fa-trash-o"></i>
-                            </h4>
-                            <form action="<?= base_url('admin/hapus_stokgudang') ?>" role="form" method="post">
-                                <label>ID Barang</label><br />
-                                <select class="form-control" name="id">
-                                    <?php
-                                    $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
-                                    $res = mysqli_query($conn, "SELECT id, CONCAT(id, ' ', nama_barang) AS pilihan FROM gudang");
-                                    while ($rows = mysqli_fetch_array($res)) {
-                                    ?>
-                                        <option value="<?php echo $rows['id']; ?>"><?php echo $rows['pilihan']; ?></option>
-                                    <?php } ?>
-                                </select><br>
-                                <!-- <input type="text" name="id" id="id" placeholder="Masukkan ID Barang" /><br /> -->
-                                <button id="hapusdata" style="background-color: #fe4a4af0" onclick="return confirm('Anda yakin ingin menghapus data?');">Hapus</button>
-
-                                <?php if ($this->session->flashdata('msg_hapus')) {
-                                    echo "<script>alert('Data barang berhasil dihapus!');</script>"; ?>
-                                <?php } ?>
-                            </form>
-                        </div>
-                    </div>
-                    <!-- Menu Input -->
+                    </form>
                 </div>
-                <div class="footer">
-                    <p>Copyright &copy; 2022 Kelompok 2 PTI RB ITERA</p>
+                <div class="box">
+                    <h4 style="background-color: #fad541fc">
+                        Ubah Data Barang
+                        <i class="fa fa-pencil-square-o"></i>
+                        <!-- <i class="fa-solid fa-plus"></i> -->
+                    </h4>
+                    <form action="<?= base_url('admin/ubah_stokgudang') ?>" role="form" method="post">
+                        <label>ID Barang</label><br />
+                        <select class="form-control" name="id">
+                            <?php
+                            $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
+                            $res = mysqli_query($conn, "SELECT id, CONCAT(id, ' ', nama_barang) AS pilihan FROM gudang");
+                            while ($rows = mysqli_fetch_array($res)) {
+                            ?>
+                                <option value="<?php echo $rows['id']; ?>"><?php echo $rows['pilihan']; ?></option>
+                            <?php } ?>
+                        </select><br>
+                        <!-- <input type="text" name="id" id="id" placeholder="Masukkan ID Barang" /><br /> -->
+                        <label>Nama Barang</label><br />
+                        <input type="text" name="nama_barang" id="nama_barang" placeholder="Masukkan Nama Barang" /><br />
+                        <label>Harga</label><br />
+                        <input type="text" name="harga" id="harga" placeholder="Masukkan Harga" /><br />
+                        <button id="ubahdata" style="background-color: #fad541fc" onclick="return confirm('Anda yakin ingin mengubah data?');">Ubah</button>
+
+                        <?php if ($this->session->flashdata('msg_ubah')) {
+                            echo "<script>alert('Data barang berhasil diubah!');</script>"; ?>
+                        <?php } ?>
+                    </form>
                 </div>
+                <div class="box">
+                    <h4 style="background-color: #fe4a4af0">
+                        Hapus Data Barang
+                        <i class="fa fa-trash-o"></i>
+                    </h4>
+                    <form action="<?= base_url('admin/hapus_stokgudang') ?>" role="form" method="post">
+                        <label>ID Barang</label><br />
+                        <select class="form-control" name="id">
+                            <?php
+                            $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
+                            $res = mysqli_query($conn, "SELECT id, CONCAT(id, ' ', nama_barang) AS pilihan FROM gudang");
+                            while ($rows = mysqli_fetch_array($res)) {
+                            ?>
+                                <option value="<?php echo $rows['id']; ?>"><?php echo $rows['pilihan']; ?></option>
+                            <?php } ?>
+                        </select><br>
+                        <!-- <input type="text" name="id" id="id" placeholder="Masukkan ID Barang" /><br /> -->
+                        <button id="hapusdata" style="background-color: #fe4a4af0" onclick="return confirm('Anda yakin ingin menghapus data?');">Hapus</button>
+
+                        <?php if ($this->session->flashdata('msg_hapus')) {
+                            echo "<script>alert('Data barang berhasil dihapus!');</script>"; ?>
+                        <?php } ?>
+                    </form>
+                </div>
+            </div>
+            <!-- Menu Input -->
         </div>
-        <!-- content -->
-        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
-        <script>
-            $(document).ready(function() {
-                $('#search').DataTable({
-                    "paging": false,
-                    "lengthChange": false,
-                    "searching": true,
-                    "ordering": false,
-                    "info": false,
-                    "autoWidth": true,
-                    "responsive": true,
-                });
+        <div class="footer">
+            <p>Copyright &copy; 2022 Kelompok 2 PTI RB ITERA</p>
+        </div>
+    </div>
+    <!-- content -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#search').DataTable({
+                "paging": false,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": false,
+                "info": false,
+                "autoWidth": true,
+                "responsive": true,
             });
-        </script>
-        <script>
-            // $(function() {
-            //     $('#tambahdata').click(function() {
-            //         confirm("Apa Anda Yakin ingin menambah data?");
-            //     });
-            //     $('#ubahdata').click(function() {
-            //         confirm("Apa Anda Yakin ingin mengubah data?");
-            //     });
-            //     $('#hapusdata').click(function() {
-            //         confirm("Apa Anda Yakin ingin menghapus data?");
-            //     });
-            // });
-        </script>
+        });
+    </script>
+    <script>
+        // $(function() {
+        //     $('#tambahdata').click(function() {
+        //         confirm("Apa Anda Yakin ingin menambah data?");
+        //     });
+        //     $('#ubahdata').click(function() {
+        //         confirm("Apa Anda Yakin ingin mengubah data?");
+        //     });
+        //     $('#hapusdata').click(function() {
+        //         confirm("Apa Anda Yakin ingin menghapus data?");
+        //     });
+        // });
+    </script>
 
 </body>
 
@@ -341,7 +341,7 @@
     } */
 
     .content-utama table {
-        margin: 20px;
+        margin: 35px;
         text-align: center;
         font-size: 12pt;
         padding: 2px;

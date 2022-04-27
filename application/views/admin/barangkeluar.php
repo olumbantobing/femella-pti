@@ -78,8 +78,8 @@
               <th width="90px">Kode Keluar</th>
               <th width="90px">ID</th>
               <th width="250px">Nama Barang</th>
-              <th width="70px">Jumlah</th>
-              <th width="100px">Tanggal</th>
+              <th width="80px">Jumlah</th>
+              <th width="95px">Tanggal</th>
             </tr>
           </thead>
           <tbody>
@@ -350,7 +350,7 @@
 
 <style>
   .content-utama table {
-    margin: 20px;
+    margin: 35px;
     text-align: center;
     font-size: 12pt;
     padding: 2px;

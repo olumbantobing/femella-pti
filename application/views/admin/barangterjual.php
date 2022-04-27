@@ -251,7 +251,7 @@
 
 <style>
   .content-utama table {
-    margin-left: 210px;
+    margin-left: 200px;
     text-align: center;
     font-size: 12pt;
     padding: 2px;
