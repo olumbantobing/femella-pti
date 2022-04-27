@@ -106,15 +106,19 @@
     }
 
     .sidebar .left-bar {
-        margin-top: 20px;
+        margin-top: 40px;
     }
 
     .sidebar a {
         display: block;
-        line-height: 50px;
+        line-height: 20px;
         font-size: 14pt;
+        font-weight: 400;
         color: black;
         padding-left: 20px;
+        padding-right: 10px;
+        padding-top: 10px;
+        padding-bottom: 7px;
         box-sizing: border-box;
     }
 
