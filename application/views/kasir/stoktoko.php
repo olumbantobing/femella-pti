@@ -23,66 +23,82 @@
       <a href=# style=" background-color: #EEECB2; font-weight: bold;">Stok Toko</a>
       <a href=" <?= base_url('kasir/barangterjual'); ?>"">Barang Terjual</a>
       <a href=" <?= base_url('kasir/laporan'); ?>"">Laporan</a>
-      <a href=" <?= base_url('kasir/logout'); ?>"">Keluar</a>
+      <a href=" <?= base_url('auth/logout'); ?>" onclick="return confirm('Anda yakin ingin keluar?');">Keluar</a>
     </div>
   </div>
   <!-- sidebar kiri -->
 
   <!-- content -->
   <div class=" content">
-        <!-- header -->
-        <div class="header-content">
-          <br /><br />
-          <h2>STOK TOKO</h2>
-        </div>
-        <!-- header -->
+    <!-- header -->
+    <div class="header-content">
+      <br /><br />
+      <h2>STOK TOKO</h2>
+    </div>
+    <!-- header -->
 
-        <div class="body-content">
-          <div class="content-utama">
-            <!-- Tombol search -->
-            <div class="search-btn">
+    <div class="body-content">
+      <div class="content-utama">
+        <!-- Tombol search -->
+        <!-- <div class="search-btn">
               <div>
                 <input type="text" placeholder="Cari Barang..." />
                 <button>
                   <i class="fa-2x fa-solid fa-magnifying-glass"></i>
                 </button>
               </div>
-            </div>
-            <!-- Tombol search -->
+            </div> -->
+        <!-- Tombol search -->
 
-            <!-- tabel -->
-            <table>
-              <thead>
-                <tr>
-                  <th width="70px">ID</th>
-                  <th width="250px">Nama Barang</th>
-                  <th width="150px">Stok di Toko</th>
-                  <th width="200px">Harga</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <?php if (is_array($list_data)) { ?>
-                    <?php foreach ($list_data as $dd) : ?>
-                      <td><?= $dd->id ?></td>
-                      <td><?= $dd->nama_barang ?></td>
-                      <td><?= $dd->stok_toko ?></td>
-                      <td><?= $dd->harga ?></td>
-                </tr>
-              <?php endforeach; ?>
-            <?php } else { ?>
-              <td colspan="7" align="center"><strong>Data Kosong</strong></td>
-            <?php } ?>
-              </tbody>
-            </table>
-          </div>
-          <!-- tabel -->
-        </div>
-        <div class="footer">
-          <p>Copyright &copy; 2022 Kelompok 2 PTI RB ITERA</p>
-        </div>
+        <!-- tabel -->
+        <table id="search">
+          <thead>
+            <tr>
+              <th width="70px">ID</th>
+              <th width="250px">Nama Barang</th>
+              <th width="150px">Stok di Toko</th>
+              <th width="200px">Harga</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <?php if (is_array($list_data)) { ?>
+                <?php foreach ($list_data as $dd) : ?>
+                  <td><?= $dd->id ?></td>
+                  <td><?= $dd->nama_barang ?></td>
+                  <td><?= $dd->stok_toko ?></td>
+                  <td><?= $dd->harga ?></td>
+            </tr>
+          <?php endforeach; ?>
+        <?php } else { ?>
+          <td colspan="7" align="center"><strong>Data Kosong</strong></td>
+        <?php } ?>
+          </tbody>
+        </table>
+      </div>
+      <!-- tabel -->
     </div>
-    <!-- content -->
+    <div class="footer">
+      <p>Copyright &copy; 2022 Kelompok 2 PTI RB ITERA</p>
+    </div>
+  </div>
+  <!-- content -->
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#search').DataTable({
+        "paging": false,
+        "lengthChange": false,
+        "searching": true,
+        "ordering": false,
+        "info": false,
+        "autoWidth": true,
+        "responsive": true,
+      });
+    });
+  </script>
 </body>
 
 </html>
@@ -219,7 +235,7 @@
 <style>
   .content-utama table {
     margin: 20px;
-    margin-left: 270px;
+    margin-left: 200px;
     text-align: center;
     font-size: 12pt;
     padding: 2px;
@@ -228,7 +244,7 @@
   td,
   th {
     border: 1px solid #0f0e0e;
-    padding: 8px;
+    padding: 2px;
   }
 
   tr:nth-child(even) {

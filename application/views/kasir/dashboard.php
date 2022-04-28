@@ -22,7 +22,7 @@
             <a href=" <?= base_url('kasir/stoktoko'); ?>"">Stok Toko</a>
             <a href=" <?= base_url('kasir/barangterjual'); ?>"">Barang Terjual</a>
             <a href=" <?= base_url('kasir/laporan'); ?>"">Laporan</a>
-            <a href=" <?= base_url('kasir/logout'); ?>"">Keluar</a>
+            <a href=" <?= base_url('auth/logout'); ?>" onclick="return confirm('Anda yakin ingin keluar?');">Keluar</a>
         </div>
     </div>
 

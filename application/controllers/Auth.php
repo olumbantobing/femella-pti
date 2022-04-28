@@ -39,4 +39,12 @@ class Auth extends CI_Controller
             echo "<script>alert('Gagal login: Cek username, password!');history.go(-1);</script>";
         }
     }
+
+    public function logout()
+    {
+        $this->session->unset_userdata('username');
+        $this->session->unset_userdata('akses');
+        session_destroy();
+        redirect('auth');
+    }
 }

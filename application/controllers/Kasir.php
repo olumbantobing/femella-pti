@@ -157,12 +157,4 @@ class Kasir extends CI_Controller
 
         $this->load->view('kasir/laporan', $data);
     }
-
-    public function logout()
-    {
-        $this->session->unset_userdata('username');
-        $this->session->unset_userdata('akses');
-        session_destroy();
-        redirect('auth');
-    }
 }

@@ -160,6 +160,7 @@
 
         td,
         th {
+            text-align: center;
             border: 1px solid #0f0e0e;
             padding: 8px;
         }
@@ -198,180 +199,180 @@
             <a href=" <?= base_url('kasir/stoktoko'); ?>"">Stok Toko</a>
             <a href=" <?= base_url('kasir/barangterjual'); ?>"">Barang Terjual</a>
             <a href=# style=" background-color: #EEECB2; font-weight: bold;">Laporan</a>
-            <a href=" <?= base_url('kasir/logout'); ?>"">Keluar</a>
+            <a href=" <?= base_url('auth/logout'); ?>" onclick="return confirm('Anda yakin ingin keluar?');">Keluar</a>
         </div>
     </div>
     <!-- sidebar kiri -->
 
     <!-- content -->
     <div class=" content">
-                <!-- header -->
-                <div class="header-content">
-                    <br /><br />
-                    <h2>LAPORAN</h2>
-                </div>
-                <!-- header -->
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <div class="row">
-                                        <div class="col col-6">
-                                            <form action="<?= base_url('kasir/filter') ?>" role="form" method="post">
-                                                <!-- <form action="<?= base_url('kasir/laporan') ?>" role="form" method="post"> -->
-                                                <div><b> Pilih Tanggal Laporan : </b></div>
-                                                <!-- <div class="form-group"> -->
-                                                <!-- <form method="post" class="form-inline"> -->
-                                                <label>Tanggal Awal:</label>
-                                                <input type="date" name="tgl_awal" class="form-control">
-                                                <label>Tanggal Akhir:</label>
-                                                <input type="date" name="tgl_akhir" class="form-control">
-                                                <button type="submit" class="btn btn-info" style="margin-top: 10px">Filter</button>
-                                            </form>
-                                        </div>
-                                        <div class="col col-4">
-                                            <form action="<?= base_url('kasir/reset') ?>" role="form" method="post">
-                                                <button name="reset" class="btn btn-large btn-secondary" style="margin-top: 10px">Reset <i class="fa fa-refresh"></i></button>
-                                            </form>
-                                            <form action="<?= base_url('GeneratePdfController/index') ?>" role="form" method="post">
-                                                <button name="unduh" class="btn btn-large btn-success" style="margin-top: 10px">UNDUH LAPORAN <i class="fa fa-download"></i></button>
-                                            </form>
-                                        </div>
-                                        <!-- </div> -->
-                                        <!-- <div class="row"> -->
-                                        <!-- <div class="col"> -->
-                                        <!-- <p>Pilih Tanggal Laporan : </p> -->
-                                        <!-- </div> -->
-                                        <!-- </div>
+        <!-- header -->
+        <div class="header-content">
+            <br /><br />
+            <h2>LAPORAN</h2>
+        </div>
+        <!-- header -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col col-6">
+                                    <form action="<?= base_url('kasir/filter') ?>" role="form" method="post">
+                                        <!-- <form action="<?= base_url('kasir/laporan') ?>" role="form" method="post"> -->
+                                        <div><b> Pilih Tanggal Laporan : </b></div>
+                                        <!-- <div class="form-group"> -->
+                                        <!-- <form method="post" class="form-inline"> -->
+                                        <label>Tanggal Awal:</label>
+                                        <input type="date" name="tgl_awal" class="form-control">
+                                        <label>Tanggal Akhir:</label>
+                                        <input type="date" name="tgl_akhir" class="form-control">
+                                        <button type="submit" class="btn btn-info" style="margin-top: 10px">Filter</button>
+                                    </form>
+                                </div>
+                                <div class="col col-4">
+                                    <form action="<?= base_url('kasir/reset') ?>" role="form" method="post">
+                                        <button name="reset" class="btn btn-large btn-secondary" style="margin-top: 10px">Reset <i class="fa fa-refresh"></i></button>
+                                    </form>
+                                    <form action="<?= base_url('GeneratePdfController/index') ?>" role="form" method="post">
+                                        <button name="unduh" class="btn btn-large btn-success" style="margin-top: 10px">UNDUH LAPORAN <i class="fa fa-download"></i></button>
+                                    </form>
+                                </div>
+                                <!-- </div> -->
+                                <!-- <div class="row"> -->
+                                <!-- <div class="col"> -->
+                                <!-- <p>Pilih Tanggal Laporan : </p> -->
+                                <!-- </div> -->
+                                <!-- </div>
                   <div class="row"> -->
-                                        <!-- </div> -->
-                                        <!-- <div class="col col-3"> -->
-                                        <div class="form-group">
-                                            <!-- <div class="input-group date" id="enddate" data-target-input="nearest">
+                                <!-- </div> -->
+                                <!-- <div class="col col-3"> -->
+                                <div class="form-group">
+                                    <!-- <div class="input-group date" id="enddate" data-target-input="nearest">
                       <input type="text" class="form-control datetimepicker-input" data-target="#enddate" />
                       <div class="input-group-append" data-target="#enddate" data-toggle="datetimepicker">
                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                       </div>
                     </div> -->
-                                        </div>
-                                        <!-- </div> -->
-                                        <!-- <div class="col col-3">
+                                </div>
+                                <!-- </div> -->
+                                <!-- <div class="col col-3">
                   <div class="form-group">
                     <label>&nbsp</label>
                   </div>
                 </div> -->
-                                        <div class="col col-3">
-                                            <div class="form-group">
-                                                <label>&nbsp</label>
-                                            </div>
-                                        </div>
-                                        <div class="col col-3">
-                                            <!-- <div class="form-group"> -->
-                                            <label>&nbsp</label>
-                                            <!-- </div> -->
-                                        </div>
+                                <div class="col col-3">
+                                    <div class="form-group">
+                                        <label>&nbsp</label>
                                     </div>
-
-                                    <?php
-                                    // Load file koneksi.php
-                                    $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
-                                    $tgl_awal = @$_GET['tgl_awal']; // Ambil data tgl_awal sesuai input (kalau tidak ada set kosong)
-                                    $tgl_akhir = @$_GET['tgl_akhir']; // Ambil data tgl_awal sesuai input (kalau tidak ada set kosong)
-                                    if (empty($tgl_awal) or empty($tgl_akhir)) { // Cek jika tgl_awal atau tgl_akhir kosong, maka :
-                                        // Buat query untuk menampilkan semua data transaksi
-                                        $query = mysqli_query($conn, "SELECT * FROM terjual");
-                                        $url_cetak = "print.php";
-                                        $label = "Semua Data Transaksi";
-                                    } else { // Jika terisi
-                                        // Buat query untuk menampilkan data transaksi sesuai periode tanggal
-                                        $query = mysqli_query($conn, "SELECT terjual.id, gudang.nama_barang, terjual.kodeterjual, terjual.tanggal, keluar_gudang.jumlah, terjual.terjual, gudang.stok_toko  FROM terjual INNER JOIN gudang INNER JOIN keluar_gudang WHERE (tgl BETWEEN '" . $tgl_awal . "' AND '" . $tgl_akhir . "')");
-                                        $url_cetak = "print.php?tgl_awal=" . $tgl_awal . "&tgl_akhir=" . $tgl_akhir . "&filter=true";
-                                        $tgl_awal = date('d-m-Y', strtotime($tgl_awal)); // Ubah format tanggal jadi dd-mm-yyyy
-                                        $tgl_akhir = date('d-m-Y', strtotime($tgl_akhir)); // Ubah format tanggal jadi dd-mm-yyyy
-                                        $label = 'Periode Tanggal ' . $tgl_awal . ' s/d ' . $tgl_akhir;
-                                    }
-                                    ?>
-
-                                    <!-- /.card-header -->
-                                    <div class="card-body">
-                                        <table id="example2" class="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>ID</th>
-                                                    <th>Nama Barang</th>
-                                                    <th>Tanggal</th>
-                                                    <!-- <th>Barang Barang Masuk Ke Toko</th> -->
-                                                    <th>Barang Terjual di Toko</th>
-                                                    <!-- <th>Stok di Toko</th> -->
-                                                    <th>Harga</th>
-                                                    <!-- <th>Total</th> -->
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <?php if (is_array($list_data)) { ?>
-                                                        <?php $no = 1; ?>
-                                                        <?php foreach ($list_data as $dd) : ?>
-                                                            <td><?= $no ?></td>
-                                                            <td><?= $dd->id ?></td>
-                                                            <td><?= $dd->nama_barang ?></td>
-                                                            <td><?= date('d F Y', strtotime($dd->tanggal)) ?></td>
-                                                            <td><?= $dd->terjual ?></td>
-                                                            <td><?= $dd->harga ?></td>
-                                                </tr>
-                                                <?php $no++; ?>
-                                            <?php endforeach; ?>
-                                        <?php } else { ?>
-                                            <td colspan="6" align="center"><strong>Data Kosong</strong></td>
-                                        <?php } ?>
-                                            </tbody>
-                                            <tfoot>
-
-                                            </tfoot>
-                                        </table>
-                                    </div>
-                                    <!-- /.card-body -->
                                 </div>
-                                <!-- /.card -->
-
+                                <div class="col col-3">
+                                    <!-- <div class="form-group"> -->
+                                    <label>&nbsp</label>
+                                    <!-- </div> -->
+                                </div>
                             </div>
-                            <!-- /.col -->
+
+                            <?php
+                            // Load file koneksi.php
+                            $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
+                            $tgl_awal = @$_GET['tgl_awal']; // Ambil data tgl_awal sesuai input (kalau tidak ada set kosong)
+                            $tgl_akhir = @$_GET['tgl_akhir']; // Ambil data tgl_awal sesuai input (kalau tidak ada set kosong)
+                            if (empty($tgl_awal) or empty($tgl_akhir)) { // Cek jika tgl_awal atau tgl_akhir kosong, maka :
+                                // Buat query untuk menampilkan semua data transaksi
+                                $query = mysqli_query($conn, "SELECT * FROM terjual");
+                                $url_cetak = "print.php";
+                                $label = "Semua Data Transaksi";
+                            } else { // Jika terisi
+                                // Buat query untuk menampilkan data transaksi sesuai periode tanggal
+                                $query = mysqli_query($conn, "SELECT terjual.id, gudang.nama_barang, terjual.kodeterjual, terjual.tanggal, keluar_gudang.jumlah, terjual.terjual, gudang.stok_toko  FROM terjual INNER JOIN gudang INNER JOIN keluar_gudang WHERE (tgl BETWEEN '" . $tgl_awal . "' AND '" . $tgl_akhir . "')");
+                                $url_cetak = "print.php?tgl_awal=" . $tgl_awal . "&tgl_akhir=" . $tgl_akhir . "&filter=true";
+                                $tgl_awal = date('d-m-Y', strtotime($tgl_awal)); // Ubah format tanggal jadi dd-mm-yyyy
+                                $tgl_akhir = date('d-m-Y', strtotime($tgl_akhir)); // Ubah format tanggal jadi dd-mm-yyyy
+                                $label = 'Periode Tanggal ' . $tgl_awal . ' s/d ' . $tgl_akhir;
+                            }
+                            ?>
+
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <table id="example2" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>ID</th>
+                                            <th>Nama Barang</th>
+                                            <th>Tanggal</th>
+                                            <!-- <th>Barang Barang Masuk Ke Toko</th> -->
+                                            <th>Barang Terjual di Toko</th>
+                                            <!-- <th>Stok di Toko</th> -->
+                                            <th>Harga</th>
+                                            <!-- <th>Total</th> -->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <?php if (is_array($list_data)) { ?>
+                                                <?php $no = 1; ?>
+                                                <?php foreach ($list_data as $dd) : ?>
+                                                    <td><?= $no ?></td>
+                                                    <td><?= $dd->id ?></td>
+                                                    <td><?= $dd->nama_barang ?></td>
+                                                    <td><?= date('d F Y', strtotime($dd->tanggal)) ?></td>
+                                                    <td><?= $dd->terjual ?></td>
+                                                    <td><?= $dd->harga ?></td>
+                                        </tr>
+                                        <?php $no++; ?>
+                                    <?php endforeach; ?>
+                                <?php } else { ?>
+                                    <td colspan="6" align="center"><strong>Data Kosong</strong></td>
+                                <?php } ?>
+                                    </tbody>
+                                    <tfoot>
+
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
                         </div>
-                        <!-- /.row -->
+                        <!-- /.card -->
+
                     </div>
-                    <!-- /.container-fluid -->
+                    <!-- /.col -->
                 </div>
-                <div class="footer">
-                    <p>Copyright &copy; 2022 Kelompok 2 PTI RB ITERA</p>
-                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
         </div>
+        <div class="footer">
+            <p>Copyright &copy; 2022 Kelompok 2 PTI RB ITERA</p>
+        </div>
+    </div>
 
-        <!-- content -->
+    <!-- content -->
 
-        <script>
-            $(function() {
-                $('#example2').DataTable({
-                    "paging": false,
-                    "lengthChange": false,
-                    "searching": false,
-                    "ordering": false,
-                    "info": true,
-                    "autoWidth": false,
-                    "responsive": true,
-                });
+    <script>
+        $(function() {
+            $('#example2').DataTable({
+                "paging": false,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": false,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
             });
-            $('#startdate').datetimepicker({
-                format: 'L'
-            });
-            $('#enddate').datetimepicker({
-                format: 'L'
-            });
-            $('#btnlaporan').click(function() {
-                confirm("Apa Anda Yakin ingin mengunduh laporan?");
-            })
-        </script>
+        });
+        $('#startdate').datetimepicker({
+            format: 'L'
+        });
+        $('#enddate').datetimepicker({
+            format: 'L'
+        });
+        $('#btnlaporan').click(function() {
+            confirm("Apa Anda Yakin ingin mengunduh laporan?");
+        })
+    </script>
 </body>
 
 

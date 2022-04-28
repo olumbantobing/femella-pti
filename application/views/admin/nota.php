@@ -220,7 +220,7 @@
             <a href=" <?= base_url('admin/laporan'); ?>">Laporan Barang Masuk</a>
             <a href=" <?= base_url('admin/laporan_k'); ?>">Laporan Barang Keluar</a>
             <a href=# style=" background-color: #EEECB2; font-weight: bold;">Nota</a>
-            <a href=" <?= base_url('admin/logout'); ?>" onclick="return confirm('Anda yakin ingin keluar?');">Keluar</a>
+            <a href=" <?= base_url('auth/logout'); ?>" onclick="return confirm('Anda yakin ingin keluar?');">Keluar</a>
         </div>
     </div>
     <!-- sidebar kiri -->

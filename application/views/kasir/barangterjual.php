@@ -35,7 +35,7 @@
       <a href=" <?= base_url('kasir/stoktoko'); ?>"">Stok Toko</a>
       <a href=# style="background-color: #EEECB2; font-weight: bold;">Barang Terjual</a>
       <a href=" <?= base_url('kasir/laporan'); ?>"">Laporan</a>
-      <a href=" <?= base_url('kasir/logout'); ?>"">Keluar</a>
+      <a href=" <?= base_url('auth/logout'); ?>" onclick="return confirm('Anda yakin ingin keluar?');">Keluar</a>
     </div>
   </div>
   <!-- sidebar kiri -->
@@ -52,27 +52,29 @@
     <div class="body-content">
       <div class="content-utama">
         <!-- Tombol search -->
-        <div class="search-btn">
+        <!-- <div class="search-btn">
           <div>
             <input type="text" placeholder="Cari Barang..." />
             <button>
               <i class="fa-2x fa-solid fa-magnifying-glass"></i>
             </button>
           </div>
-        </div>
+        </div> -->
         <!-- Tombol search -->
 
         <!-- tabel -->
-        <table>
-          <tr>
-            <th width="70px">#</th>
-            <th width="70px">Kode Terjual</th>
-            <th width="70px">ID</th>
-            <th width="700px">Nama Barang</th>
-            <th width="150px">Tanggal</th>
-            <th width="200px">Terjual</th>
-            <th width="200px">Sisa</th>
-          </tr>
+        <table id="search">
+          <thead>
+            <tr>
+              <th width="70px">#</th>
+              <th width="70px">Kode Terjual</th>
+              <th width="70px">ID</th>
+              <th width="600px">Nama Barang</th>
+              <th width="150px">Tanggal</th>
+              <th width="200px">Terjual</th>
+              <th width="200px">Sisa</th>
+            </tr>
+          </thead>
           <tbody>
             <tr>
               <?php if (is_array($list_data)) { ?>
@@ -118,7 +120,7 @@
             </select>
             <!-- <input type="text" /><br /> -->
             <label>Tanggal</label><br />
-            <input type="text" name="tanggal" id="date" placeholder="Pilih tanggal" /><br />
+            <input type="date" name="tanggal" id="date" placeholder="Pilih tanggal" /><br />
             <label>Terjual</label><br />
             <input type="text" name="terjual" id="terjual" placeholder="Masukkan jumlah terjual" /><br />
             <button style="background-color: #008fdf87" onclick="return confirm('Anda yakin ingin menambah data?');">Tambah</button>
@@ -174,6 +176,22 @@
     </div>
   </div>
   <!-- content -->
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#search').DataTable({
+        "paging": false,
+        "lengthChange": false,
+        "searching": true,
+        "ordering": false,
+        "info": false,
+        "autoWidth": true,
+        "responsive": true,
+      });
+    });
+  </script>
 </body>
 
 </html>
@@ -268,7 +286,7 @@
   }
 
   .content .body-content .content-utama {
-    width: 60%;
+    width: 80%;
     height: 100%;
   }
 
@@ -318,7 +336,7 @@
   td,
   th {
     border: 1px solid #0f0e0e;
-    padding: 8px;
+    padding: 2px;
   }
 
   tr:nth-child(even) {
