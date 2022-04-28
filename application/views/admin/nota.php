@@ -220,331 +220,331 @@
             <a href=" <?= base_url('admin/laporan'); ?>">Laporan Barang Masuk</a>
             <a href=" <?= base_url('admin/laporan_k'); ?>">Laporan Barang Keluar</a>
             <a href=# style=" background-color: #EEECB2; font-weight: bold;">Nota</a>
-            <a href=" <?= base_url('admin/logout'); ?>"">Keluar</a>
+            <a href=" <?= base_url('admin/logout'); ?>" onclick="return confirm('Anda yakin ingin keluar?');">Keluar</a>
         </div>
     </div>
     <!-- sidebar kiri -->
 
     <!-- content -->
     <div class=" content">
-                <!-- header -->
-                <div class="header-content">
-                    <br /><br />
-                    <h2>NOTA</h2>
+        <!-- header -->
+        <div class="header-content">
+            <br /><br />
+            <h2>NOTA</h2>
+        </div>
+        <!-- header -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col col-2">
+                    <button type="button" id="tambahnota" class="form-control form-control-navbar btn btn-large btn-info" data-toggle="modal" data-target="#modal-default"><i class="fa fa-plus"></i> Tambah Nota</button>
                 </div>
-                <!-- header -->
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col col-2">
-                            <button type="button" id="tambahnota" class="form-control form-control-navbar btn btn-large btn-info" data-toggle="modal" data-target="#modal-default"><i class="fa fa-plus"></i> Tambah Nota</button>
-                        </div>
-                        <div class="col col-2">
-                            <button type="button" id="editnota" class="form-control form-control-navbar btn btn-large btn-warning" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-pencil-square-o"></i> Edit Nota</button>
-                        </div>
-                        <div class="col col-2">
-                            <button type="button" id="hapusnota" class="form-control form-control-navbar btn btn-large btn-danger" data-toggle="modal" data-target="#modal-hapus"><i class="fa fa-trash-o"></i> Hapus Nota</button>
-                        </div>
-                        <div class="col col-2">
-                            <button type="button" id="btnlaporan" class="form-control form-control-navbar btn btn-large btn-success"><i class="fa fa-download"></i> Cetak Nota </button>
-                        </div>
-                        <!-- <div class="col col-4">
+                <div class="col col-2">
+                    <button type="button" id="editnota" class="form-control form-control-navbar btn btn-large btn-warning" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-pencil-square-o"></i> Edit Nota</button>
+                </div>
+                <div class="col col-2">
+                    <button type="button" id="hapusnota" class="form-control form-control-navbar btn btn-large btn-danger" data-toggle="modal" data-target="#modal-hapus"><i class="fa fa-trash-o"></i> Hapus Nota</button>
+                </div>
+                <div class="col col-2">
+                    <button type="button" id="btnlaporan" class="form-control form-control-navbar btn btn-large btn-success"><i class="fa fa-download"></i> Cetak Nota </button>
+                </div>
+                <!-- <div class="col col-4">
                             <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
                         </div> -->
-                    </div>
-                    <br />
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <!-- /.card-header -->
-                                <div class="card-body">
-                                    <table id="example2" class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Jenis ID</th>
-                                                <th>Nama Barang</th>
-                                                <th>Nama Supplier</th>
-                                                <th>Tanggal Masuk</th>
-                                                <th>Barang Masuk</th>
-                                                <th>Barang Terjual</th>
-                                                <!-- <th>Sisa</th> -->
-                                                <th>Tanggal Keluar</th>
-                                                <th>Harga Asli (pcs) </th>
-                                                <th>Harga Jual (pcs) </th>
-                                                <th>Total</th>
-                                                <th>Fee</th>
-                                                <!-- <th>Tindakan</th> -->
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <?php if (is_array($list_data)) { ?>
-                                                    <?php foreach ($list_data as $dd) : ?>
-                                                        <td><?= $dd->id_nota ?></td>
-                                                        <td><?= $dd->jenis ?></td>
-                                                        <td><?= $dd->nama_barang ?></td>
-                                                        <td><?= $dd->supplier ?></td>
-                                                        <td><?= date('d F Y', strtotime($dd->tgl_masuk)) ?></td>
-                                                        <td><?= $dd->jml_masuk ?></td>
-                                                        <td><?= $dd->terjual ?></td>
-                                                        <!-- <td><?= $dd->sisa ?></td> -->
-                                                        <td><?= date('d F Y', strtotime($dd->tgl_keluar)) ?></td>
-                                                        <td><?= $dd->hrg_asli ?></td>
-                                                        <td><?= $dd->hrg_jual ?></td>
-                                                        <td><?= $dd->total ?></td>
-                                                        <td><?= $dd->fee ?></td>
-                                                        <!-- <td><button id="edit" class="btn btn-warning">Edit</button> | <button class="btn btn-danger">Hapus</button></td> -->
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    <?php } else { ?>
-                                        <td colspan="14" align="center"><strong>Data Kosong</strong></td>
-                                    <?php } ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!-- /.card-body -->
-                            </div>
-                            <!-- /.card -->
-
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="example2" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Jenis ID</th>
+                                        <th>Nama Barang</th>
+                                        <th>Nama Supplier</th>
+                                        <th>Tanggal Masuk</th>
+                                        <th>Barang Masuk</th>
+                                        <th>Barang Terjual</th>
+                                        <!-- <th>Sisa</th> -->
+                                        <th>Tanggal Keluar</th>
+                                        <th>Harga Asli (pcs) </th>
+                                        <th>Harga Jual (pcs) </th>
+                                        <th>Total</th>
+                                        <th>Fee</th>
+                                        <!-- <th>Tindakan</th> -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <?php if (is_array($list_data)) { ?>
+                                            <?php foreach ($list_data as $dd) : ?>
+                                                <td><?= $dd->id_nota ?></td>
+                                                <td><?= $dd->jenis ?></td>
+                                                <td><?= $dd->nama_barang ?></td>
+                                                <td><?= $dd->supplier ?></td>
+                                                <td><?= date('d F Y', strtotime($dd->tgl_masuk)) ?></td>
+                                                <td><?= $dd->jml_masuk ?></td>
+                                                <td><?= $dd->terjual ?></td>
+                                                <!-- <td><?= $dd->sisa ?></td> -->
+                                                <td><?= date('d F Y', strtotime($dd->tgl_keluar)) ?></td>
+                                                <td><?= $dd->hrg_asli ?></td>
+                                                <td><?= $dd->hrg_jual ?></td>
+                                                <td><?= $dd->total ?></td>
+                                                <td><?= $dd->fee ?></td>
+                                                <!-- <td><button id="edit" class="btn btn-warning">Edit</button> | <button class="btn btn-danger">Hapus</button></td> -->
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php } else { ?>
+                                <td colspan="14" align="center"><strong>Data Kosong</strong></td>
+                            <?php } ?>
+                                </tbody>
+                            </table>
                         </div>
-                        <!-- /.col -->
+                        <!-- /.card-body -->
                     </div>
-                    <!-- /.row -->
+                    <!-- /.card -->
+
                 </div>
-                <!-- /.container-fluid -->
-                <footer class="footer">
-                    <p>Copyright &copy; 2022 Kelompok 2 PTI RB ITERA</p>
-                </footer>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
         </div>
-        <div class="modal fade" id="modal-default">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Tambah Barang</h4>
-                        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <!-- /.container-fluid -->
+        <footer class="footer">
+            <p>Copyright &copy; 2022 Kelompok 2 PTI RB ITERA</p>
+        </footer>
+    </div>
+    <div class="modal fade" id="modal-default">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Tambah Barang</h4>
+                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button> -->
-                    </div>
-                    <div class="modal-body">
-                        <form action="<?= base_url('admin/tambah_nota') ?>" role="form" method="post">
-                            <!-- <form> -->
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label for="id_nota">ID</label><br />
-                                    <input type="text" class="form-control" name="id_nota" id="id_nota" value="N<?= date("yM"); ?><?= random_string('numeric', 2); ?>" readonly />
-                                    <!-- </div>
+                </div>
+                <div class="modal-body">
+                    <form action="<?= base_url('admin/tambah_nota') ?>" role="form" method="post">
+                        <!-- <form> -->
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="id_nota">ID</label><br />
+                                <input type="text" class="form-control" name="id_nota" id="id_nota" value="N<?= date("yM"); ?><?= random_string('numeric', 2); ?>" readonly />
+                                <!-- </div>
                                 <div> -->
 
-                                    <label for="jenis">Pilih Jenis (klik form)</label><br>
-                                    <select class="form-control" name="jenis" id="jenis">
-                                        <!-- <option selected=""></option> -->
-                                        <option>CASH</option>
-                                        <option>KONSINYASI</option>
-                                    </select>
-                                    <!-- <div class="form-group"> -->
+                                <label for="jenis">Pilih Jenis (klik form)</label><br>
+                                <select class="form-control" name="jenis" id="jenis">
+                                    <!-- <option selected=""></option> -->
+                                    <option>CASH</option>
+                                    <option>KONSINYASI</option>
+                                </select>
+                                <!-- <div class="form-group"> -->
 
-                                    <label for="nama_barang">Nama Barang</label><br>
-                                    <input class="form-control" type="text" id="nama_barang" name="nama_barang" placeholder="Masukkan Nama Barang">
-                                    <!-- </div>
+                                <label for="nama_barang">Nama Barang</label><br>
+                                <input class="form-control" type="text" id="nama_barang" name="nama_barang" placeholder="Masukkan Nama Barang">
+                                <!-- </div>
                                     <div class="form-group"> -->
 
-                                    <label for="supplier">Nama Supplier</label><br>
-                                    <input class="form-control" type="text" id="supplier" name="supplier" placeholder="Masukkan Nama Supplier">
-                                    <!-- </div>
+                                <label for="supplier">Nama Supplier</label><br>
+                                <input class="form-control" type="text" id="supplier" name="supplier" placeholder="Masukkan Nama Supplier">
+                                <!-- </div>
                                     <div class="form-group"> -->
 
-                                    <label for="tgl_masuk">Tanggal Masuk</label><br>
-                                    <input class="form-control" type="date" id="tgl_masuk" name="tgl_masuk">
-                                    <!-- </div>
+                                <label for="tgl_masuk">Tanggal Masuk</label><br>
+                                <input class="form-control" type="date" id="tgl_masuk" name="tgl_masuk">
+                                <!-- </div>
                                     <div class="form-group"> -->
 
-                                    <label for="jml_masuk">Jumlah Barang Masuk</label><br>
-                                    <input class="form-control" type="text" id="jml_masuk" name="jml_masuk" placeholder="Masukkan Jumlah Barang Masuk">
-                                    <!-- </div> -->
-                                    <!-- <div class="form-group">
+                                <label for="jml_masuk">Jumlah Barang Masuk</label><br>
+                                <input class="form-control" type="text" id="jml_masuk" name="jml_masuk" placeholder="Masukkan Jumlah Barang Masuk">
+                                <!-- </div> -->
+                                <!-- <div class="form-group">
                                         <label for="terjual">Masukkan Jumlah Barang Terjual</label>
                                         <input type="text" class="form-control" id="terjual" readonly>
                                     </div> -->
-                                    <!-- <div class="form-group"> -->
+                                <!-- <div class="form-group"> -->
 
-                                    <label for="tgl_keluar">Tanggal Keluar</label><br>
-                                    <input class="form-control" type="date" id="tgl_keluar" name="tgl_keluar">
-                                    <!-- </div>
+                                <label for="tgl_keluar">Tanggal Keluar</label><br>
+                                <input class="form-control" type="date" id="tgl_keluar" name="tgl_keluar">
+                                <!-- </div>
                                     <div class="form-group"> -->
 
-                                    <label for="hrg_asli">Harga Asli Barang</label><br>
-                                    <input class="form-control" type="text" id="hrg_asli" name="hrg_asli" placeholder="tulis angka saja (contoh: 25000)">
-                                    <!-- </div>
+                                <label for="hrg_asli">Harga Asli Barang</label><br>
+                                <input class="form-control" type="text" id="hrg_asli" name="hrg_asli" placeholder="tulis angka saja (contoh: 25000)">
+                                <!-- </div>
                                     <div class="form-group"> -->
 
-                                    <label for="hrg_jual">Harga Jual Barang</label><br>
-                                    <input class="form-control" type="text" id="hrg_jual" name="hrg_jual" placeholder="tulis angka saja (contoh: 25000)">
-                                    <!-- </div>
+                                <label for="hrg_jual">Harga Jual Barang</label><br>
+                                <input class="form-control" type="text" id="hrg_jual" name="hrg_jual" placeholder="tulis angka saja (contoh: 25000)">
+                                <!-- </div>
                                     <div class="modal-footer justify-content-between"> -->
-                                    <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
-                                    <!-- </div> -->
-                                </div>
+                                <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+                                <!-- </div> -->
                             </div>
-                            <!-- /.card-body -->
-                            <div class="modal-footer justify-content-between">
-                                <button class="btn btn-primary" onclick="return confirm('Yakin ingin menambah data?')">Tambah Data</button>
-                            </div>
-                        </form>
-                        <!-- </form> -->
-                    </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="modal-footer justify-content-between">
+                            <button class="btn btn-primary" onclick="return confirm('Yakin ingin menambah data?')">Tambah Data</button>
+                        </div>
+                    </form>
+                    <!-- </form> -->
                 </div>
-                <!-- /.modal-content -->
             </div>
-            <!-- /.modal-dialog -->
+            <!-- /.modal-content -->
         </div>
-        <div class="modal fade" id="modal-edit">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Edit Nota</h4>
-                        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <!-- /.modal-dialog -->
+    </div>
+    <div class="modal fade" id="modal-edit">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Nota</h4>
+                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button> -->
-                    </div>
-                    <div class="modal-body">
-                        <form action="<?= base_url('admin/edit_nota') ?>" role="form" method="post">
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label>ID (klik form)</label><br />
-                                    <select class="form-control" name="id_nota" id="id_nota">
-                                        <?php
-                                        $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
-                                        $res = mysqli_query($conn, "SELECT id_nota FROM nota");
-                                        while ($rows = mysqli_fetch_array($res)) {
-                                        ?>
-                                            <option value="<?php echo $rows['id_nota']; ?>"><?php echo $rows['id_nota']; ?></option>
-                                        <?php } ?>
-                                    </select>
-                                    <label for="terjual">Masukkan Jumlah Barang Terjual</label>
-                                    <input type="text" class="form-control" id="terjual" name="terjual" placeholder="Masukkan jumlah barang terjual">
-                                </div>
-                            </div>
-                            <!-- /.card-body -->
-                            <div class="modal-footer justify-content-between">
-                                <button class="btn btn-primary" onclick="return confirm('Yakin ingin mengubah data?')">Ubah Data</button>
-                            </div>
-                        </form>
-                    </div>
                 </div>
-                <!-- /.modal-content -->
+                <div class="modal-body">
+                    <form action="<?= base_url('admin/edit_nota') ?>" role="form" method="post">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>ID (klik form)</label><br />
+                                <select class="form-control" name="id_nota" id="id_nota">
+                                    <?php
+                                    $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
+                                    $res = mysqli_query($conn, "SELECT id_nota FROM nota");
+                                    while ($rows = mysqli_fetch_array($res)) {
+                                    ?>
+                                        <option value="<?php echo $rows['id_nota']; ?>"><?php echo $rows['id_nota']; ?></option>
+                                    <?php } ?>
+                                </select>
+                                <label for="terjual">Masukkan Jumlah Barang Terjual</label>
+                                <input type="text" class="form-control" id="terjual" name="terjual" placeholder="Masukkan jumlah barang terjual">
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="modal-footer justify-content-between">
+                            <button class="btn btn-primary" onclick="return confirm('Yakin ingin mengubah data?')">Ubah Data</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <!-- /.modal-dialog -->
+            <!-- /.modal-content -->
         </div>
-        <div class="modal fade" id="modal-hapus">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Hapus Nota</h4>
-                        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <!-- /.modal-dialog -->
+    </div>
+    <div class="modal fade" id="modal-hapus">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Hapus Nota</h4>
+                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button> -->
-                    </div>
-                    <div class="modal-body">
-                        <form action="<?= base_url('admin/hapus_nota') ?>" role="form" method="post">
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label>ID (klik form)</label><br />
-                                    <select class="form-control" name="id_nota" id="id_nota">
-                                        <?php
-                                        $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
-                                        $res = mysqli_query($conn, "SELECT id_nota FROM nota");
-                                        while ($rows = mysqli_fetch_array($res)) {
-                                        ?>
-                                            <option value="<?php echo $rows['id_nota']; ?>"><?php echo $rows['id_nota']; ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-                            </div>
-                            <!-- /.card-body -->
-                            <div class="modal-footer justify-content-between">
-                                <button class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus data?')">Hapus</button>
-                            </div>
-                        </form>
-                    </div>
                 </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
-        <div class="modal fade" id="modal-unduh">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Cetak Nota</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label>Pilih Supplier</label>
-                                    <select class="form-control">
-                                        <option>Jokondo</option>
-                                        <option>Rama Jaya</option>
-                                        <option selected="">Semua</option>
-                                    </select>
-                                </div>
+                <div class="modal-body">
+                    <form action="<?= base_url('admin/hapus_nota') ?>" role="form" method="post">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>ID (klik form)</label><br />
+                                <select class="form-control" name="id_nota" id="id_nota">
+                                    <?php
+                                    $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
+                                    $res = mysqli_query($conn, "SELECT id_nota FROM nota");
+                                    while ($rows = mysqli_fetch_array($res)) {
+                                    ?>
+                                        <option value="<?php echo $rows['id_nota']; ?>"><?php echo $rows['id_nota']; ?></option>
+                                    <?php } ?>
+                                </select>
                             </div>
-                            <!-- /.card-body -->
-                        </form>
-                    </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button id="unduhdata" type="button" class="btn btn-primary">Save changes</button>
-                    </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="modal-footer justify-content-between">
+                            <button class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus data?')">Hapus</button>
+                        </div>
+                    </form>
                 </div>
-                <!-- /.modal-content -->
             </div>
-            <!-- /.modal-dialog -->
+            <!-- /.modal-content -->
         </div>
-        <!-- content -->
-        <script>
-            $(function() {
-                $('#example2').DataTable({
-                    "paging": false,
-                    "lengthChange": false,
-                    "searching": true,
-                    "ordering": false,
-                    "info": true,
-                    "autoWidth": false,
-                    "responsive": true,
-                });
+        <!-- /.modal-dialog -->
+    </div>
+    <div class="modal fade" id="modal-unduh">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Cetak Nota</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Pilih Supplier</label>
+                                <select class="form-control">
+                                    <option>Jokondo</option>
+                                    <option>Rama Jaya</option>
+                                    <option selected="">Semua</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </form>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="unduhdata" type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- content -->
+    <script>
+        $(function() {
+            $('#example2').DataTable({
+                "paging": false,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": false,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
             });
-            $('#startdate').datetimepicker({
-                format: 'L'
-            });
-            $('#enddate').datetimepicker({
-                format: 'L'
-            });
-            $('#btnlaporan').click(function() {
-                $('#modal-unduh').modal('show');
-            });
-            // $('#tambahdata').click(function() {
-            //     confirm("Apa Anda Yakin ingin menambah data?");
-            // });
-            // $('#editdata').click(function() {
-            //     confirm("Apa Anda Yakin ingin mengedit data?");
-            // });
-            $('#unduhdata').click(function() {
-                confirm("Apa Anda Yakin ingin mengunduh data?");
-            });
-            $('#tambahnota').click(function() {
-                $('#modal-default').modal('show');
-            });
-            $('#editnota').click(function() {
-                $('#modal-edit').modal('show');
-            });
-            $('#hapusnota').click(function() {
-                $('#modal-hapus').modal('show');
-            });
-        </script>
+        });
+        $('#startdate').datetimepicker({
+            format: 'L'
+        });
+        $('#enddate').datetimepicker({
+            format: 'L'
+        });
+        $('#btnlaporan').click(function() {
+            $('#modal-unduh').modal('show');
+        });
+        // $('#tambahdata').click(function() {
+        //     confirm("Apa Anda Yakin ingin menambah data?");
+        // });
+        // $('#editdata').click(function() {
+        //     confirm("Apa Anda Yakin ingin mengedit data?");
+        // });
+        $('#unduhdata').click(function() {
+            confirm("Apa Anda Yakin ingin mengunduh data?");
+        });
+        $('#tambahnota').click(function() {
+            $('#modal-default').modal('show');
+        });
+        $('#editnota').click(function() {
+            $('#modal-edit').modal('show');
+        });
+        $('#hapusnota').click(function() {
+            $('#modal-hapus').modal('show');
+        });
+    </script>
 
 </body>
 

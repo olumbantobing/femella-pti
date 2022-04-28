@@ -43,7 +43,7 @@
       <a href=" <?= base_url('admin/laporan'); ?>">Laporan Barang Masuk</a>
       <a href=" <?= base_url('admin/laporan_k'); ?>">Laporan Barang Keluar</a>
       <a href=" <?= base_url('admin/nota'); ?>"">Nota</a>
-      <a href=" <?= base_url('admin/logout'); ?>"">Keluar</a>
+      <a href=" <?= base_url('admin/logout'); ?>" onclick="return confirm('Anda yakin ingin keluar?');">Keluar</a>
     </div>
   </div>
   <!-- sidebar kiri -->
@@ -128,7 +128,7 @@
             <label>Jumlah</label><br />
             <input type="text" name="jumlah" id="jumlah" placeholder="Masukkan jumlah barang" /><br />
             <label>Tanggal</label><br />
-            <input type="text" name="tanggal" id="date" placeholder="Pilih tanggal" /><br />
+            <input type="date" name="tanggal" id="date" placeholder="Pilih tanggal" /><br />
             <button style="background-color: #008fdf87" onclick="return confirm('Anda yakin ingin menambah data?');">Tambah</button>
 
             <?php if ($this->session->flashdata('msg_tambah')) {
@@ -156,7 +156,7 @@
             <label>Jumlah</label><br />
             <input type="text" name="jumlah" id="jumlah" placeholder="Masukkan jumlah" /><br />
             <label>Tanggal</label><br />
-            <input type="text" name="tanggal" id="date1" placeholder="Pilih tanggal" /><br />
+            <input type="date" name="tanggal" id="date1" placeholder="Pilih tanggal" /><br />
             <button style="background-color: #fad541fc" onclick="return confirm('Anda yakin ingin mengubah data?');">Ubah</button>
 
             <?php if ($this->session->flashdata('msg_ubah')) {

@@ -28,7 +28,7 @@
       <a href=" <?= base_url('admin/laporan'); ?>">Laporan Barang Masuk</a>
       <a href=" <?= base_url('admin/laporan_k'); ?>">Laporan Barang Keluar</a>
       <a href=" <?= base_url('admin/nota'); ?>"">Nota</a>
-      <a href=" <?= base_url('admin/logout'); ?>"">Keluar</a>
+      <a href=" <?= base_url('admin/logout'); ?>" onclick="return confirm('Anda yakin ingin keluar?');">Keluar</a>
     </div>
   </div>
   <!-- sidebar kiri -->
@@ -45,27 +45,29 @@
     <div class="body-content">
       <div class="content-utama">
         <!-- Tombol search -->
-        <div class="search-btn">
+        <!-- <div class="search-btn">
           <div>
             <input type="text" placeholder="Cari Barang..." />
             <button>
               <i class="fa-2x fa-solid fa-magnifying-glass"></i>
             </button>
           </div>
-        </div>
+        </div> -->
         <!-- Tombol search -->
 
         <!-- tabel -->
         <table id="search">
-          <tr>
-            <th>#</th>
-            <th>Kode Terjual</th>
-            <th>ID</th>
-            <th>Nama Barang</th>
-            <th>Tanggal</th>
-            <th>Terjual</th>
-            <th width="90px">Sisa</th>
-          </tr>
+          <thead>
+            <tr>
+              <th width="60px">#</th>
+              <th width="90px">Kode Terjual</th>
+              <th width="90px">ID</th>
+              <th width="300px">Nama Barang</th>
+              <th width="150px">Tanggal</th>
+              <th width="100px">Terjual</th>
+              <th width="100px">Sisa</th>
+            </tr>
+          </thead>
           <tbody>
             <tr>
               <?php if (is_array($list_data)) { ?>
@@ -251,6 +253,7 @@
 
 <style>
   .content-utama table {
+    margin-top: 20pt;
     margin-left: 200px;
     text-align: center;
     font-size: 12pt;
@@ -260,7 +263,7 @@
   td,
   th {
     border: 1px solid #0f0e0e;
-    padding: 8px;
+    padding: 2px;
   }
 
   tr:nth-child(even) {
