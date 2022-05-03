@@ -29,7 +29,7 @@
             <a href=" <?= base_url('admin/barangkeluar'); ?>"">Barang Keluar Gudang</a>
             <a href=" <?= base_url('admin/pengguna'); ?>"">Pengguna</a>
             <a href=" <?= base_url('admin/laporan'); ?>">Laporan Barang Masuk</a>
-            <a href=" <?= base_url('admin/laporan_k'); ?>">Laporan Barang Keluar< <a href=" <?= base_url('admin/nota'); ?>"">Nota</a>
+            <a href=" <?= base_url('admin/laporan_k'); ?>">Laporan Barang Keluar <a href=" <?= base_url('admin/nota'); ?>"">Nota</a>
             <a href=" <?= base_url('auth/logout'); ?>" onclick="return confirm('Anda yakin ingin keluar?');">Keluar</a>
         </div>
     </div>
