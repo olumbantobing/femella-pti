@@ -11,6 +11,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/askha-logo.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
     <link href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
+
     <title>INVENTARIS | STOK GUDANG</title>
 </head>
 
@@ -114,7 +115,7 @@
                     </h4>
                     <form action="<?= base_url('admin/ubah_stokgudang') ?>" role="form" method="post">
                         <label>ID Barang</label><br />
-                        <select class="form-control" name="id">
+                        <select class="form-control" name="id" id="id">
                             <?php
                             $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
                             $res = mysqli_query($conn, "SELECT id, CONCAT(id, ' ', nama_barang) AS pilihan FROM gudang");
@@ -122,7 +123,7 @@
                             ?>
                                 <option value="<?php echo $rows['id']; ?>"><?php echo $rows['pilihan']; ?></option>
                             <?php } ?>
-                        </select><br>
+                        </select>
                         <!-- <input type="text" name="id" id="id" placeholder="Masukkan ID Barang" /><br /> -->
                         <label>Nama Barang</label><br />
                         <input type="text" name="nama_barang" id="nama_barang" placeholder="Masukkan Nama Barang" /><br />
@@ -150,7 +151,7 @@
                             ?>
                                 <option value="<?php echo $rows['id']; ?>"><?php echo $rows['pilihan']; ?></option>
                             <?php } ?>
-                        </select><br>
+                        </select>
                         <!-- <input type="text" name="id" id="id" placeholder="Masukkan ID Barang" /><br /> -->
                         <button id="hapusdata" style="background-color: #fe4a4af0" onclick="return confirm('Anda yakin ingin menghapus data?');">Hapus</button>
 
@@ -384,8 +385,8 @@
     .form-input .box form {
         display: block;
         padding: 15px;
-        /* padding-left: 20px;
-        padding-right: 30px; */
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     .form-input .box form input {
@@ -408,11 +409,11 @@
         background-color: rgb(224, 216, 206);
     }
 
-    .form-control {
-        /* height: 23px; */
+    .id {
+        height: 23px;
         width: 100%;
         font-size: 12pt;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
     }
 
     table {

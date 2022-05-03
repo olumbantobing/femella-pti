@@ -410,11 +410,11 @@
     display: block;
     padding: 15px;
     padding-left: 20px;
-    padding-right: 30px;
+    padding-right: 20px;
   }
 
   .form-input .box form input {
-    height: 23px;
+    height: 28px;
     width: 100%;
     font-size: 12pt;
     margin-bottom: 10px;

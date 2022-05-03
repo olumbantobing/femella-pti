@@ -286,12 +286,12 @@
   }
 
   .content .body-content .content-utama {
-    width: 80%;
+    width: 65%;
     height: 100%;
   }
 
   .content .body-content .form-input {
-    width: 40%;
+    width: 35%;
     height: 100%;
   }
 </style>
@@ -372,11 +372,11 @@
     display: block;
     padding: 15px;
     padding-left: 20px;
-    padding-right: 30px;
+    padding-right: 20px;
   }
 
   .form-input .box form input {
-    height: 23px;
+    height: 28px;
     width: 100%;
     font-size: 12pt;
     margin-bottom: 10px;
