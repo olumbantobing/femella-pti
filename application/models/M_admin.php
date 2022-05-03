@@ -156,6 +156,10 @@ class M_admin extends CI_Model
     $this->db->delete($tabel);
   }
 
+  public function total($where, $terjual)
+  {
+  }
+
   // public function mengurangi($tabel, $id_transaksi, $jumlah)
   // {
   //   $this->db->set("jumlah", "jumlah - $jumlah");

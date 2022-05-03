@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.min.css" integrity="sha512-3JRrEUwaCkFUBLK1N8HehwQgu8e23jTH4np5NHOmQOobuC4ROQxFwFgBLTnhcnQRMs84muMh0PnnwXlPq5MGjg==" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.min.css" integrity="sha512-3JRrEUwaCkFUBLK1N8HehwQgu8e23jTH4np5NHOmQOobuC4ROQxFwFgBLTnhcnQRMs84muMh0PnnwXlPq5MGjg==" crossorigin="anonymous" />
 
   <link rel="shortcut icon" type="image/x-icon" href="assets/img/askha-logo.png">
@@ -221,47 +223,18 @@
           <div class="card">
             <div class="card-header">
               <div class="row">
-                <!-- <form action="<?= base_url('admin/show_lap') ?>" role="form" method="post">
-                  <div class="col col-6">
-                    <label><b> Pilih Laporan</b></label><br>
-                    <select name="showtable" id="showtable">
-                      <option value="masuk" name="masuk">Laporan Barang Masuk</option>
-                      <option value="keluar" name="keluar">Laporan Barang Keluar</option>
-                    </select>
-                    <button class="btn btn-sm btn-primary">Tampilkan</button>
-                  </div>
-                </form> -->
                 <div class="col col-6">
                   <form action="<?= base_url('admin/f_masuk') ?>" role="form" method="post">
-                    <!-- <form action="<?= base_url('kasir/laporan') ?>" role="form" method="post"> -->
                     <div><b> Pilih Tanggal Laporan : </b></div>
-                    <!-- <div class="form-group"> -->
-                    <!-- <form method="post" class="form-inline"> -->
                     <label>Tanggal Awal:</label>
                     <input type="date" name="tgl_awal" class="form-control">
                     <label>Tanggal Akhir:</label>
                     <input type="date" name="tgl_akhir" class="form-control">
                     <button type="submit" class="btn btn-info" style="margin-top: 10px">Filter</button>
                   </form>
-                </div>
-                <div class="col col-4">
                   <form action="<?= base_url('admin/laporan') ?>" role="form" method="post">
-                    <button name="reset" class="btn btn-large btn-secondary" style="margin-top: 10px">Reset <i class="fa fa-refresh"></i></button>
+                    <button name="reset" class="btn btn-large btn-secondary" style="margin-top: 10px"><i class="fa fa-refresh"></i> Reset</button>
                   </form>
-                  <!-- <form action="<?= base_url('GeneratePdfController/index') ?>" role="form" method="post"> -->
-                  <button name="unduh" class="btn btn-large btn-success" style="margin-top: 10px">UNDUH LAPORAN <i class="fa fa-download"></i></button>
-                  <!-- </form> -->
-                </div>
-
-                <div class="col col-3">
-                  <div class="form-group">
-                    <label>&nbsp</label>
-                  </div>
-                </div>
-                <div class="col col-3">
-                  <!-- <div class="form-group"> -->
-                  <label>&nbsp</label>
-                  <!-- </div> -->
                 </div>
               </div>
               <!-- /.card-header -->
@@ -274,12 +247,8 @@
                       <th>Nama Barang</th>
                       <th>Tanggal</th>
                       <th>Jumlah Barang</th>
-                      <!-- <th>Barang Keluar Gudang</th>
-                        <th>Barang Masuk Gudang</th> -->
-                      <!-- <th>Stok Gudang</th> -->
-                      <!-- <th>Barang Terjual di Toko</th> -->
-                      <!-- <th>Sisa di Toko</th> -->
                       <th>Harga</th>
+                      <th>Keterangan</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -292,16 +261,13 @@
                           <td><?= $dd->nama_barang ?></td>
                           <td><?= date('d F Y', strtotime($dd->tanggal)) ?></td>
                           <td><?= $dd->jumlah ?></td>
-                          <!-- <td><?= $dd->jumlah ?></td> -->
-                          <!-- <td><?= $dd->stok_gudang ?></td> -->
-                          <!-- <td><?= $dd->terjual ?></td> -->
-                          <!-- <td><?= $dd->stok_toko ?></td> -->
                           <td><?= $dd->harga ?></td>
+                          <td><?= $dd->keterangan ?></td>
                     </tr>
                     <?php $no++; ?>
                   <?php endforeach; ?>
                 <?php } else { ?>
-                  <td colspan="10" align="center"><strong>Data Kosong</strong></td>
+                  <td colspan="7" align="center"><strong>Data Kosong</strong></td>
                 <?php } ?>
                 </table>
               </div>
@@ -330,6 +296,10 @@
   <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js" integrity="sha512-k6/Bkb8Fxf/c1Tkyl39yJwcOZ1P4cRrJu77p83zJjN2Z55prbFHxPs9vN7q3l3+tSMGPDdoH51AEU8Vgo1cgAA==" crossorigin="anonymous"></script>
+  <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
 
   <script>
     $(function() {
@@ -338,9 +308,83 @@
         "lengthChange": false,
         "searching": false,
         "ordering": false,
-        "info": true,
+        "info": false,
         "autoWidth": false,
         "responsive": true,
+        dom: 'Bfrtip',
+        buttons: [{
+          extend: 'pdfHtml5',
+          text: '<i class="fa fa-download"></i> Unduh Laporan',
+          orientation: 'portrait',
+          filename: 'Laporan Barang Masuk',
+          exportOptions: {
+            columns: ':visible',
+            modifier: {
+              page: 'current',
+            }
+          },
+          customize: function(doc) {
+            doc.defaultStyle.fontSize = 12;
+            doc.content.splice(0, 1);
+            doc.pageMargins = [20, 60, 20, 20];
+            var now = new Date();
+            var jsDate = now.getDate() + '-' + (now.getMonth() + 1) + '-' + now.getFullYear();
+            doc['header'] = (function() {
+              return {
+                columns: [{
+                  alignment: 'center',
+                  text: 'LAPORAN BARANG MASUK',
+                  fontSize: 18,
+                  margin: [0, 30, 0, 5]
+                }]
+              }
+            });
+            doc['footer'] = (function(page, pages) {
+              return {
+                columns: [{
+                    alignment: 'left',
+                    text: ['Dibuat pada: ', {
+                      text: jsDate.toString()
+                    }]
+                  },
+                  {
+                    alignment: 'right',
+                    text: ['hal ', {
+                      text: page.toString()
+                    }, ' dari ', {
+                      text: pages.toString()
+                    }]
+                  }
+                ],
+                margin: [40, 0, 40, 5]
+              }
+            });
+
+            var objLayout = {};
+            objLayout['hLineWidth'] = function(i) {
+              return .8;
+            };
+            objLayout['vLineWidth'] = function(i) {
+              return .5;
+            };
+            objLayout['hLineColor'] = function(i) {
+              return '#aaa';
+            };
+            objLayout['vLineColor'] = function(i) {
+              return '#aaa';
+            };
+            objLayout['paddingLeft'] = function(i) {
+              return 8;
+            };
+            objLayout['paddingRight'] = function(i) {
+              return 8;
+            };
+            doc.content[0].layout = objLayout;
+          },
+          title: 'LAPORAN BARANG MASUK',
+          pageSize: 'A4',
+          download: 'open'
+        }]
       });
     });
     $('#startdate').datetimepicker({

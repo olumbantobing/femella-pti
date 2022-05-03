@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.min.css" integrity="sha512-3JRrEUwaCkFUBLK1N8HehwQgu8e23jTH4np5NHOmQOobuC4ROQxFwFgBLTnhcnQRMs84muMh0PnnwXlPq5MGjg==" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://kit.fontawesome.com/25495e258e.js" crossorigin="anonymous"></script>
@@ -230,69 +231,11 @@
                                         <input type="date" name="tgl_akhir" class="form-control">
                                         <button type="submit" class="btn btn-info" style="margin-top: 10px">Filter</button>
                                     </form>
-                                </div>
-                                <div class="col col-4">
                                     <form action="<?= base_url('kasir/reset') ?>" role="form" method="post">
                                         <button name="reset" class="btn btn-large btn-secondary" style="margin-top: 10px">Reset <i class="fa fa-refresh"></i></button>
                                     </form>
-                                    <form action="<?= base_url('Unduh/index') ?>" role="form" method="post">
-                                        <button name="unduh" class="btn btn-large btn-success" style="margin-top: 10px">UNDUH LAPORAN <i class="fa fa-download"></i></button>
-                                    </form>
-                                </div>
-                                <!-- </div> -->
-                                <!-- <div class="row"> -->
-                                <!-- <div class="col"> -->
-                                <!-- <p>Pilih Tanggal Laporan : </p> -->
-                                <!-- </div> -->
-                                <!-- </div>
-                  <div class="row"> -->
-                                <!-- </div> -->
-                                <!-- <div class="col col-3"> -->
-                                <div class="form-group">
-                                    <!-- <div class="input-group date" id="enddate" data-target-input="nearest">
-                      <input type="text" class="form-control datetimepicker-input" data-target="#enddate" />
-                      <div class="input-group-append" data-target="#enddate" data-toggle="datetimepicker">
-                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                      </div>
-                    </div> -->
-                                </div>
-                                <!-- </div> -->
-                                <!-- <div class="col col-3">
-                  <div class="form-group">
-                    <label>&nbsp</label>
-                  </div>
-                </div> -->
-                                <div class="col col-3">
-                                    <div class="form-group">
-                                        <label>&nbsp</label>
-                                    </div>
-                                </div>
-                                <div class="col col-3">
-                                    <!-- <div class="form-group"> -->
-                                    <label>&nbsp</label>
-                                    <!-- </div> -->
                                 </div>
                             </div>
-
-                            <?php
-                            // Load file koneksi.php
-                            $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
-                            $tgl_awal = @$_GET['tgl_awal']; // Ambil data tgl_awal sesuai input (kalau tidak ada set kosong)
-                            $tgl_akhir = @$_GET['tgl_akhir']; // Ambil data tgl_awal sesuai input (kalau tidak ada set kosong)
-                            if (empty($tgl_awal) or empty($tgl_akhir)) { // Cek jika tgl_awal atau tgl_akhir kosong, maka :
-                                // Buat query untuk menampilkan semua data transaksi
-                                $query = mysqli_query($conn, "SELECT * FROM terjual");
-                                $url_cetak = "print.php";
-                                $label = "Semua Data Transaksi";
-                            } else { // Jika terisi
-                                // Buat query untuk menampilkan data transaksi sesuai periode tanggal
-                                $query = mysqli_query($conn, "SELECT terjual.id, gudang.nama_barang, terjual.kodeterjual, terjual.tanggal, keluar_gudang.jumlah, terjual.terjual, gudang.stok_toko  FROM terjual INNER JOIN gudang INNER JOIN keluar_gudang WHERE (tgl BETWEEN '" . $tgl_awal . "' AND '" . $tgl_akhir . "')");
-                                $url_cetak = "print.php?tgl_awal=" . $tgl_awal . "&tgl_akhir=" . $tgl_akhir . "&filter=true";
-                                $tgl_awal = date('d-m-Y', strtotime($tgl_awal)); // Ubah format tanggal jadi dd-mm-yyyy
-                                $tgl_akhir = date('d-m-Y', strtotime($tgl_akhir)); // Ubah format tanggal jadi dd-mm-yyyy
-                                $label = 'Periode Tanggal ' . $tgl_awal . ' s/d ' . $tgl_akhir;
-                            }
-                            ?>
 
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -303,11 +246,8 @@
                                             <th>ID</th>
                                             <th>Nama Barang</th>
                                             <th>Tanggal</th>
-                                            <!-- <th>Barang Barang Masuk Ke Toko</th> -->
                                             <th>Barang Terjual di Toko</th>
-                                            <!-- <th>Stok di Toko</th> -->
                                             <th>Harga</th>
-                                            <!-- <th>Total</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -351,6 +291,10 @@
 
     <!-- content -->
 
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
     <script>
         $(function() {
             $('#example2').DataTable({
@@ -358,9 +302,83 @@
                 "lengthChange": false,
                 "searching": false,
                 "ordering": false,
-                "info": true,
+                "info": false,
                 "autoWidth": false,
                 "responsive": true,
+                dom: 'Bfrtip',
+                buttons: [{
+                    extend: 'pdfHtml5',
+                    text: '<i class="fa fa-download"></i> Unduh Laporan',
+                    orientation: 'portrait',
+                    filename: 'Laporan Barang Terjual',
+                    exportOptions: {
+                        columns: ':visible',
+                        modifier: {
+                            page: 'current',
+                        }
+                    },
+                    customize: function(doc) {
+                        doc.defaultStyle.fontSize = 12;
+                        doc.content.splice(0, 1);
+                        doc.pageMargins = [20, 60, 20, 20];
+                        var now = new Date();
+                        var jsDate = now.getDate() + '-' + (now.getMonth() + 1) + '-' + now.getFullYear();
+                        doc['header'] = (function() {
+                            return {
+                                columns: [{
+                                    alignment: 'center',
+                                    text: 'LAPORAN BARANG TERJUAL',
+                                    fontSize: 18,
+                                    margin: [0, 30, 0, 5]
+                                }]
+                            }
+                        });
+                        doc['footer'] = (function(page, pages) {
+                            return {
+                                columns: [{
+                                        alignment: 'left',
+                                        text: ['Dibuat pada: ', {
+                                            text: jsDate.toString()
+                                        }]
+                                    },
+                                    {
+                                        alignment: 'right',
+                                        text: ['hal ', {
+                                            text: page.toString()
+                                        }, ' dari ', {
+                                            text: pages.toString()
+                                        }]
+                                    }
+                                ],
+                                margin: [40, 0, 40, 5]
+                            }
+                        });
+
+                        var objLayout = {};
+                        objLayout['hLineWidth'] = function(i) {
+                            return .8;
+                        };
+                        objLayout['vLineWidth'] = function(i) {
+                            return .5;
+                        };
+                        objLayout['hLineColor'] = function(i) {
+                            return '#aaa';
+                        };
+                        objLayout['vLineColor'] = function(i) {
+                            return '#aaa';
+                        };
+                        objLayout['paddingLeft'] = function(i) {
+                            return 8;
+                        };
+                        objLayout['paddingRight'] = function(i) {
+                            return 8;
+                        };
+                        doc.content[0].layout = objLayout;
+                    },
+                    title: 'LAPORAN BARANG TERJUAL',
+                    pageSize: 'A4',
+                    download: 'open'
+                }]
             });
         });
         $('#startdate').datetimepicker({

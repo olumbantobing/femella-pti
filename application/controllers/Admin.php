@@ -491,7 +491,7 @@ class Admin extends CI_Controller
             );
             $this->M_admin->insert('nota', $data);
 
-            $this->session->set_flashdata('msg_berhasil', 'Data Barang Berhasil Ditambahkan');
+            $this->session->set_flashdata('msg_tambah', 'Data Berhasil Ditambahkan');
             redirect(base_url('admin/nota'));
         } else {
             echo "<script>alert('Gagal menambah data: Jangan ada data yang kosong!');history.go(-1);</script>";
@@ -510,11 +510,11 @@ class Admin extends CI_Controller
             $where = array('id_nota' => $id_nota);
             $data = array(
                 'id_nota' => $id_nota,
-                'terjual' => $terjual,
+                'terjual' => $terjual
             );
             $this->M_admin->update('nota', $data, $where);
 
-            $this->session->set_flashdata('msg_berhasil', 'Data Barang Berhasil Ditambahkan');
+            $this->session->set_flashdata('msg_ubah', 'Data Berhasil Diubah');
             redirect(base_url('admin/nota'));
         } else {
             echo "<script>alert('Gagal menambah data: Jangan ada data yang kosong!');history.go(-1);</script>";
@@ -534,7 +534,7 @@ class Admin extends CI_Controller
             );
             $this->M_admin->delete('nota', $data, $where);
 
-            $this->session->set_flashdata('msg_hapus', 'Data Barang Berhasil Dihapus');
+            $this->session->set_flashdata('msg_hapus', 'Data Berhasil Dihapus');
             redirect(base_url('admin/nota'));
         } else {
             echo "<script>alert('Gagal mengubah data: Jangan ada data yang kosong!');history.go(-1);</script>";
