@@ -101,7 +101,7 @@ class M_admin extends CI_Model
 
   public function nota()
   {
-    $query = $this->db->query("SELECT * FROM nota ORDER BY tgl_masuk ASC");
+    $query = $this->db->query("SELECT id_nota, jenis, nama_barang, supplier, tgl_masuk, jml_masuk, terjual, jml_masuk-terjual as sisa, tgl_keluar, hrg_asli, hrg_jual, hrg_jual*terjual as total, (hrg_jual-hrg_asli)*terjual as fee FROM nota ORDER BY tgl_masuk ASC");
     return $query->result();
   }
 
@@ -154,10 +154,6 @@ class M_admin extends CI_Model
   {
     $this->db->where($where);
     $this->db->delete($tabel);
-  }
-
-  public function total($where, $terjual)
-  {
   }
 
   // public function mengurangi($tabel, $id_transaksi, $jumlah)

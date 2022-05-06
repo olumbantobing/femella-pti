@@ -17,6 +17,11 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js" integrity="sha512-k6/Bkb8Fxf/c1Tkyl39yJwcOZ1P4cRrJu77p83zJjN2Z55prbFHxPs9vN7q3l3+tSMGPDdoH51AEU8Vgo1cgAA==" crossorigin="anonymous"></script>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" /> -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/askha-logo.png">
     <title>INVENTARIS | NOTA</title>
 
@@ -269,7 +274,7 @@
                                         <th>Tanggal Masuk</th>
                                         <th>Barang Masuk</th>
                                         <th>Barang Terjual</th>
-                                        <!-- <th>Sisa</th> -->
+                                        <th>Sisa</th>
                                         <th>Tanggal Keluar</th>
                                         <th>Harga Asli (pcs) </th>
                                         <th>Harga Jual (pcs) </th>
@@ -289,12 +294,12 @@
                                                 <td><?= date('d F Y', strtotime($dd->tgl_masuk)) ?></td>
                                                 <td><?= $dd->jml_masuk ?></td>
                                                 <td><?= $dd->terjual ?></td>
-                                                <!-- <td><?= $dd->sisa ?></td> -->
+                                                <td><?= $dd->sisa ?></td>
                                                 <td><?= date('d F Y', strtotime($dd->tgl_keluar)) ?></td>
-                                                <td><?= $dd->hrg_asli ?></td>
-                                                <td><?= $dd->hrg_jual ?></td>
-                                                <td><?= $dd->total ?></td>
-                                                <td><?= $dd->fee ?></td>
+                                                <td><?= "Rp ", $dd->hrg_asli ?></td>
+                                                <td><?= "Rp ", $dd->hrg_jual ?></td>
+                                                <td><?= "Rp ", $dd->total ?></td>
+                                                <td><?= "Rp ", $dd->fee ?></td>
                                                 <!-- <td><button id="edit" class="btn btn-warning">Edit</button> | <button class="btn btn-danger">Hapus</button></td> -->
                                     </tr>
                                 <?php endforeach; ?>
@@ -323,9 +328,6 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Tambah Barang</h4>
-                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button> -->
                 </div>
                 <div class="modal-body">
                     <form action="<?= base_url('admin/tambah_nota') ?>" role="form" method="post">
@@ -389,7 +391,8 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="modal-footer justify-content-between">
-                            <button class="btn btn-primary" onclick="return confirm('Yakin ingin menambah data?')">Tambah Data</button>
+                            <button class="btn btn-success" onclick="return confirm('Yakin ingin menambah data?')">Tambah Data</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                         </div>
                         <?php if ($this->session->flashdata('msg_tambah')) {
                             echo "<script>alert('Data berhasil ditambahkan!');</script>"; ?>
@@ -407,9 +410,6 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Edit Nota</h4>
-                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button> -->
                 </div>
                 <div class="modal-body">
                     <form action="<?= base_url('admin/edit_nota') ?>" role="form" method="post">
@@ -432,6 +432,7 @@
                         <!-- /.card-body -->
                         <div class="modal-footer justify-content-between">
                             <button class="btn btn-primary" onclick="return confirm('Yakin ingin mengubah data?')">Ubah Data</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                         </div>
                         <?php if ($this->session->flashdata('msg_ubah')) {
                             echo "<script>alert('Data berhasil diubah!');</script>"; ?>
@@ -448,9 +449,6 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Hapus Nota</h4>
-                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button> -->
                 </div>
                 <div class="modal-body">
                     <form action="<?= base_url('admin/hapus_nota') ?>" role="form" method="post">
@@ -471,44 +469,12 @@
                         <!-- /.card-body -->
                         <div class="modal-footer justify-content-between">
                             <button class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus data?')">Hapus</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                         </div>
                         <?php if ($this->session->flashdata('msg_hapus')) {
                             echo "<script>alert('Data berhasil dihapus!');</script>"; ?>
                         <?php } ?>
                     </form>
-                </div>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
-    <div class="modal fade" id="modal-unduh">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Cetak Nota</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label>Pilih Supplier</label>
-                                <select class="form-control">
-                                    <option>Jokondo</option>
-                                    <option>Rama Jaya</option>
-                                    <option selected="">Semua</option>
-                                </select>
-                            </div>
-                        </div>
-                        <!-- /.card-body -->
-                    </form>
-                </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button id="unduhdata" type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
             <!-- /.modal-content -->
