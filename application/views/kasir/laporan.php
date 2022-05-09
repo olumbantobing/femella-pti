@@ -260,7 +260,7 @@
                                                     <td><?= $dd->nama_barang ?></td>
                                                     <td><?= date('d F Y', strtotime($dd->tanggal)) ?></td>
                                                     <td><?= $dd->terjual ?></td>
-                                                    <td><?= $dd->harga ?></td>
+                                                    <td><?= "Rp ", $dd->harga ?></td>
                                         </tr>
                                         <?php $no++; ?>
                                     <?php endforeach; ?>

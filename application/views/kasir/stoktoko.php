@@ -8,6 +8,7 @@
   <script src="https://kit.fontawesome.com/25495e258e.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <script src="https://kit.fontawesome.com/25495e258e.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
   <link rel="shortcut icon" type="image/x-icon" href="assets/img/askha-logo.png">
   <title>INVENTARIS | STOK BARANG</title>
 </head>
@@ -67,7 +68,7 @@
                   <td><?= $dd->id ?></td>
                   <td><?= $dd->nama_barang ?></td>
                   <td><?= $dd->stok_toko ?></td>
-                  <td><?= $dd->harga ?></td>
+                  <td><?= "Rp ", $dd->harga ?></td>
             </tr>
           <?php endforeach; ?>
         <?php } else { ?>
@@ -179,7 +180,10 @@
     width: 100%;
     height: 20%;
     padding-left: 30px;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
     background-color: #daa520;
+
   }
 
   body {
@@ -190,23 +194,24 @@
     width: 100%;
     height: 80%;
     display: flex;
+    padding-left: 150px;
   }
 
   .content .body-content .content-utama {
-    width: 90%;
+    width: 75%;
     height: 100%;
   }
 
-  .content .body-content .form-input {
+  /* .content .body-content .form-input {
     width: 40%;
     height: 100%;
-  }
+  } */
 </style>
 
 <style>
-  .content-utama .search-btn {
+  /* .content-utama .search-btn {
     float: right;
-    width: 300%;
+    width: 100%;
   }
 
   .content-utama .search-btn div {
@@ -229,13 +234,13 @@
     background-color: white;
     border: solid white 1px;
     cursor: pointer;
-  }
+  } */
 </style>
 
 <style>
   .content-utama table {
-    margin: 20px;
-    margin-left: 200px;
+    margin-top: 20pt;
+    margin-left: 100px;
     text-align: center;
     font-size: 12pt;
     padding: 2px;

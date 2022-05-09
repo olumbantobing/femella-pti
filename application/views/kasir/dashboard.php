@@ -139,6 +139,7 @@
         width: 100%;
         height: 15%;
         padding-left: 30px;
+        padding-bottom: 20px;
         background-color: #daa520;
     }
 
@@ -150,12 +151,12 @@
         background-color: #eeecb2;
         width: 100%;
         height: 80%;
-        padding-top: 5%;
+        padding-top: 2%;
     }
 
     .content .body-content .box {
         display: flex;
-        padding: 40px;
+        padding: 100px;
         justify-content: center;
     }
 

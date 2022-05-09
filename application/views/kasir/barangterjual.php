@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://kit.fontawesome.com/25495e258e.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
   <script src="https://kit.fontawesome.com/25495e258e.js" crossorigin="anonymous"></script>
   <link rel="shortcut icon" type="image/x-icon" href="assets/img/askha-logo.png">
   <title>INVENTARIS | BARANG TERJUAL</title>
@@ -272,6 +273,8 @@
     width: 100%;
     height: 20%;
     padding-left: 30px;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
     background-color: #daa520;
   }
 
@@ -327,7 +330,7 @@
 
 <style>
   .content-utama table {
-    margin: 20px;
+    margin-left: 20px;
     text-align: center;
     font-size: 12pt;
     padding: 2px;
@@ -350,11 +353,11 @@
   }
 
   .form-input .box {
-    width: 350px;
+    width: 320px;
     height: auto;
     background-color: white;
-    margin-top: 20px;
-    margin-left: 5px;
+
+    margin-left: 25px;
     margin-bottom: 20px;
     border: solid black 1px;
   }
