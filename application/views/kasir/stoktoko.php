@@ -67,7 +67,7 @@
                 <?php foreach ($list_data as $dd) : ?>
                   <td><?= $dd->id ?></td>
                   <td><?= $dd->nama_barang ?></td>
-                  <td><?= $dd->stok_toko ?></td>
+                  <td><?= $dd->stok_toko, " pcs" ?></td>
                   <td><?= "Rp ", $dd->harga ?></td>
             </tr>
           <?php endforeach; ?>

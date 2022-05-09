@@ -75,7 +75,7 @@
         <table id="search">
           <thead>
             <tr>
-              <th width="60px">#</th>
+              <th width="60px">No</th>
               <th width="90px">Kode Keluar</th>
               <th width="90px">ID</th>
               <th width="250px">Nama Barang</th>
@@ -92,7 +92,7 @@
                   <td><?= $dd->kodekeluar ?></td>
                   <td><?= $dd->id ?></td>
                   <td><?= $dd->nama_barang ?></td>
-                  <td><?= $dd->jumlah ?></td>
+                  <td><?= $dd->jumlah, " pcs" ?></td>
                   <td><?= date('d F Y', strtotime($dd->tanggal)) ?></td>
             </tr>
             <?php $no++; ?>

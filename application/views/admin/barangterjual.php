@@ -60,7 +60,7 @@
         <table id="search">
           <thead>
             <tr>
-              <th width="60px">#</th>
+              <th width="60px">No</th>
               <th width="90px">Kode Terjual</th>
               <th width="90px">ID</th>
               <th width="300px">Nama Barang</th>
@@ -79,8 +79,8 @@
                   <td><?= $dd->id ?></td>
                   <td><?= $dd->nama_barang ?></td>
                   <td><?= date('d F Y', strtotime($dd->tanggal)) ?></td>
-                  <td><?= $dd->terjual ?></td>
-                  <td><?= $dd->stok_toko ?></td>
+                  <td><?= $dd->terjual, " pcs" ?></td>
+                  <td><?= $dd->stok_toko, " pcs" ?></td>
             </tr>
             <?php $no++; ?>
           <?php endforeach; ?>

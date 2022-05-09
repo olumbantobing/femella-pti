@@ -67,7 +67,7 @@
         <table id="search">
           <thead>
             <tr>
-              <th width="70px">#</th>
+              <th width="70px">No</th>
               <th width="70px">Kode Terjual</th>
               <th width="70px">ID</th>
               <th width="600px">Nama Barang</th>
@@ -86,8 +86,8 @@
                   <td><?= $dd->id ?></td>
                   <td><?= $dd->nama_barang ?></td>
                   <td><?= date('d F Y', strtotime($dd->tanggal)) ?></td>
-                  <td><?= $dd->terjual ?></td>
-                  <td><?= $dd->stok_toko ?></td>
+                  <td><?= $dd->terjual, " pcs" ?></td>
+                  <td><?= $dd->stok_toko, " pcs" ?></td>
             </tr>
             <?php $no++; ?>
           <?php endforeach; ?>
@@ -137,10 +137,10 @@
             <select class="form-control" name="kodeterjual" id="kodeterjual">
               <?php
               $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
-              $res = mysqli_query($conn, "SELECT kodeterjual FROM terjual");
+              $res = mysqli_query($conn, "SELECT terjual.kodeterjual as kodeterjual, CONCAT(terjual.kodeterjual, ' : ', gudang.nama_barang) AS pilihan FROM terjual INNER JOIN gudang WHERE terjual.id = gudang.id ORDER BY gudang.id");
               while ($rows = mysqli_fetch_array($res)) {
               ?>
-                <option value="<?php echo $rows['kodeterjual']; ?>"><?php echo $rows['kodeterjual']; ?></option>
+                <option value="<?php echo $rows['kodeterjual']; ?>"><?php echo $rows['pilihan']; ?></option>
               <?php } ?>
             </select>
             <!-- <input type="text" /><br /> -->
@@ -159,10 +159,10 @@
             <select class="form-control" name="kodeterjual" id="kodeterjual">
               <?php
               $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
-              $res = mysqli_query($conn, "SELECT kodeterjual FROM terjual");
+              $res = mysqli_query($conn, "SELECT terjual.kodeterjual as kodeterjual, CONCAT(terjual.kodeterjual, ' : ', gudang.nama_barang) AS pilihan FROM terjual INNER JOIN gudang WHERE terjual.id = gudang.id ORDER BY gudang.id");
               while ($rows = mysqli_fetch_array($res)) {
               ?>
-                <option value="<?php echo $rows['kodeterjual']; ?>"><?php echo $rows['kodeterjual']; ?></option>
+                <option value="<?php echo $rows['kodeterjual']; ?>"><?php echo $rows['pilihan']; ?></option>
               <?php } ?>
             </select>
             <!-- <input type="text" /><br /> -->

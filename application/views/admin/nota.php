@@ -237,11 +237,25 @@
         <!-- header -->
         <div class="header-content">
             <br /><br />
-            <h2>NOTA</h2>
+            <h2>NOTA (Konsinyasi)</h2>
         </div>
         <!-- header -->
         <div class="container-fluid">
             <div class="row">
+                <div class="col col-4">
+                    <form action="<?= base_url('admin/f_nota') ?>" role="form" method="post">
+                        <div><b> Pilih Tanggal Nota : </b></div>
+                        <label>Tanggal Masuk Awal:</label>
+                        <input type="date" name="tgl_awal" class="form-control">
+                        <label>Tanggal Masuk Akhir:</label>
+                        <input type="date" name="tgl_akhir" class="form-control">
+                        <button type="submit" class="btn btn-info" style="margin-top: 10px">Filter</button>
+                    </form>
+                    <form action="<?= base_url('admin/nota') ?>" role="form" method="post">
+                        <button name="reset" class="btn btn-large btn-secondary" style="margin-top: 10px"><i class="fa fa-refresh"></i> Reset</button>
+                    </form>
+                </div>
+
                 <div class="col col-2">
                     <button type="button" id="tambahnota" class="form-control form-control-navbar btn btn-large btn-info" data-toggle="modal" data-target="#modal-default"><i class="fa fa-plus"></i> Tambah Nota</button>
                 </div>
@@ -292,9 +306,9 @@
                                                 <td><?= $dd->nama_barang ?></td>
                                                 <td><?= $dd->supplier ?></td>
                                                 <td><?= date('d F Y', strtotime($dd->tgl_masuk)) ?></td>
-                                                <td><?= $dd->jml_masuk ?></td>
-                                                <td><?= $dd->terjual ?></td>
-                                                <td><?= $dd->sisa ?></td>
+                                                <td><?= $dd->jml_masuk, " pcs" ?></td>
+                                                <td><?= $dd->terjual, " pcs" ?></td>
+                                                <td><?= $dd->sisa, " pcs" ?></td>
                                                 <td><?= date('d F Y', strtotime($dd->tgl_keluar)) ?></td>
                                                 <td><?= "Rp ", $dd->hrg_asli ?></td>
                                                 <td><?= "Rp ", $dd->hrg_jual ?></td>

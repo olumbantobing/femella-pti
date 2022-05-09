@@ -105,6 +105,14 @@ class M_admin extends CI_Model
     return $query->result();
   }
 
+  public function f_nota($tgl_a, $tgl_b)
+  {
+    $query = $this->db->query("SELECT id_nota, jenis, nama_barang, supplier, tgl_masuk, jml_masuk, terjual, jml_masuk-terjual as sisa, tgl_keluar, hrg_asli, hrg_jual, hrg_jual*terjual as total, (hrg_jual-hrg_asli)*terjual as fee FROM nota
+    WHERE (tgl_masuk BETWEEN '$tgl_a' and '$tgl_b') 
+    ORDER BY tgl_masuk ASC");
+    return $query->result();
+  }
+
   public function select($tabel)
   {
     $query = $this->db->get($tabel);

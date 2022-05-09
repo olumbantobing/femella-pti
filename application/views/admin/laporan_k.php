@@ -241,7 +241,7 @@
                 <table id="example2" class="table table-hover">
                   <thead>
                     <tr>
-                      <th>#</th>
+                      <th>No</th>
                       <th>ID</th>
                       <th>Nama Barang</th>
                       <th>Tanggal</th>
@@ -258,7 +258,7 @@
                           <td><?= $dd->id ?></td>
                           <td><?= $dd->nama_barang ?></td>
                           <td><?= date('d F Y', strtotime($dd->tanggal)) ?></td>
-                          <td><?= $dd->jumlah ?></td>
+                          <td><?= $dd->jumlah, " pcs" ?></td>
                           <td><?= "Rp ", $dd->harga ?></td>
                     </tr>
                     <?php $no++; ?>

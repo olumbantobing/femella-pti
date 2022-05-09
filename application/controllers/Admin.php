@@ -456,6 +456,18 @@ class Admin extends CI_Controller
         $this->load->view('admin/nota', $data);
     }
 
+    public function f_nota()
+    {
+        if (isset($_POST["tgl_awal"], $_POST["tgl_akhir"])) {
+            $tgl_a = $this->input->post('tgl_awal', TRUE);
+            $tgl_b = $this->input->post('tgl_akhir', TRUE);
+            $data = array(
+                'list_data' => $this->M_admin->f_nota($tgl_a, $tgl_b)
+            );
+            $this->load->view('admin/nota', $data);
+        }
+    }
+
     public function tambah_nota()
     {
         $this->form_validation->set_rules('jenis', 'Pilih Jenis (klik form)', 'required');
