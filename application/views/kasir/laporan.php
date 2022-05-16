@@ -194,7 +194,7 @@
     <div class="sidebar">
         <h2>Inventaris</h2>
         <i class="fa-5x fa-solid fa-circle-user"></i>
-        <span>ADMIN</span>
+        <span>Kasir</span>
         <div class="left-bar">
             <a href=" <?= base_url('kasir/index'); ?>"">Beranda</a>
             <a href=" <?= base_url('kasir/stoktoko'); ?>"">Stok Toko</a>
