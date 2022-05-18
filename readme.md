@@ -8,5 +8,5 @@ https://drive.google.com/file/d/1e4MxUxfpQJ3FroBE4tyFrxGlkXfzJeEI/view?usp=shari
 
 ### Nama Pengguna dan Kata Sandi Admin
 
-nama pengguna : superadmin
-kata sandi : askhamin
+1. nama pengguna : superadmin
+2. kata sandi : askhamin
