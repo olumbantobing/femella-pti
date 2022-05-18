@@ -60,17 +60,6 @@
 
     <div class="body-content">
       <div class="content-utama">
-        <!-- Tombol search -->
-        <!-- <div class="search-btn">
-              <div>
-                <input type="text" placeholder="Cari Barang..." />
-                <button>
-                  <i class="fa-2x fa-solid fa-magnifying-glass"></i>
-                </button>
-              </div>
-            </div> -->
-        <!-- Tombol search -->
-
         <!-- tabel -->
         <table id="search">
           <thead>
@@ -128,7 +117,6 @@
                 <option value="<?php echo $rows['id']; ?>"><?php echo $rows['pilihan']; ?></option>
               <?php } ?>
             </select>
-            <!-- <input type="text" name="id" id="id" placeholder="Masukkan ID Barang" /><br /> -->
             <label>Jumlah</label><br />
             <input type="text" name="jumlah" id="jumlah" placeholder="Masukkan jumlah barang" /><br />
             <label>Tanggal</label><br />
@@ -158,7 +146,6 @@
                 <option value="<?php echo $rows['kodemasuk']; ?>"><?php echo $rows['pilihan']; ?></option>
               <?php } ?>
             </select>
-            <!-- <input type="text" name="kodemasuk" id="kodemasuk" placeholder="Masukkan kode masuk barang yang ingin diubah" /><br /> -->
             <label>Jumlah</label><br />
             <input type="text" name="jumlah" id="jumlah" placeholder="Masukkan jumlah" /><br />
             <label>Tanggal</label><br />
@@ -188,7 +175,6 @@
                 <option value="<?php echo $rows['kodemasuk']; ?>"><?php echo $rows['pilihan']; ?></option>
               <?php } ?>
             </select>
-            <!-- <input type="text" name="kodemasuk" id="kodemasuk" placeholder="Masukkan kode masuk barang" /><br /> -->
             <button style="background-color: #fe4a4af0" onclick="return confirm('Anda yakin ingin menghapus data?');">Hapus</button>
 
             <?php if ($this->session->flashdata('msg_hapus')) {
@@ -456,15 +442,4 @@
     bottom: 90;
     width: 100%;
   }
-
-  /* .footer {
-    background-color: white;
-    padding: 10px;
-    padding-left: 30px;
-    height: 5%;
-    background: #f0f0f0;
-    position: absolute;
-    bottom: 90;
-    width: 100%;
-  } */
 </style>

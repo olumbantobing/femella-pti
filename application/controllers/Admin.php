@@ -356,47 +356,10 @@ class Admin extends CI_Controller
                 $data = array(
                     'list_data' => $this->M_admin->laporan_m()
                 );
-
-                // if ($this->input->post('filter_tgl') == 1) {
-                //     $this->form_validation->set_rules('tgl_awal', 'Tanggal Awal', 'required');
-                //     $this->form_validation->set_rules('tgl_akhir', 'Tanggal Akhir', 'required');
-                //     if ($this->form_validation->run() == TRUE) {
-
-                //         $tgl_a = $this->input->post('tgl_awal', TRUE);
-                //         $tgl_b = $this->input->post('tgl_akhir', TRUE);
-                //         die($tgl_a. "===" .$tgl_b);
-                //         $data = array(
-                //             'list_data' => $this->M_admin->f_masuk($tgl_a, $tgl_b)
-                //         );
-                //     }
-
-                //     // } else {
-                //     //     $data = array(
-                //     //         'list_data' => $this->M_admin->f_keluar($tgl_a, $tgl_b)
-                //     //     );
-                //     // }
-                // }
             } else {
                 $data = array(
                     'list_data' => $this->M_admin->laporan_k()
                 );
-
-                // $this->form_validation->set_rules('tgl_awal', 'Tanggal Awal', 'required');
-                // $this->form_validation->set_rules('tgl_akhir', 'Tanggal Akhir', 'required');
-                // if ($this->form_validation->run() == TRUE) {
-                //     $tgl_a = $this->input->post('tgl_awal', TRUE);
-                //     $tgl_b = $this->input->post('tgl_akhir', TRUE);
-
-                //     $data = array(
-                //         'list_data' => $this->M_admin->f_keluar($tgl_a, $tgl_b)
-                //     );
-
-                //     // } else {
-                //     //     $data = array(
-                //     //         'list_data' => $this->M_admin->f_keluar($tgl_a, $tgl_b)
-                //     //     );
-                //     // }
-                // }
             }
             $this->load->view('admin/laporan', $data);
         }
@@ -425,28 +388,6 @@ class Admin extends CI_Controller
             $this->load->view('admin/laporan_k', $data);
         }
     }
-
-    // public function filter()
-    // {
-    //     $this->form_validation->set_rules('tgl_awal', 'Tanggal Awal', 'required');
-    //     $this->form_validation->set_rules('tgl_akhir', 'Tanggal Akhir', 'required');
-    //     if ($this->form_validation->run() == TRUE) {
-    //         $tgl_a = $this->input->post('tgl_awal', TRUE);
-    //         $tgl_b = $this->input->post('tgl_akhir', TRUE);
-
-    //         if ($this->input->post('filter_tgl') == 1) {
-    //             $data = array(
-    //                 'list_data' => $this->M_admin->f_masuk($tgl_a, $tgl_b)
-    //             );
-    //             $this->load->view('admin/laporan', $data);
-    //         } else {
-    //             $data = array(
-    //                 'list_data' => $this->M_admin->f_keluar($tgl_a, $tgl_b)
-    //             );
-    //             $this->load->view('admin/laporan', $data);
-    //         }
-    //     }
-    // }
 
     public function nota()
     {

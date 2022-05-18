@@ -37,7 +37,6 @@
                     </div>
 
                     <button class="btn btn-success" type="submit" name="login">MASUK</button>
-                    <!-- <div class="btn btn-success">MASUK</div> -->
                 </form>
             </center>
             <!-- form login -->
@@ -82,13 +81,6 @@
         justify-content: center;
         border: solid 1px;
         cursor: pointer;
-
-        /* background-image: url("askha.png");
-  background-repeat: no-repeat;
-  padding-left: 18px !important;
-  background-size: 15%;
-  background-position-y: 3%;
-  background-position-x: 50%; */
     }
 
     .box .input {

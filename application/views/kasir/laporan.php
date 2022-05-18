@@ -221,10 +221,7 @@
                             <div class="row">
                                 <div class="col col-6">
                                     <form action="<?= base_url('kasir/filter') ?>" role="form" method="post">
-                                        <!-- <form action="<?= base_url('kasir/laporan') ?>" role="form" method="post"> -->
                                         <div><b> Pilih Tanggal Laporan : </b></div>
-                                        <!-- <div class="form-group"> -->
-                                        <!-- <form method="post" class="form-inline"> -->
                                         <label>Tanggal Awal:</label>
                                         <input type="date" name="tgl_awal" class="form-control">
                                         <label>Tanggal Akhir:</label>

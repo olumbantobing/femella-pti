@@ -44,17 +44,6 @@
 
         <div class="body-content">
             <div class="content-utama">
-                <!-- Tombol search -->
-                <!-- <div class="search-btn">
-                            <div>
-                                <input type="text" placeholder="Cari Barang..." />
-                                <button>
-                                    <i class="fa-2x fa-solid fa-magnifying-glass"></i>
-                                </button>
-                            </div>
-                        </div> -->
-                <!-- Tombol search -->
-
                 <!-- tabel -->
                 <table>
                     <thead>
@@ -62,7 +51,6 @@
                             <th width="80px">ID</th>
                             <th width="150px">Nama Pengguna</th>
                             <th width="150px">Hak Akses</th>
-                            <!-- <th width="90px">Kata Sandi</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -72,11 +60,10 @@
                                     <td><?= $dd->id ?></td>
                                     <td><?= $dd->username ?></td>
                                     <td><?= $dd->akses ?></td>
-                                    <!-- <td><?= $dd->password ?></td> -->
                         </tr>
                     <?php endforeach; ?>
                 <?php } else { ?>
-                    <td colspan="7" align="center"><strong>Data Kosong</strong></td>
+                    <td colspan="3" align="center"><strong>Data Kosong</strong></td>
                 <?php } ?>
                     </tbody>
                 </table>
@@ -127,7 +114,6 @@
                                 <option value="<?php echo $rows['id']; ?>"><?php echo $rows['pilihan']; ?></option>
                             <?php } ?>
                         </select>
-                        <!-- <input type="text" name="id" placeholder="Masukkan ID pengguna" /><br /> -->
                         <button style="background-color: #FE4A4AF0;" onclick="return confirm('Anda yakin ingin menghapus data?');">Hapus</button>
 
                         <?php if ($this->session->flashdata('msg_hapus')) {
@@ -379,15 +365,4 @@
         bottom: 90;
         width: 100%;
     }
-
-    /* .footer {
-        background-color: white;
-        padding: 10px;
-        padding-left: 30px;
-        height: 3%;
-        background: #f0f0f0;
-        position: absolute;
-        bottom: 90;
-        width: 100%;
-    } */
 </style>

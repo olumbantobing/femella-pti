@@ -45,17 +45,6 @@
 
     <div class="body-content">
       <div class="content-utama">
-        <!-- Tombol search -->
-        <!-- <div class="search-btn">
-          <div>
-            <input type="text" placeholder="Cari Barang..." />
-            <button>
-              <i class="fa-2x fa-solid fa-magnifying-glass"></i>
-            </button>
-          </div>
-        </div> -->
-        <!-- Tombol search -->
-
         <!-- tabel -->
         <table id="search">
           <thead>
@@ -340,15 +329,4 @@
     bottom: 0;
     width: 100%;
   }
-
-  /* .footer {
-    background-color: white;
-    padding: 10px;
-    padding-left: 30px;
-    height: 3%;
-    background: #f0f0f0;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  } */
 </style>

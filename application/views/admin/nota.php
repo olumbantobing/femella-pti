@@ -265,12 +265,6 @@
                 <div class="col col-2">
                     <button type="button" id="hapusnota" class="form-control form-control-navbar btn btn-large btn-danger" data-toggle="modal" data-target="#modal-hapus"><i class="fa fa-trash-o"></i> Hapus Nota</button>
                 </div>
-                <!-- <div class="col col-2">
-                    <button type="button" id="btnlaporan" class="form-control form-control-navbar btn btn-large btn-success"><i class="fa fa-download"></i> Cetak Nota </button>
-                </div> -->
-                <!-- <div class="col col-4">
-                            <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                        </div> -->
             </div>
             <br />
             <div class="row">
@@ -294,7 +288,6 @@
                                         <th>Harga Jual (pcs) </th>
                                         <th>Total</th>
                                         <th>Fee</th>
-                                        <!-- <th>Tindakan</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -314,7 +307,6 @@
                                                 <td><?= "Rp ", $dd->hrg_jual ?></td>
                                                 <td><?= "Rp ", $dd->total ?></td>
                                                 <td><?= "Rp ", $dd->fee ?></td>
-                                                <!-- <td><button id="edit" class="btn btn-warning">Edit</button> | <button class="btn btn-danger">Hapus</button></td> -->
                                     </tr>
                                 <?php endforeach; ?>
                             <?php } else { ?>
@@ -350,57 +342,33 @@
                             <div class="form-group">
                                 <label for="id_nota">ID</label><br />
                                 <input type="text" class="form-control" name="id_nota" id="id_nota" value="N<?= date("yM"); ?><?= random_string('numeric', 2); ?>" readonly />
-                                <!-- </div>
-                                <div> -->
 
                                 <label for="jenis">Pilih Jenis (klik form)</label><br>
                                 <select class="form-control" name="jenis" id="jenis">
-                                    <!-- <option selected=""></option> -->
                                     <option>CASH</option>
                                     <option>KONSINYASI</option>
                                 </select>
-                                <!-- <div class="form-group"> -->
 
                                 <label for="nama_barang">Nama Barang</label><br>
                                 <input class="form-control" type="text" id="nama_barang" name="nama_barang" placeholder="Masukkan Nama Barang">
-                                <!-- </div>
-                                    <div class="form-group"> -->
 
                                 <label for="supplier">Nama Supplier</label><br>
                                 <input class="form-control" type="text" id="supplier" name="supplier" placeholder="Masukkan Nama Supplier">
-                                <!-- </div>
-                                    <div class="form-group"> -->
 
                                 <label for="tgl_masuk">Tanggal Masuk</label><br>
                                 <input class="form-control" type="date" id="tgl_masuk" name="tgl_masuk">
-                                <!-- </div>
-                                    <div class="form-group"> -->
 
                                 <label for="jml_masuk">Jumlah Barang Masuk</label><br>
                                 <input class="form-control" type="text" id="jml_masuk" name="jml_masuk" placeholder="Masukkan Jumlah Barang Masuk">
-                                <!-- </div> -->
-                                <!-- <div class="form-group">
-                                        <label for="terjual">Masukkan Jumlah Barang Terjual</label>
-                                        <input type="text" class="form-control" id="terjual" readonly>
-                                    </div> -->
-                                <!-- <div class="form-group"> -->
 
                                 <label for="tgl_keluar">Tanggal Keluar</label><br>
                                 <input class="form-control" type="date" id="tgl_keluar" name="tgl_keluar">
-                                <!-- </div>
-                                    <div class="form-group"> -->
 
                                 <label for="hrg_asli">Harga Asli Barang</label><br>
                                 <input class="form-control" type="text" id="hrg_asli" name="hrg_asli" placeholder="tulis angka saja (contoh: 25000)">
-                                <!-- </div>
-                                    <div class="form-group"> -->
 
                                 <label for="hrg_jual">Harga Jual Barang</label><br>
                                 <input class="form-control" type="text" id="hrg_jual" name="hrg_jual" placeholder="tulis angka saja (contoh: 25000)">
-                                <!-- </div>
-                                    <div class="modal-footer justify-content-between"> -->
-                                <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
-                                <!-- </div> -->
                             </div>
                         </div>
                         <!-- /.card-body -->
@@ -546,12 +514,6 @@
         $('#btnlaporan').click(function() {
             $('#modal-unduh').modal('show');
         });
-        // $('#tambahdata').click(function() {
-        //     confirm("Apa Anda Yakin ingin menambah data?");
-        // });
-        // $('#editdata').click(function() {
-        //     confirm("Apa Anda Yakin ingin mengedit data?");
-        // });
         $('#unduhdata').click(function() {
             confirm("Apa Anda Yakin ingin mengunduh data?");
         });

@@ -52,17 +52,6 @@
 
     <div class="body-content">
       <div class="content-utama">
-        <!-- Tombol search -->
-        <!-- <div class="search-btn">
-          <div>
-            <input type="text" placeholder="Cari Barang..." />
-            <button>
-              <i class="fa-2x fa-solid fa-magnifying-glass"></i>
-            </button>
-          </div>
-        </div> -->
-        <!-- Tombol search -->
-
         <!-- tabel -->
         <table id="search">
           <thead>
@@ -119,7 +108,6 @@
                 <option value="<?php echo $rows['id']; ?>"><?php echo $rows['pilihan']; ?></option>
               <?php } ?>
             </select>
-            <!-- <input type="text" /><br /> -->
             <label>Tanggal</label><br />
             <input type="date" name="tanggal" id="date" placeholder="Pilih tanggal" /><br />
             <label>Terjual</label><br />
@@ -143,7 +131,6 @@
                 <option value="<?php echo $rows['kodeterjual']; ?>"><?php echo $rows['pilihan']; ?></option>
               <?php } ?>
             </select>
-            <!-- <input type="text" /><br /> -->
             <label>Terjual</label><br />
             <input type="text" name="terjual" id="terjual" placeholder="Masukkan jumlah terjual" /><br />
             <button style="background-color: #fad541fc" onclick="return confirm('Anda yakin ingin mengubah data?');">Ubah</button>
@@ -165,7 +152,6 @@
                 <option value="<?php echo $rows['kodeterjual']; ?>"><?php echo $rows['pilihan']; ?></option>
               <?php } ?>
             </select>
-            <!-- <input type="text" /><br /> -->
             <button style="background-color: #fe4a4af0" onclick="return confirm('Anda yakin ingin menghapus data?');">Hapus</button>
           </form>
         </div>

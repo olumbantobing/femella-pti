@@ -47,17 +47,6 @@
 
         <div class="body-content">
             <div class="content-utama">
-                <!-- Tombol search -->
-                <!-- <div class="search-btn">
-                            <div>
-                                <input type="text" placeholder="Cari Barang..." />
-                                <button>
-                                    <i class="fa-2x fa-solid fa-magnifying-glass"></i>
-                                </button>
-                            </div>
-                        </div> -->
-                <!-- Tombol search -->
-
                 <!-- tabel -->
                 <table id="search">
                     <thead>
@@ -112,7 +101,6 @@
                     <h4 style="background-color: #fad541fc">
                         Ubah Data Barang
                         <i class="fa fa-pencil-square-o"></i>
-                        <!-- <i class="fa-solid fa-plus"></i> -->
                     </h4>
                     <form action="<?= base_url('admin/ubah_stokgudang') ?>" role="form" method="post">
                         <label>ID Barang</label><br />
@@ -125,7 +113,6 @@
                                 <option value="<?php echo $rows['id']; ?>"><?php echo $rows['pilihan']; ?></option>
                             <?php } ?>
                         </select>
-                        <!-- <input type="text" name="id" id="id" placeholder="Masukkan ID Barang" /><br /> -->
                         <label>Nama Barang (Berat)</label><br />
                         <input type="text" name="nama_barang" id="nama_barang" placeholder="Masukkan Nama Barang (Berat)" /><br />
                         <label>Harga</label><br />
@@ -153,7 +140,6 @@
                                 <option value="<?php echo $rows['id']; ?>"><?php echo $rows['pilihan']; ?></option>
                             <?php } ?>
                         </select>
-                        <!-- <input type="text" name="id" id="id" placeholder="Masukkan ID Barang" /><br /> -->
                         <button id="hapusdata" style="background-color: #fe4a4af0" onclick="return confirm('Anda yakin ingin menghapus data?');">Hapus</button>
 
                         <?php if ($this->session->flashdata('msg_hapus')) {
@@ -184,19 +170,6 @@
                 "responsive": true,
             });
         });
-    </script>
-    <script>
-        // $(function() {
-        //     $('#tambahdata').click(function() {
-        //         confirm("Apa Anda Yakin ingin menambah data?");
-        //     });
-        //     $('#ubahdata').click(function() {
-        //         confirm("Apa Anda Yakin ingin mengubah data?");
-        //     });
-        //     $('#hapusdata').click(function() {
-        //         confirm("Apa Anda Yakin ingin menghapus data?");
-        //     });
-        // });
     </script>
 
 </body>
@@ -432,15 +405,4 @@
         bottom: 90;
         width: 100%;
     }
-
-    /* .footer {
-        background-color: white;
-        padding: 10px;
-        padding-left: 30px;
-        height: 3%;
-        background: #f0f0f0;
-        position: absolute;
-        bottom: 90;
-        width: 100%;
-    } */
 </style>

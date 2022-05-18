@@ -40,17 +40,6 @@
 
     <div class="body-content">
       <div class="content-utama">
-        <!-- Tombol search -->
-        <!-- <div class="search-btn">
-              <div>
-                <input type="text" placeholder="Cari Barang..." />
-                <button>
-                  <i class="fa-2x fa-solid fa-magnifying-glass"></i>
-                </button>
-              </div>
-            </div> -->
-        <!-- Tombol search -->
-
         <!-- tabel -->
         <table id="search">
           <thead>
@@ -201,40 +190,6 @@
     width: 75%;
     height: 100%;
   }
-
-  /* .content .body-content .form-input {
-    width: 40%;
-    height: 100%;
-  } */
-</style>
-
-<style>
-  /* .content-utama .search-btn {
-    float: right;
-    width: 100%;
-  }
-
-  .content-utama .search-btn div {
-    float: right;
-    margin: 20px;
-    display: flex;
-    border: solid 1px;
-    padding: 5px;
-    border-radius: 0.5em;
-    background-color: white;
-  }
-
-  .content-utama .search-btn div input {
-    font-size: 14pt;
-    margin-right: 5px;
-    border-color: transparent;
-  }
-
-  .content-utama .search-btn div button {
-    background-color: white;
-    border: solid white 1px;
-    cursor: pointer;
-  } */
 </style>
 
 <style>
