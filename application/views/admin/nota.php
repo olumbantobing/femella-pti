@@ -282,7 +282,7 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Jenis ID</th>
+                                        <th>Jenis Nota</th>
                                         <th>Nama Barang</th>
                                         <th>Nama Supplier</th>
                                         <th>Tanggal Masuk</th>
@@ -433,10 +433,10 @@
                                 <select class="form-control" name="id_nota" id="id_nota">
                                     <?php
                                     $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
-                                    $res = mysqli_query($conn, "SELECT id_nota FROM nota");
+                                    $res = mysqli_query($conn, "SELECT id_nota, CONCAT(id_nota, ' : ', supplier) AS pilihan FROM nota");
                                     while ($rows = mysqli_fetch_array($res)) {
                                     ?>
-                                        <option value="<?php echo $rows['id_nota']; ?>"><?php echo $rows['id_nota']; ?></option>
+                                        <option value="<?php echo $rows['id_nota']; ?>"><?php echo $rows['pilihan']; ?></option>
                                     <?php } ?>
                                 </select>
                                 <label for="terjual">Masukkan Jumlah Barang Terjual</label>
@@ -472,10 +472,10 @@
                                 <select class="form-control" name="id_nota" id="id_nota">
                                     <?php
                                     $conn = mysqli_connect("localhost", "root", "", "inventaris-askhajaya");
-                                    $res = mysqli_query($conn, "SELECT id_nota FROM nota");
+                                    $res = mysqli_query($conn, "SELECT id_nota, CONCAT(id_nota, ' : ', supplier) AS pilihan FROM nota");
                                     while ($rows = mysqli_fetch_array($res)) {
                                     ?>
-                                        <option value="<?php echo $rows['id_nota']; ?>"><?php echo $rows['id_nota']; ?></option>
+                                        <option value="<?php echo $rows['id_nota']; ?>"><?php echo $rows['pilihan']; ?></option>
                                     <?php } ?>
                                 </select>
                             </div>

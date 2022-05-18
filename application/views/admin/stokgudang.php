@@ -98,9 +98,9 @@
                         <label>ID Barang</label><br />
                         <input type="text" name="id" id="id" value="AJ-<?= random_string('numeric', 3); ?>" readonly /><br />
                         <label for="nama_barang">Nama Barang (Berat)</label><br />
-                        <input type="text" name="nama_barang" id="nama_barang" placeholder="Masukkan Nama Barang dan Berat" /><br />
+                        <input type="text" name="nama_barang" id="nama_barang" placeholder="Masukkan Nama Barang (Berat)" /><br />
                         <label for="harga">Harga</label><br />
-                        <input type="text" name="harga" id="harga" placeholder="Masukkan Harga" /><br />
+                        <input type="text" name="harga" id="harga" placeholder="tulis angka saja (contoh: 25000)" /><br />
                         <button id="tambah data" style="background-color: #008fdf87" onclick="return confirm('Anda yakin ingin menambah data?');">Tambah</button>
 
                         <?php if ($this->session->flashdata('msg_tambah')) {
@@ -126,10 +126,10 @@
                             <?php } ?>
                         </select>
                         <!-- <input type="text" name="id" id="id" placeholder="Masukkan ID Barang" /><br /> -->
-                        <label>Nama Barang</label><br />
-                        <input type="text" name="nama_barang" id="nama_barang" placeholder="Masukkan Nama Barang" /><br />
+                        <label>Nama Barang (Berat)</label><br />
+                        <input type="text" name="nama_barang" id="nama_barang" placeholder="Masukkan Nama Barang (Berat)" /><br />
                         <label>Harga</label><br />
-                        <input type="text" name="harga" id="harga" placeholder="Masukkan Harga" /><br />
+                        <input type="text" name="harga" id="harga" placeholder="tulis angka saja (contoh: 25000)" /><br />
                         <button id="ubahdata" style="background-color: #fad541fc" onclick="return confirm('Anda yakin ingin mengubah data?');">Ubah</button>
 
                         <?php if ($this->session->flashdata('msg_ubah')) {

@@ -107,7 +107,7 @@
             <i class="fa-solid fa-plus"></i>
           </h4>
           <form action="<?= base_url('kasir/tambah_barangterjual') ?>" role="form" method="post">
-            <label> Kode Keluar</label><br />
+            <label> Kode Terjual</label><br />
             <input type="text" name="kodeterjual" id="kodeterjual" value="AT-<?= date("yM"); ?><?= random_string('numeric', 3); ?>" readonly /><br />
             <label> ID Barang</label><br />
             <select class="form-control" name="id" id="id">
