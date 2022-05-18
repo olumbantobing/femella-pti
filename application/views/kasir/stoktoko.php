@@ -273,7 +273,7 @@
     height: 1%;
     background: #f0f0f0;
     position: absolute;
-    bottom: 0;
+    bottom: 90;
     width: 100%;
   }
 </style>
