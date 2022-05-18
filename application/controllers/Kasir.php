@@ -60,7 +60,7 @@ class Kasir extends CI_Controller
 
                 $this->M_kasir->insert('terjual', $data);
 
-                $this->session->set_flashdata('msg_berhasil', 'Data Barang Berhasil Ditambahkan');
+                $this->session->set_flashdata('msg_tambah', 'Data Barang Berhasil Ditambahkan');
                 redirect(base_url('kasir/barangterjual'));
             } else {
                 echo "<script>alert('Stok Toko Tidak Cukup!');history.go(-1);</script>";
@@ -86,7 +86,7 @@ class Kasir extends CI_Controller
             );
             $this->M_kasir->update('terjual', $data, $where);
 
-            $this->session->set_flashdata('msg_berhasil', 'Data Barang Berhasil Ditambahkan');
+            $this->session->set_flashdata('msg_ubah', 'Data Barang Berhasil Diubah');
             redirect(base_url('kasir/barangterjual'));
         } else {
             echo "<script>alert('Gagal mengubah data: Jangan ada data yang kosong!');history.go(-1);</script>";
@@ -106,7 +106,7 @@ class Kasir extends CI_Controller
             );
             $this->M_kasir->delete('terjual', $data, $where);
 
-            $this->session->set_flashdata('msg_berhasil', 'Data Barang Berhasil Ditambahkan');
+            $this->session->set_flashdata('msg_hapus', 'Data Barang Berhasil Dihapus');
             redirect(base_url('kasir/barangterjual'));
         }
     }

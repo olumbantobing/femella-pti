@@ -113,6 +113,10 @@
             <label>Terjual</label><br />
             <input type="text" name="terjual" id="terjual" placeholder="Masukkan jumlah terjual" /><br />
             <button style="background-color: #008fdf87" onclick="return confirm('Anda yakin ingin menambah data?');">Tambah</button>
+
+            <?php if ($this->session->flashdata('msg_tambah')) {
+              echo "<script>alert('Data barang berhasil ditambah!');</script>"; ?>
+            <?php } ?>
           </form>
         </div>
         <div class="box">
@@ -134,6 +138,9 @@
             <label>Terjual</label><br />
             <input type="text" name="terjual" id="terjual" placeholder="Masukkan jumlah terjual" /><br />
             <button style="background-color: #fad541fc" onclick="return confirm('Anda yakin ingin mengubah data?');">Ubah</button>
+            <?php if ($this->session->flashdata('msg_ubah')) {
+              echo "<script>alert('Data barang berhasil diubah!');</script>"; ?>
+            <?php } ?>
           </form>
         </div>
         <div class="box">
@@ -153,6 +160,9 @@
               <?php } ?>
             </select>
             <button style="background-color: #fe4a4af0" onclick="return confirm('Anda yakin ingin menghapus data?');">Hapus</button>
+            <?php if ($this->session->flashdata('msg_hapus')) {
+              echo "<script>alert('Data barang berhasil dihapus!');</script>"; ?>
+            <?php } ?>
           </form>
         </div>
       </div>
