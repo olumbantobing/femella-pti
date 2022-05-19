@@ -161,7 +161,8 @@
     <script>
         $(document).ready(function() {
             $('#search').DataTable({
-                "paging": false,
+                "pageLength": 15,
+                "paging": true,
                 "lengthChange": false,
                 "searching": true,
                 "ordering": false,

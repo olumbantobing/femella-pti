@@ -79,7 +79,7 @@
   <script>
     $(document).ready(function() {
       $('#search').DataTable({
-        "paging": false,
+        "paging": true,
         "lengthChange": false,
         "searching": true,
         "ordering": false,
@@ -189,6 +189,10 @@
   .content .body-content .content-utama {
     width: 75%;
     height: 100%;
+  }
+
+  .content-utama {
+    margin-bottom: 20pt;
   }
 </style>
 

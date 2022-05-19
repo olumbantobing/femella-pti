@@ -79,30 +79,31 @@
           </tbody>
         </table>
       </div>
-      <!-- tabel -->
+    </div>
+    <!-- tabel -->
 
 
-      <div class="footer">
-        <p>Copyright &copy; 2022 Kelompok 2 PTI RB ITERA</p>
-      </div>
-      <!-- content -->
+    <div class="footer">
+      <p>Copyright &copy; 2022 Kelompok 2 PTI RB ITERA</p>
+    </div>
+    <!-- content -->
 
-      <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-      <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-      <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
-      <script>
-        $(document).ready(function() {
-          $('#search').DataTable({
-            "paging": false,
-            "lengthChange": false,
-            "searching": true,
-            "ordering": false,
-            "info": false,
-            "autoWidth": true,
-            "responsive": true,
-          });
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('#search').DataTable({
+          "paging": true,
+          "lengthChange": false,
+          "searching": true,
+          "ordering": false,
+          "info": false,
+          "autoWidth": true,
+          "responsive": true,
         });
-      </script>
+      });
+    </script>
 </body>
 
 </html>
@@ -239,6 +240,10 @@
     border: solid white 1px;
     cursor: pointer;
   }
+
+  .content-utama {
+    margin-bottom: 20pt;
+  }
 </style>
 
 <style>
@@ -326,7 +331,7 @@
     height: 1%;
     background: #f0f0f0;
     position: absolute;
-    bottom: 0;
+    bottom: 90;
     width: 100%;
   }
 </style>

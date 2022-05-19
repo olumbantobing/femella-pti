@@ -341,7 +341,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="id_nota">ID</label><br />
-                                <input type="text" class="form-control" name="id_nota" id="id_nota" value="N<?= date("yM"); ?><?= random_string('numeric', 2); ?>" readonly />
+                                <input type="text" class="form-control" name="id_nota" id="id_nota" value="N<?= date("yM"); ?><?= random_string('numeric', 3); ?>" readonly />
 
                                 <label for="jenis">Pilih Jenis (klik form)</label><br>
                                 <select class="form-control" name="jenis" id="jenis">
@@ -474,7 +474,7 @@
     <script>
         $(function() {
             $('#example2').DataTable({
-                "paging": false,
+                "paging": true,
                 "lengthChange": false,
                 "searching": true,
                 "ordering": false,

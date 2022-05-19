@@ -179,7 +179,7 @@
   <script>
     $(document).ready(function() {
       $('#search').DataTable({
-        "paging": false,
+        "paging": true,
         "lengthChange": false,
         "searching": true,
         "ordering": false,
