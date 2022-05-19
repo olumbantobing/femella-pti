@@ -4,7 +4,7 @@
 
 ### Panduan Pengguna dan Instalasi
 
-https://drive.google.com/file/d/1e4MxUxfpQJ3FroBE4tyFrxGlkXfzJeEI/view?usp=sharing
+https://drive.google.com/file/d/1RPo99anIxhC8JgAJ0fD8Ot-VVpNCNDVI/view?usp=sharing
 
 ### Nama Pengguna dan Kata Sandi Admin
 
